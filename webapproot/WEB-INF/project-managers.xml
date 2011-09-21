@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean scope="singleton" parent="typeManagerBase" class="com.wavemaker.runtime.service.TypeManager" id="typeManager">
+        <property name="types">
+            <map merge="true">
+                <entry key="aprendoz_desarrollo">
+                    <list>
+                        <value>com.aprendoz_desarrollo.data.Actividad</value>
+                        <value>com.aprendoz_desarrollo.data.Anuncio</value>
+                        <value>com.aprendoz_desarrollo.data.Aprendizaje</value>
+                        <value>com.aprendoz_desarrollo.data.Area</value>
+                        <value>com.aprendoz_desarrollo.data.Asignatura</value>
+                        <value>com.aprendoz_desarrollo.data.CalifEst</value>
+                        <value>com.aprendoz_desarrollo.data.CalificacionFinal</value>
+                        <value>com.aprendoz_desarrollo.data.Calificaciones</value>
+                        <value>com.aprendoz_desarrollo.data.Curso</value>
+                        <value>com.aprendoz_desarrollo.data.DimensionComprension</value>
+                        <value>com.aprendoz_desarrollo.data.DimensionCurricular</value>
+                        <value>com.aprendoz_desarrollo.data.Eje</value>
+                        <value>com.aprendoz_desarrollo.data.EstadoDepartamento</value>
+                        <value>com.aprendoz_desarrollo.data.EventualidadPersonas</value>
+                        <value>com.aprendoz_desarrollo.data.Eventualidades</value>
+                        <value>com.aprendoz_desarrollo.data.Foto</value>
+                        <value>com.aprendoz_desarrollo.data.Grado</value>
+                        <value>com.aprendoz_desarrollo.data.GrupoFamiliar</value>
+                        <value>com.aprendoz_desarrollo.data.HistorialCalificaciones</value>
+                        <value>com.aprendoz_desarrollo.data.InscAlumActividad</value>
+                        <value>com.aprendoz_desarrollo.data.InscAlumAprendizaje</value>
+                        <value>com.aprendoz_desarrollo.data.InscAlumAsig</value>
+                        <value>com.aprendoz_desarrollo.data.InscAlumCurso</value>
+                        <value>com.aprendoz_desarrollo.data.InscCursoAsig</value>
+                        <value>com.aprendoz_desarrollo.data.InscDocAsig</value>
+                        <value>com.aprendoz_desarrollo.data.Inteligencia</value>
+                        <value>com.aprendoz_desarrollo.data.LogEventos</value>
+                        <value>com.aprendoz_desarrollo.data.Nivel</value>
+                        <value>com.aprendoz_desarrollo.data.NivelEsperado</value>
+                        <value>com.aprendoz_desarrollo.data.OtrasMetas</value>
+                        <value>com.aprendoz_desarrollo.data.Pais</value>
+                        <value>com.aprendoz_desarrollo.data.Periodo</value>
+                        <value>com.aprendoz_desarrollo.data.Persona</value>
+                        <value>com.aprendoz_desarrollo.data.Promocion</value>
+                        <value>com.aprendoz_desarrollo.data.Recurso</value>
+                        <value>com.aprendoz_desarrollo.data.Salon</value>
+                        <value>com.aprendoz_desarrollo.data.Subarea</value>
+                        <value>com.aprendoz_desarrollo.data.SubtipoEventualidad</value>
+                        <value>com.aprendoz_desarrollo.data.Subtopico</value>
+                        <value>com.aprendoz_desarrollo.data.Sy</value>
+                        <value>com.aprendoz_desarrollo.data.TipoActividad</value>
+                        <value>com.aprendoz_desarrollo.data.TipoDesempeno</value>
+                        <value>com.aprendoz_desarrollo.data.TipoEventualidad</value>
+                        <value>com.aprendoz_desarrollo.data.TipoInscAsig</value>
+                        <value>com.aprendoz_desarrollo.data.TipoPeriodo</value>
+                        <value>com.aprendoz_desarrollo.data.TipoPersona</value>
+                        <value>com.aprendoz_desarrollo.data.TipoRecurso</value>
+                        <value>com.aprendoz_desarrollo.data.TipoValoracion</value>
+                        <value>com.aprendoz_desarrollo.data.Unidad</value>
+                        <value>com.aprendoz_desarrollo.data.CalifEstId</value>
+                    </list>
+                </entry>
+                <entry key="runtimeService">
+                    <list>
+                        <value>com.wavemaker.runtime.service.PagingOptions</value>
+                        <value>com.wavemaker.runtime.service.PropertyOptions</value>
+                    </list>
+                </entry>
+                <entry key="securityService">
+                    <list/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

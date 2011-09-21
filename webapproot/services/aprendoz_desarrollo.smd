@@ -1,0 +1,12 @@
+{
+	"methods": [{
+		"name": "getTipoPersonaById",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.TipoPersona"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "aprendoz_desarrollo.json"
+}
