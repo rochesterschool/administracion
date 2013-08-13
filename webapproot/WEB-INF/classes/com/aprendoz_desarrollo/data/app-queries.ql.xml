@@ -1,16 +1,25 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<!-- 
-
-@design.default-queries: Marks this file as default file for user queries.
-
--->
-
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
     <meta attribute="@design.default-queries"/>
-
+    <query name="HQLlsCursos" comment="listado de cursos sin adminisiones ni matriculas">
+        <query-param name="idg" type="java.lang.Integer"/>
+        SELECT c.idCurso as id, c.curso as curso, g.idGrado as idgrado
+FROM Grado g INNER JOIN g.cursos c
+WHERE c.idCurso &gt;= 10101 and c.idCurso &lt;= 40403
+AND g.idGrado=:idg
+    </query>
+    <query name="getProcesoMatricula" comment="se obtiene el curso para el proceso de matricula o admision en el colegio">
+        <query-param name="idp" type="java.lang.Integer"/>
+        SELECT _p.idPersona as code, _p.nombre1 as n1, _p.nombre2 as n2, _p.apellido1 as a1, _p.apellido2 as a2,  _curso.idCurso as idcurso, _curso.curso as curse, MAX(_sy.idSy) as maximo_sy
+FROM InscAlumCurso _ia
+INNER JOIN _ia.persona as _p
+INNER JOIN _ia.sy as _sy
+INNER JOIN _ia.curso as _curso
+WHERE _p.idPersona=:idp AND (_curso.idCurso &lt; 10101 OR _curso.idCurso &gt; 40403)
+    </query>
+    <query name="getNombreCompleto">
+        <query-param name="usuario" type="java.lang.String"/>
+        select nombre1 AS nombre1, nombre2 AS nombre2 , apellido1 AS apellido1, apellido2 AS apellido2, idPersona AS idp, clave AS clave, nombreLdap as user
+from Persona _p where _p.nombreLdap=:usuario
+    </query>
 </hibernate-mapping>

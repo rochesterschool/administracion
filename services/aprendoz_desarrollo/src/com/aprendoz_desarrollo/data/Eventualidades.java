@@ -8,39 +8,58 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Eventualidades
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class Eventualidades {
 
     private Integer idEventualidad;
-    private Persona persona;
-    private SubtipoEventualidad subtipoEventualidad;
+    private TipoLugar tipoLugar;
     private Date fecha;
-    private String lugar;
+    private Date hora;
     private String estado;
     private String descripcion;
+    private Date fechaIngreso;
+    private String usuarioReg;
+    private String pregunta1;
+    private String pregunta2;
+    private String pregunta3;
+    private Date fechaPlanReparacion;
+    private String confidencial;
     private Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases = new HashSet<com.aprendoz_desarrollo.data.EventualidadPersonas>();
 
     public Eventualidades() {
     }
 
-    public Eventualidades(Integer idEventualidad, Date fecha, String lugar, String estado, String descripcion) {
+    public Eventualidades(Integer idEventualidad, Date fecha, Date hora, String estado, String descripcion, Date fechaIngreso, String usuarioReg, String pregunta1, String pregunta2, String pregunta3, Date fechaPlanReparacion, String confidencial) {
         this.idEventualidad = idEventualidad;
         this.fecha = fecha;
-        this.lugar = lugar;
+        this.hora = hora;
         this.estado = estado;
         this.descripcion = descripcion;
+        this.fechaIngreso = fechaIngreso;
+        this.usuarioReg = usuarioReg;
+        this.pregunta1 = pregunta1;
+        this.pregunta2 = pregunta2;
+        this.pregunta3 = pregunta3;
+        this.fechaPlanReparacion = fechaPlanReparacion;
+        this.confidencial = confidencial;
     }
 
-    public Eventualidades(Integer idEventualidad, Persona persona, SubtipoEventualidad subtipoEventualidad, Date fecha, String lugar, String estado, String descripcion, Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
+    public Eventualidades(Integer idEventualidad, TipoLugar tipoLugar, Date fecha, Date hora, String estado, String descripcion, Date fechaIngreso, String usuarioReg, String pregunta1, String pregunta2, String pregunta3, Date fechaPlanReparacion, String confidencial, Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
         this.idEventualidad = idEventualidad;
-        this.persona = persona;
-        this.subtipoEventualidad = subtipoEventualidad;
+        this.tipoLugar = tipoLugar;
         this.fecha = fecha;
-        this.lugar = lugar;
+        this.hora = hora;
         this.estado = estado;
         this.descripcion = descripcion;
+        this.fechaIngreso = fechaIngreso;
+        this.usuarioReg = usuarioReg;
+        this.pregunta1 = pregunta1;
+        this.pregunta2 = pregunta2;
+        this.pregunta3 = pregunta3;
+        this.fechaPlanReparacion = fechaPlanReparacion;
+        this.confidencial = confidencial;
         this.eventualidadPersonases = eventualidadPersonases;
     }
 
@@ -52,20 +71,12 @@ public class Eventualidades {
         this.idEventualidad = idEventualidad;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public TipoLugar getTipoLugar() {
+        return tipoLugar;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public SubtipoEventualidad getSubtipoEventualidad() {
-        return subtipoEventualidad;
-    }
-
-    public void setSubtipoEventualidad(SubtipoEventualidad subtipoEventualidad) {
-        this.subtipoEventualidad = subtipoEventualidad;
+    public void setTipoLugar(TipoLugar tipoLugar) {
+        this.tipoLugar = tipoLugar;
     }
 
     public Date getFecha() {
@@ -76,12 +87,12 @@ public class Eventualidades {
         this.fecha = fecha;
     }
 
-    public String getLugar() {
-        return lugar;
+    public Date getHora() {
+        return hora;
     }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+    public void setHora(Date hora) {
+        this.hora = hora;
     }
 
     public String getEstado() {
@@ -98,6 +109,62 @@ public class Eventualidades {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public String getUsuarioReg() {
+        return usuarioReg;
+    }
+
+    public void setUsuarioReg(String usuarioReg) {
+        this.usuarioReg = usuarioReg;
+    }
+
+    public String getPregunta1() {
+        return pregunta1;
+    }
+
+    public void setPregunta1(String pregunta1) {
+        this.pregunta1 = pregunta1;
+    }
+
+    public String getPregunta2() {
+        return pregunta2;
+    }
+
+    public void setPregunta2(String pregunta2) {
+        this.pregunta2 = pregunta2;
+    }
+
+    public String getPregunta3() {
+        return pregunta3;
+    }
+
+    public void setPregunta3(String pregunta3) {
+        this.pregunta3 = pregunta3;
+    }
+
+    public Date getFechaPlanReparacion() {
+        return fechaPlanReparacion;
+    }
+
+    public void setFechaPlanReparacion(Date fechaPlanReparacion) {
+        this.fechaPlanReparacion = fechaPlanReparacion;
+    }
+
+    public String getConfidencial() {
+        return confidencial;
+    }
+
+    public void setConfidencial(String confidencial) {
+        this.confidencial = confidencial;
     }
 
     public Set<com.aprendoz_desarrollo.data.EventualidadPersonas> getEventualidadPersonases() {

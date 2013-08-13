@@ -7,14 +7,16 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.TipoPersona
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class TipoPersona {
 
     private Integer idTipoPersona;
     private String tipoPersona;
+    private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
     private Set<com.aprendoz_desarrollo.data.Persona> personas = new HashSet<com.aprendoz_desarrollo.data.Persona>();
+    private Set<com.aprendoz_desarrollo.data.ReportesTipoPersona> reportesTipoPersonas = new HashSet<com.aprendoz_desarrollo.data.ReportesTipoPersona>();
 
     public TipoPersona() {
     }
@@ -24,10 +26,12 @@ public class TipoPersona {
         this.tipoPersona = tipoPersona;
     }
 
-    public TipoPersona(Integer idTipoPersona, String tipoPersona, Set<com.aprendoz_desarrollo.data.Persona> personas) {
+    public TipoPersona(Integer idTipoPersona, String tipoPersona, Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars, Set<com.aprendoz_desarrollo.data.Persona> personas, Set<com.aprendoz_desarrollo.data.ReportesTipoPersona> reportesTipoPersonas) {
         this.idTipoPersona = idTipoPersona;
         this.tipoPersona = tipoPersona;
+        this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
         this.personas = personas;
+        this.reportesTipoPersonas = reportesTipoPersonas;
     }
 
     public Integer getIdTipoPersona() {
@@ -46,12 +50,28 @@ public class TipoPersona {
         this.tipoPersona = tipoPersona;
     }
 
+    public Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> getInscPersonaGrupoFamiliars() {
+        return inscPersonaGrupoFamiliars;
+    }
+
+    public void setInscPersonaGrupoFamiliars(Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars) {
+        this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
+    }
+
     public Set<com.aprendoz_desarrollo.data.Persona> getPersonas() {
         return personas;
     }
 
     public void setPersonas(Set<com.aprendoz_desarrollo.data.Persona> personas) {
         this.personas = personas;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.ReportesTipoPersona> getReportesTipoPersonas() {
+        return reportesTipoPersonas;
+    }
+
+    public void setReportesTipoPersonas(Set<com.aprendoz_desarrollo.data.ReportesTipoPersona> reportesTipoPersonas) {
+        this.reportesTipoPersonas = reportesTipoPersonas;
     }
 
 }

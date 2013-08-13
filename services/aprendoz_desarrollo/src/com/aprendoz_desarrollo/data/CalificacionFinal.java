@@ -1,11 +1,12 @@
 
 package com.aprendoz_desarrollo.data;
 
+import java.util.Date;
 
 
 /**
  *  aprendoz_desarrollo.CalificacionFinal
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class CalificacionFinal {
@@ -16,24 +17,27 @@ public class CalificacionFinal {
     private Float calificacionNum;
     private String calificacion;
     private Integer idSyIdIdSy;
+    private Date fechaLogro;
 
     public CalificacionFinal() {
     }
 
-    public CalificacionFinal(Integer idCalificacionFinal, Float calificacionNum, String calificacion, Integer idSyIdIdSy) {
+    public CalificacionFinal(Integer idCalificacionFinal, Float calificacionNum, String calificacion, Integer idSyIdIdSy, Date fechaLogro) {
         this.idCalificacionFinal = idCalificacionFinal;
         this.calificacionNum = calificacionNum;
         this.calificacion = calificacion;
         this.idSyIdIdSy = idSyIdIdSy;
+        this.fechaLogro = fechaLogro;
     }
 
-    public CalificacionFinal(Integer idCalificacionFinal, Persona persona, Aprendizaje aprendizaje, Float calificacionNum, String calificacion, Integer idSyIdIdSy) {
+    public CalificacionFinal(Integer idCalificacionFinal, Persona persona, Aprendizaje aprendizaje, Float calificacionNum, String calificacion, Integer idSyIdIdSy, Date fechaLogro) {
         this.idCalificacionFinal = idCalificacionFinal;
         this.persona = persona;
         this.aprendizaje = aprendizaje;
         this.calificacionNum = calificacionNum;
         this.calificacion = calificacion;
         this.idSyIdIdSy = idSyIdIdSy;
+        this.fechaLogro = fechaLogro;
     }
 
     public Integer getIdCalificacionFinal() {
@@ -82,6 +86,14 @@ public class CalificacionFinal {
 
     public void setIdSyIdIdSy(Integer idSyIdIdSy) {
         this.idSyIdIdSy = idSyIdIdSy;
+    }
+
+    public Date getFechaLogro() {
+        return fechaLogro;
+    }
+
+    public void setFechaLogro(Date fechaLogro) {
+        this.fechaLogro = fechaLogro;
     }
 
 }

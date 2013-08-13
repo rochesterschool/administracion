@@ -11,8 +11,8 @@
         <property name="califChar" type="string">
             <column name="calif_char" length="10"/>
         </property>
-        <property name="fechaMatricula" type="date">
-            <column name="fecha_matricula" length="10" not-null="true"/>
+        <property name="fechaMatricula" type="timestamp">
+            <column name="fecha_matricula" length="19" not-null="true"/>
         </property>
         <many-to-one name="curso" class="com.aprendoz_desarrollo.data.Curso" cascade="none">
             <column name="Curso_Id_Curso" not-null="true"/>
@@ -23,11 +23,5 @@
         <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
             <column name="Persona_Id_Persona" not-null="true"/>
         </many-to-one>
-        <set name="inscAlumAprendizajes" inverse="true">
-            <key>
-                <column name="Insc_Alum_Curso_Id_Insc_Alum_Curso" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAprendizaje"/>
-        </set>
     </class>
 </hibernate-mapping>

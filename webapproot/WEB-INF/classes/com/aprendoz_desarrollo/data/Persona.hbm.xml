@@ -15,7 +15,7 @@
             <column name="Codigo" length="45"/>
         </property>
         <property name="email" type="string">
-            <column name="email" length="45"/>
+            <column name="email" length="65535"/>
         </property>
         <property name="activoRetirado" type="boolean">
             <column name="Activo_Retirado"/>
@@ -48,7 +48,7 @@
             <column name="Nacionalidad" length="45"/>
         </property>
         <property name="direccionResidencia" type="string">
-            <column name="Direccion_Residencia" length="45"/>
+            <column name="Direccion_Residencia" length="500"/>
         </property>
         <property name="telefono" type="string">
             <column name="Telefono" length="45"/>
@@ -116,6 +116,9 @@
         <property name="fechaRetiro" type="date">
             <column name="Fecha_Retiro" length="10"/>
         </property>
+        <property name="comentarioRetiro" type="string">
+            <column name="comentario_retiro" length="65535"/>
+        </property>
         <property name="colegioAnterior" type="string">
             <column name="Colegio_Anterior" length="45"/>
         </property>
@@ -141,7 +144,7 @@
             <column name="Celular" length="45"/>
         </property>
         <property name="direccionOficina" type="string">
-            <column name="Direccion_Oficina" length="45"/>
+            <column name="Direccion_Oficina" length="500"/>
         </property>
         <property name="telefonoOficina" type="string">
             <column name="Telefono_Oficina" length="45"/>
@@ -176,6 +179,9 @@
         <property name="paisDomicilio" type="string">
             <column name="pais_domicilio" length="45"/>
         </property>
+        <property name="codigoPostal" type="string">
+            <column name="codigo_postal" length="8"/>
+        </property>
         <many-to-one name="pais" class="com.aprendoz_desarrollo.data.Pais" cascade="none">
             <column name="PAIS_NAC_ID" not-null="true"/>
         </many-to-one>
@@ -191,29 +197,11 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAprendizaje"/>
         </set>
-        <set name="eventualidadPersonases" inverse="true">
+        <set name="calificacionFinals" inverse="true">
             <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
+                <column name="Persona_Id_Persona"/>
             </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.EventualidadPersonas"/>
-        </set>
-        <set name="inscAlumCursos" inverse="true">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCurso"/>
-        </set>
-        <set name="inscDocAsigs" inverse="true">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscDocAsig"/>
-        </set>
-        <set name="inscCursoAsigs" inverse="true">
-            <key>
-                <column name="Persona_Id_Persona" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsig"/>
+            <one-to-many class="com.aprendoz_desarrollo.data.CalificacionFinal"/>
         </set>
         <set name="inscAlumActividads" inverse="true">
             <key>
@@ -221,23 +209,137 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumActividad"/>
         </set>
+        <set name="inscDirectorNivels" inverse="true">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscDirectorNivel"/>
+        </set>
+        <set name="inscPersonaGrupoFamiliars" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar"/>
+        </set>
+        <set name="inscAlumAreas" inverse="true">
+            <key>
+                <column name="Persona_id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumArea"/>
+        </set>
+        <set name="eventualidadPersonases" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.EventualidadPersonas"/>
+        </set>
+        <set name="coordinacionDeGrupos" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.CoordinacionDeGrupo"/>
+        </set>
+        <set name="inscAlumCursos" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCurso"/>
+        </set>
+        <set name="asistencias" inverse="true">
+            <key>
+                <column name="PERSONA_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Asistencia"/>
+        </set>
+        <set name="inscCoordinadoresCursos" inverse="true">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscCoordinadoresCurso"/>
+        </set>
+        <set name="logeventosaprendozs" inverse="true">
+            <key>
+                <column name="usuario" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Logeventosaprendoz"/>
+        </set>
+        <set name="novedadeses" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Novedades"/>
+        </set>
+        <set name="promocions" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Promocion"/>
+        </set>
+        <set name="inscCursoAsigs" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsig"/>
+        </set>
+        <set name="actualizacionDatosPersonas" inverse="true">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.ActualizacionDatosPersona"/>
+        </set>
+        <set name="fichaMedicas" inverse="true">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.FichaMedica"/>
+        </set>
+        <set name="logDocenteses" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.LogDocentes"/>
+        </set>
+        <set name="personaCarnes" inverse="true">
+            <key>
+                <column name="persona_id_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.PersonaCarne"/>
+        </set>
+        <set name="coordinadoreses" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Coordinadores"/>
+        </set>
+        <set name="matriculas" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Matricula"/>
+        </set>
         <set name="inscAlumAsigs" inverse="true">
             <key>
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsig"/>
         </set>
-        <set name="eventualidadeses" inverse="true">
+        <set name="inscAlumCostos" inverse="true">
             <key>
                 <column name="Persona_Id_Persona" not-null="true"/>
             </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.Eventualidades"/>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCosto"/>
         </set>
-        <set name="calificacionFinals" inverse="true">
+        <set name="inscAlumTransportes" inverse="true">
             <key>
-                <column name="Persona_Id_Persona"/>
+                <column name="Persona_Id_Persona" not-null="true"/>
             </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.CalificacionFinal"/>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumTransporte"/>
+        </set>
+        <set name="coordinacions" inverse="true">
+            <key>
+                <column name="Persona_Id_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Coordinacion"/>
         </set>
     </class>
 </hibernate-mapping>

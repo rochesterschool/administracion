@@ -9,13 +9,13 @@
             <column name="Calificacion" precision="10"/>
         </property>
         <property name="porcentaje" type="big_decimal">
-            <column name="Porcentaje" precision="10" not-null="true"/>
+            <column name="Porcentaje" precision="10"/>
         </property>
         <property name="esperados" type="integer">
-            <column name="esperados" not-null="true"/>
+            <column name="esperados"/>
         </property>
         <property name="logrados" type="integer">
-            <column name="logrados" not-null="true"/>
+            <column name="logrados"/>
         </property>
         <property name="califChar" type="string">
             <column name="calif_char" length="10"/>

@@ -2,6 +2,8 @@
 package com.aprendoz_desarrollo;
 
 import java.util.List;
+import com.aprendoz_desarrollo.data.output.GetProcesoMatriculaRtnType;
+import com.aprendoz_desarrollo.data.output.HQLlsCursosRtnType;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
 import com.wavemaker.runtime.data.DataServiceManagerAccess;
@@ -14,7 +16,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/23/2011 14:30:28
+ *  08/12/2013 17:02:39
  * 
  */
 @SuppressWarnings("unchecked")
@@ -25,8 +27,25 @@ public class Aprendoz_desarrollo
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
 
-    public com.aprendoz_desarrollo.data.TipoPersona getTipoPersonaById(Integer id) {
-        List<com.aprendoz_desarrollo.data.TipoPersona> rtn = ((List<com.aprendoz_desarrollo.data.TipoPersona> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getTipoPersonaByIdQueryName), id));
+    public List<HQLlsCursosRtnType> hQLlsCursos(Integer idg) {
+        return ((List<HQLlsCursosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.HQLlsCursosQueryName), idg));
+    }
+
+    public com.aprendoz_desarrollo.data.Formulario5a getFormulario5aById(Integer id) {
+        List<com.aprendoz_desarrollo.data.Formulario5a> rtn = ((List<com.aprendoz_desarrollo.data.Formulario5a> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getFormulario5aByIdQueryName), id));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
+    }
+
+    public List<GetProcesoMatriculaRtnType> getProcesoMatricula(Integer idp) {
+        return ((List<GetProcesoMatriculaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getProcesoMatriculaQueryName), idp));
+    }
+
+    public com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType getNombreCompleto(String usuario) {
+        List<com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType> rtn = ((List<com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getNombreCompletoQueryName), usuario));
         if (rtn.isEmpty()) {
             return null;
         } else {

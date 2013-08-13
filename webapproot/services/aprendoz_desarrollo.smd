@@ -1,11 +1,32 @@
 {
 	"methods": [{
-		"name": "getTipoPersonaById",
+		"name": "getFormulario5aById",
 		"parameters": [{
 			"name": "id",
 			"type": "java.lang.Integer"
 		}],
-		"returnType": "com.aprendoz_desarrollo.data.TipoPersona"
+		"returnType": "com.aprendoz_desarrollo.data.Formulario5a"
+	}, {
+		"name": "getNombreCompleto",
+		"parameters": [{
+			"name": "usuario",
+			"type": "java.lang.String"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType"
+	}, {
+		"name": "getProcesoMatricula",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetProcesoMatriculaRtnType]"
+	}, {
+		"name": "hQLlsCursos",
+		"parameters": [{
+			"name": "idg",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.HQLlsCursosRtnType]"
 	}],
 	"serviceType": "JSON-RPC",
 	"serviceURL": "aprendoz_desarrollo.json"

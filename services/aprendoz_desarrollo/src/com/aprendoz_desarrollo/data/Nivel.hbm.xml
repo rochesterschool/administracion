@@ -17,5 +17,17 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Grado"/>
         </set>
+        <set name="sesionNivels" inverse="true">
+            <key>
+                <column name="nivel"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.SesionNivel"/>
+        </set>
+        <set name="inscDirectorNivels" inverse="true">
+            <key>
+                <column name="nivel_id_nivel" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscDirectorNivel"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Nivel
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class Nivel {
@@ -16,6 +16,8 @@ public class Nivel {
     private String nivel;
     private String levelName;
     private Set<com.aprendoz_desarrollo.data.Grado> grados = new HashSet<com.aprendoz_desarrollo.data.Grado>();
+    private Set<com.aprendoz_desarrollo.data.SesionNivel> sesionNivels = new HashSet<com.aprendoz_desarrollo.data.SesionNivel>();
+    private Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels = new HashSet<com.aprendoz_desarrollo.data.InscDirectorNivel>();
 
     public Nivel() {
     }
@@ -26,11 +28,13 @@ public class Nivel {
         this.levelName = levelName;
     }
 
-    public Nivel(Integer idNivel, String nivel, String levelName, Set<com.aprendoz_desarrollo.data.Grado> grados) {
+    public Nivel(Integer idNivel, String nivel, String levelName, Set<com.aprendoz_desarrollo.data.Grado> grados, Set<com.aprendoz_desarrollo.data.SesionNivel> sesionNivels, Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels) {
         this.idNivel = idNivel;
         this.nivel = nivel;
         this.levelName = levelName;
         this.grados = grados;
+        this.sesionNivels = sesionNivels;
+        this.inscDirectorNivels = inscDirectorNivels;
     }
 
     public Integer getIdNivel() {
@@ -63,6 +67,22 @@ public class Nivel {
 
     public void setGrados(Set<com.aprendoz_desarrollo.data.Grado> grados) {
         this.grados = grados;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.SesionNivel> getSesionNivels() {
+        return sesionNivels;
+    }
+
+    public void setSesionNivels(Set<com.aprendoz_desarrollo.data.SesionNivel> sesionNivels) {
+        this.sesionNivels = sesionNivels;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscDirectorNivel> getInscDirectorNivels() {
+        return inscDirectorNivels;
+    }
+
+    public void setInscDirectorNivels(Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels) {
+        this.inscDirectorNivels = inscDirectorNivels;
     }
 
 }

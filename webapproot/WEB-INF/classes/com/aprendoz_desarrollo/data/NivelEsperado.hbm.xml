@@ -10,7 +10,7 @@
         </property>
         <set name="aprendizajes" inverse="true">
             <key>
-                <column name="Nivel_Esperado_Id_Nivel_Esperado"/>
+                <column name="Nivel_Esperado_Id_Nivel_Esperado" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Aprendizaje"/>
         </set>

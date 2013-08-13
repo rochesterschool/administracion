@@ -17,11 +17,53 @@
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsig"/>
         </set>
+        <set name="horarios" inverse="true">
+            <key>
+                <column name="curso_id_curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Horario"/>
+        </set>
+        <set name="coordinacionDeGrupos" inverse="true">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.CoordinacionDeGrupo"/>
+        </set>
+        <set name="coordinadoreses" inverse="true">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Coordinadores"/>
+        </set>
         <set name="inscAlumCursos" inverse="true">
             <key>
                 <column name="Curso_Id_Curso" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumCurso"/>
+        </set>
+        <set name="sesions" inverse="true">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Sesion"/>
+        </set>
+        <set name="matriculas" inverse="true">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Matricula"/>
+        </set>
+        <set name="coordinacions" inverse="true">
+            <key>
+                <column name="Curso_Id_Curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Coordinacion"/>
+        </set>
+        <set name="inscCoordinadoresCursos" inverse="true">
+            <key>
+                <column name="curso_id_curso" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscCoordinadoresCurso"/>
         </set>
     </class>
 </hibernate-mapping>

@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Aprendizaje
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class Aprendizaje {
@@ -26,14 +26,13 @@ public class Aprendizaje {
     private Integer ejeIdEje;
     private Integer eje2IdEje;
     private Integer eje3IdEje;
-    private Integer idSyIdIdSy;
-    private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
     private Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals = new HashSet<com.aprendoz_desarrollo.data.CalificacionFinal>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
 
     public Aprendizaje() {
     }
 
-    public Aprendizaje(Integer idAprendizaje, Date fechaEsperada, String aprendizaje, String learning, Integer peso, Integer ejeIdEje, Integer eje2IdEje, Integer eje3IdEje, Integer idSyIdIdSy) {
+    public Aprendizaje(Integer idAprendizaje, Date fechaEsperada, String aprendizaje, String learning, Integer peso, Integer ejeIdEje, Integer eje2IdEje, Integer eje3IdEje) {
         this.idAprendizaje = idAprendizaje;
         this.fechaEsperada = fechaEsperada;
         this.aprendizaje = aprendizaje;
@@ -42,10 +41,9 @@ public class Aprendizaje {
         this.ejeIdEje = ejeIdEje;
         this.eje2IdEje = eje2IdEje;
         this.eje3IdEje = eje3IdEje;
-        this.idSyIdIdSy = idSyIdIdSy;
     }
 
-    public Aprendizaje(Integer idAprendizaje, Inteligencia inteligencia, DimensionComprension dimensionComprension, Subtopico subtopico, NivelEsperado nivelEsperado, DimensionCurricular dimensionCurricular, Date fechaEsperada, String aprendizaje, String learning, Integer peso, Integer ejeIdEje, Integer eje2IdEje, Integer eje3IdEje, Integer idSyIdIdSy, Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes, Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
+    public Aprendizaje(Integer idAprendizaje, Inteligencia inteligencia, DimensionComprension dimensionComprension, Subtopico subtopico, NivelEsperado nivelEsperado, DimensionCurricular dimensionCurricular, Date fechaEsperada, String aprendizaje, String learning, Integer peso, Integer ejeIdEje, Integer eje2IdEje, Integer eje3IdEje, Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals, Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes) {
         this.idAprendizaje = idAprendizaje;
         this.inteligencia = inteligencia;
         this.dimensionComprension = dimensionComprension;
@@ -59,9 +57,8 @@ public class Aprendizaje {
         this.ejeIdEje = ejeIdEje;
         this.eje2IdEje = eje2IdEje;
         this.eje3IdEje = eje3IdEje;
-        this.idSyIdIdSy = idSyIdIdSy;
-        this.inscAlumAprendizajes = inscAlumAprendizajes;
         this.calificacionFinals = calificacionFinals;
+        this.inscAlumAprendizajes = inscAlumAprendizajes;
     }
 
     public Integer getIdAprendizaje() {
@@ -168,12 +165,12 @@ public class Aprendizaje {
         this.eje3IdEje = eje3IdEje;
     }
 
-    public Integer getIdSyIdIdSy() {
-        return idSyIdIdSy;
+    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
+        return calificacionFinals;
     }
 
-    public void setIdSyIdIdSy(Integer idSyIdIdSy) {
-        this.idSyIdIdSy = idSyIdIdSy;
+    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
+        this.calificacionFinals = calificacionFinals;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> getInscAlumAprendizajes() {
@@ -182,14 +179,6 @@ public class Aprendizaje {
 
     public void setInscAlumAprendizajes(Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes) {
         this.inscAlumAprendizajes = inscAlumAprendizajes;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
-        return calificacionFinals;
-    }
-
-    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
-        this.calificacionFinals = calificacionFinals;
     }
 
 }

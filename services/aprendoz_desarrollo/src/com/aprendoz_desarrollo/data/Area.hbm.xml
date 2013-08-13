@@ -17,6 +17,12 @@
         <property name="idSyIdIdSy" type="integer">
             <column name="idSY_id_idSY"/>
         </property>
+        <set name="inscAlumAreas" inverse="true">
+            <key>
+                <column name="Area_Id_Area" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscAlumArea"/>
+        </set>
         <set name="subareas" inverse="true">
             <key>
                 <column name="Area_Id_Area"/>

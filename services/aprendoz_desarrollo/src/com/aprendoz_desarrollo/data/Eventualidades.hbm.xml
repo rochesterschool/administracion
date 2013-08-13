@@ -8,20 +8,38 @@
         <property name="fecha" type="date">
             <column name="Fecha" length="10"/>
         </property>
-        <property name="lugar" type="string">
-            <column name="Lugar" length="100"/>
+        <property name="hora" type="time">
+            <column name="Hora" length="8" not-null="true"/>
         </property>
         <property name="estado" type="string">
             <column name="Estado" length="45"/>
         </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="500"/>
+            <column name="descripcion" length="65535"/>
         </property>
-        <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
-            <column name="Persona_Id_Persona" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="subtipoEventualidad" class="com.aprendoz_desarrollo.data.SubtipoEventualidad" cascade="none">
-            <column name="Subtipo_Eventualidad_Id_Subtipo_Eventualidad" not-null="true"/>
+        <property name="fechaIngreso" type="timestamp">
+            <column name="fecha_ingreso" length="19" not-null="true"/>
+        </property>
+        <property name="usuarioReg" type="string">
+            <column name="usuario_reg" length="20" not-null="true"/>
+        </property>
+        <property name="pregunta1" type="string">
+            <column name="pregunta1" length="65535"/>
+        </property>
+        <property name="pregunta2" type="string">
+            <column name="pregunta2" length="65535"/>
+        </property>
+        <property name="pregunta3" type="string">
+            <column name="pregunta3" length="65535"/>
+        </property>
+        <property name="fechaPlanReparacion" type="date">
+            <column name="fecha_plan_reparacion" length="10"/>
+        </property>
+        <property name="confidencial" type="string">
+            <column name="confidencial" length="3"/>
+        </property>
+        <many-to-one name="tipoLugar" class="com.aprendoz_desarrollo.data.TipoLugar" cascade="none">
+            <column name="Lugar_id_Tipo_Lugar"/>
         </many-to-one>
         <set name="eventualidadPersonases" inverse="true">
             <key>

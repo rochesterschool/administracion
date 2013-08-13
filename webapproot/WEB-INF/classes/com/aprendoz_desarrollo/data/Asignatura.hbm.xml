@@ -38,14 +38,29 @@
         <property name="intensidadHoraria" type="float">
             <column name="intensidad_horaria" precision="4"/>
         </property>
-        <property name="peso" type="integer">
-            <column name="peso"/>
+        <property name="peso" type="float">
+            <column name="peso" precision="3"/>
         </property>
         <property name="descripAsigEspaniol" type="string">
             <column name="descrip_asig_espaniol" length="65535"/>
         </property>
         <property name="descripAsigIngles" type="string">
             <column name="descrip_asig_ingles" length="65535"/>
+        </property>
+        <property name="ihA1" type="float">
+            <column name="ih_a1" precision="12" not-null="true"/>
+        </property>
+        <property name="ihA2" type="float">
+            <column name="ih_a2" precision="12" not-null="true"/>
+        </property>
+        <property name="ihA3" type="float">
+            <column name="ih_a3" precision="12" not-null="true"/>
+        </property>
+        <property name="meses" type="float">
+            <column name="meses" precision="12"/>
+        </property>
+        <property name="esperadostotal" type="integer">
+            <column name="esperadostotal"/>
         </property>
         <many-to-one name="grado" class="com.aprendoz_desarrollo.data.Grado" cascade="none">
             <column name="Grado_Id_Grado" not-null="true"/>
@@ -56,29 +71,35 @@
         <many-to-one name="sy" class="com.aprendoz_desarrollo.data.Sy" cascade="none">
             <column name="SY_Id_SY" not-null="true"/>
         </many-to-one>
-        <set name="unidads" inverse="true">
-            <key>
-                <column name="Asignatura_Id_Asignatura" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.Unidad"/>
-        </set>
         <set name="inscCursoAsigs" inverse="true">
             <key>
                 <column name="Asignatura_Id_Asignatura" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscCursoAsig"/>
         </set>
-        <set name="inscDocAsigs" inverse="true">
+        <set name="horarios" inverse="true">
             <key>
-                <column name="Asignatura_Id_Asignatura" not-null="true"/>
+                <column name="asignatura_id_asignatura" not-null="true"/>
             </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.InscDocAsig"/>
+            <one-to-many class="com.aprendoz_desarrollo.data.Horario"/>
         </set>
         <set name="inscAlumAsigs" inverse="true">
             <key>
                 <column name="Asignatura_Id_Asignatura" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.InscAlumAsig"/>
+        </set>
+        <set name="sesions" inverse="true">
+            <key>
+                <column name="asignatura_Id_Asignatura" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Sesion"/>
+        </set>
+        <set name="unidads" inverse="true">
+            <key>
+                <column name="Asignatura_Id_Asignatura" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.Unidad"/>
         </set>
     </class>
 </hibernate-mapping>

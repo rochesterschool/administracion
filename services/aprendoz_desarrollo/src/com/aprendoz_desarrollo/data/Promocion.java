@@ -5,42 +5,59 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.Promocion
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class Promocion {
 
     private Integer idPromocion;
-    private Integer personaIdPersona;
-    private Integer syIdSy;
-    private Boolean checkacademico;
-    private Boolean checkcomite;
+    private Sy sy;
+    private Persona persona;
+    private Boolean aprobado;
+    private Boolean autorizadoAcademico;
     private String commentcomite;
-    private Boolean checkfinanc;
+    private Boolean autorizadoFinanciera;
     private String commentfinanc;
     private Boolean promovido;
     private String commentaprobado;
     private String commentpromovido;
     private Float calificacion;
     private String calificacionChar;
+    private Boolean autorizadoPromAnticipada;
 
     public Promocion() {
     }
 
-    public Promocion(Integer idPromocion, Integer personaIdPersona, Integer syIdSy, Boolean checkacademico, Boolean checkcomite, String commentcomite, Boolean checkfinanc, String commentfinanc, Boolean promovido, String commentaprobado, String commentpromovido, Float calificacion, String calificacionChar) {
+    public Promocion(Integer idPromocion, Boolean aprobado, Boolean autorizadoAcademico, String commentcomite, Boolean autorizadoFinanciera, String commentfinanc, Boolean promovido, String commentaprobado, String commentpromovido, Float calificacion, String calificacionChar, Boolean autorizadoPromAnticipada) {
         this.idPromocion = idPromocion;
-        this.personaIdPersona = personaIdPersona;
-        this.syIdSy = syIdSy;
-        this.checkacademico = checkacademico;
-        this.checkcomite = checkcomite;
+        this.aprobado = aprobado;
+        this.autorizadoAcademico = autorizadoAcademico;
         this.commentcomite = commentcomite;
-        this.checkfinanc = checkfinanc;
+        this.autorizadoFinanciera = autorizadoFinanciera;
         this.commentfinanc = commentfinanc;
         this.promovido = promovido;
         this.commentaprobado = commentaprobado;
         this.commentpromovido = commentpromovido;
         this.calificacion = calificacion;
         this.calificacionChar = calificacionChar;
+        this.autorizadoPromAnticipada = autorizadoPromAnticipada;
+    }
+
+    public Promocion(Integer idPromocion, Sy sy, Persona persona, Boolean aprobado, Boolean autorizadoAcademico, String commentcomite, Boolean autorizadoFinanciera, String commentfinanc, Boolean promovido, String commentaprobado, String commentpromovido, Float calificacion, String calificacionChar, Boolean autorizadoPromAnticipada) {
+        this.idPromocion = idPromocion;
+        this.sy = sy;
+        this.persona = persona;
+        this.aprobado = aprobado;
+        this.autorizadoAcademico = autorizadoAcademico;
+        this.commentcomite = commentcomite;
+        this.autorizadoFinanciera = autorizadoFinanciera;
+        this.commentfinanc = commentfinanc;
+        this.promovido = promovido;
+        this.commentaprobado = commentaprobado;
+        this.commentpromovido = commentpromovido;
+        this.calificacion = calificacion;
+        this.calificacionChar = calificacionChar;
+        this.autorizadoPromAnticipada = autorizadoPromAnticipada;
     }
 
     public Integer getIdPromocion() {
@@ -51,36 +68,36 @@ public class Promocion {
         this.idPromocion = idPromocion;
     }
 
-    public Integer getPersonaIdPersona() {
-        return personaIdPersona;
+    public Sy getSy() {
+        return sy;
     }
 
-    public void setPersonaIdPersona(Integer personaIdPersona) {
-        this.personaIdPersona = personaIdPersona;
+    public void setSy(Sy sy) {
+        this.sy = sy;
     }
 
-    public Integer getSyIdSy() {
-        return syIdSy;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setSyIdSy(Integer syIdSy) {
-        this.syIdSy = syIdSy;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public Boolean getCheckacademico() {
-        return checkacademico;
+    public Boolean getAprobado() {
+        return aprobado;
     }
 
-    public void setCheckacademico(Boolean checkacademico) {
-        this.checkacademico = checkacademico;
+    public void setAprobado(Boolean aprobado) {
+        this.aprobado = aprobado;
     }
 
-    public Boolean getCheckcomite() {
-        return checkcomite;
+    public Boolean getAutorizadoAcademico() {
+        return autorizadoAcademico;
     }
 
-    public void setCheckcomite(Boolean checkcomite) {
-        this.checkcomite = checkcomite;
+    public void setAutorizadoAcademico(Boolean autorizadoAcademico) {
+        this.autorizadoAcademico = autorizadoAcademico;
     }
 
     public String getCommentcomite() {
@@ -91,12 +108,12 @@ public class Promocion {
         this.commentcomite = commentcomite;
     }
 
-    public Boolean getCheckfinanc() {
-        return checkfinanc;
+    public Boolean getAutorizadoFinanciera() {
+        return autorizadoFinanciera;
     }
 
-    public void setCheckfinanc(Boolean checkfinanc) {
-        this.checkfinanc = checkfinanc;
+    public void setAutorizadoFinanciera(Boolean autorizadoFinanciera) {
+        this.autorizadoFinanciera = autorizadoFinanciera;
     }
 
     public String getCommentfinanc() {
@@ -145,6 +162,14 @@ public class Promocion {
 
     public void setCalificacionChar(String calificacionChar) {
         this.calificacionChar = calificacionChar;
+    }
+
+    public Boolean getAutorizadoPromAnticipada() {
+        return autorizadoPromAnticipada;
+    }
+
+    public void setAutorizadoPromAnticipada(Boolean autorizadoPromAnticipada) {
+        this.autorizadoPromAnticipada = autorizadoPromAnticipada;
     }
 
 }

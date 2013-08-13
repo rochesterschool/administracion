@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.Persona
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class Persona {
@@ -54,6 +54,7 @@ public class Persona {
     private String gradoIngreso;
     private String cursoIngreso;
     private Date fechaRetiro;
+    private String comentarioRetiro;
     private String colegioAnterior;
     private Boolean hijoDeExalumno;
     private String nombrePadreExalumno;
@@ -74,20 +75,37 @@ public class Persona {
     private Boolean matriculado;
     private Integer inscAlumCursoIdInscAlumCurso;
     private String paisDomicilio;
+    private String codigoPostal;
     private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
-    private Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases = new HashSet<com.aprendoz_desarrollo.data.EventualidadPersonas>();
-    private Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCurso>();
-    private Set<com.aprendoz_desarrollo.data.InscDocAsig> inscDocAsigs = new HashSet<com.aprendoz_desarrollo.data.InscDocAsig>();
-    private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
-    private Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads = new HashSet<com.aprendoz_desarrollo.data.InscAlumActividad>();
-    private Set<com.aprendoz_desarrollo.data.InscAlumAsig> inscAlumAsigs = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsig>();
-    private Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses = new HashSet<com.aprendoz_desarrollo.data.Eventualidades>();
     private Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals = new HashSet<com.aprendoz_desarrollo.data.CalificacionFinal>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads = new HashSet<com.aprendoz_desarrollo.data.InscAlumActividad>();
+    private Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels = new HashSet<com.aprendoz_desarrollo.data.InscDirectorNivel>();
+    private Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars = new HashSet<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumArea> inscAlumAreas = new HashSet<com.aprendoz_desarrollo.data.InscAlumArea>();
+    private Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases = new HashSet<com.aprendoz_desarrollo.data.EventualidadPersonas>();
+    private Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> coordinacionDeGrupos = new HashSet<com.aprendoz_desarrollo.data.CoordinacionDeGrupo>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCurso>();
+    private Set<com.aprendoz_desarrollo.data.Asistencia> asistencias = new HashSet<com.aprendoz_desarrollo.data.Asistencia>();
+    private Set<com.aprendoz_desarrollo.data.InscCoordinadoresCurso> inscCoordinadoresCursos = new HashSet<com.aprendoz_desarrollo.data.InscCoordinadoresCurso>();
+    private Set<com.aprendoz_desarrollo.data.Logeventosaprendoz> logeventosaprendozs = new HashSet<com.aprendoz_desarrollo.data.Logeventosaprendoz>();
+    private Set<com.aprendoz_desarrollo.data.Novedades> novedadeses = new HashSet<com.aprendoz_desarrollo.data.Novedades>();
+    private Set<com.aprendoz_desarrollo.data.Promocion> promocions = new HashSet<com.aprendoz_desarrollo.data.Promocion>();
+    private Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs = new HashSet<com.aprendoz_desarrollo.data.InscCursoAsig>();
+    private Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> actualizacionDatosPersonas = new HashSet<com.aprendoz_desarrollo.data.ActualizacionDatosPersona>();
+    private Set<com.aprendoz_desarrollo.data.FichaMedica> fichaMedicas = new HashSet<com.aprendoz_desarrollo.data.FichaMedica>();
+    private Set<com.aprendoz_desarrollo.data.LogDocentes> logDocenteses = new HashSet<com.aprendoz_desarrollo.data.LogDocentes>();
+    private Set<com.aprendoz_desarrollo.data.PersonaCarne> personaCarnes = new HashSet<com.aprendoz_desarrollo.data.PersonaCarne>();
+    private Set<com.aprendoz_desarrollo.data.Coordinadores> coordinadoreses = new HashSet<com.aprendoz_desarrollo.data.Coordinadores>();
+    private Set<com.aprendoz_desarrollo.data.Matricula> matriculas = new HashSet<com.aprendoz_desarrollo.data.Matricula>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumAsig> inscAlumAsigs = new HashSet<com.aprendoz_desarrollo.data.InscAlumAsig>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos = new HashSet<com.aprendoz_desarrollo.data.InscAlumCosto>();
+    private Set<com.aprendoz_desarrollo.data.InscAlumTransporte> inscAlumTransportes = new HashSet<com.aprendoz_desarrollo.data.InscAlumTransporte>();
+    private Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions = new HashSet<com.aprendoz_desarrollo.data.Coordinacion>();
 
     public Persona() {
     }
 
-    public Persona(Integer idPersona, String nombreLdap, String clave, String codigo, String email, Boolean activoRetirado, String apellido1, String apellido2, String nombre1, String nombre2, String nivelAcademico, Date fechaNacimiento, String lugarNacimientoMunicipio, String lugarNacimientoDepartamento, String nacionalidad, String direccionResidencia, String telefono, String telefono2, String religion, String tipoDocumento, String noDocumento, String lugarExpedicionMunicipio, String lugarExpedicionDepartamento, String barrio, String municipio, String departamento, String saludPrepagada, String eps, String numeroContratoSalud, String clinicaEmergencia, String viveCon, String tipoSangre, String sexo, String codigoFamilia, Date fechaIngreso, String gradoIngreso, String cursoIngreso, Date fechaRetiro, String colegioAnterior, Boolean hijoDeExalumno, String nombrePadreExalumno, String promocion, String profesion, String empresa, String cargo, String celular, String direccionOficina, String telefonoOficina, String parentesco, String rutaM, String rutaT, Boolean tomaAlmuerzo, Boolean tomaMediasNueves, Boolean tomaSeguroAccidentes, String noPlaqueta, Boolean matriculado, Integer inscAlumCursoIdInscAlumCurso, String paisDomicilio) {
+    public Persona(Integer idPersona, String nombreLdap, String clave, String codigo, String email, Boolean activoRetirado, String apellido1, String apellido2, String nombre1, String nombre2, String nivelAcademico, Date fechaNacimiento, String lugarNacimientoMunicipio, String lugarNacimientoDepartamento, String nacionalidad, String direccionResidencia, String telefono, String telefono2, String religion, String tipoDocumento, String noDocumento, String lugarExpedicionMunicipio, String lugarExpedicionDepartamento, String barrio, String municipio, String departamento, String saludPrepagada, String eps, String numeroContratoSalud, String clinicaEmergencia, String viveCon, String tipoSangre, String sexo, String codigoFamilia, Date fechaIngreso, String gradoIngreso, String cursoIngreso, Date fechaRetiro, String comentarioRetiro, String colegioAnterior, Boolean hijoDeExalumno, String nombrePadreExalumno, String promocion, String profesion, String empresa, String cargo, String celular, String direccionOficina, String telefonoOficina, String parentesco, String rutaM, String rutaT, Boolean tomaAlmuerzo, Boolean tomaMediasNueves, Boolean tomaSeguroAccidentes, String noPlaqueta, Boolean matriculado, Integer inscAlumCursoIdInscAlumCurso, String paisDomicilio, String codigoPostal) {
         this.idPersona = idPersona;
         this.nombreLdap = nombreLdap;
         this.clave = clave;
@@ -126,6 +144,7 @@ public class Persona {
         this.gradoIngreso = gradoIngreso;
         this.cursoIngreso = cursoIngreso;
         this.fechaRetiro = fechaRetiro;
+        this.comentarioRetiro = comentarioRetiro;
         this.colegioAnterior = colegioAnterior;
         this.hijoDeExalumno = hijoDeExalumno;
         this.nombrePadreExalumno = nombrePadreExalumno;
@@ -146,9 +165,10 @@ public class Persona {
         this.matriculado = matriculado;
         this.inscAlumCursoIdInscAlumCurso = inscAlumCursoIdInscAlumCurso;
         this.paisDomicilio = paisDomicilio;
+        this.codigoPostal = codigoPostal;
     }
 
-    public Persona(Integer idPersona, Pais pais, TipoPersona tipoPersona, GrupoFamiliar grupoFamiliar, String nombreLdap, String clave, String codigo, String email, Boolean activoRetirado, String apellido1, String apellido2, String nombre1, String nombre2, String nivelAcademico, Date fechaNacimiento, String lugarNacimientoMunicipio, String lugarNacimientoDepartamento, String nacionalidad, String direccionResidencia, String telefono, String telefono2, String religion, String tipoDocumento, String noDocumento, String lugarExpedicionMunicipio, String lugarExpedicionDepartamento, String barrio, String municipio, String departamento, String saludPrepagada, String eps, String numeroContratoSalud, String clinicaEmergencia, String viveCon, String tipoSangre, String sexo, String codigoFamilia, Date fechaIngreso, String gradoIngreso, String cursoIngreso, Date fechaRetiro, String colegioAnterior, Boolean hijoDeExalumno, String nombrePadreExalumno, String promocion, String profesion, String empresa, String cargo, String celular, String direccionOficina, String telefonoOficina, String parentesco, String rutaM, String rutaT, Boolean tomaAlmuerzo, Boolean tomaMediasNueves, Boolean tomaSeguroAccidentes, String noPlaqueta, Boolean matriculado, Integer inscAlumCursoIdInscAlumCurso, String paisDomicilio, Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes, Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases, Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos, Set<com.aprendoz_desarrollo.data.InscDocAsig> inscDocAsigs, Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs, Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads, Set<com.aprendoz_desarrollo.data.InscAlumAsig> inscAlumAsigs, Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses, Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
+    public Persona(Integer idPersona, Pais pais, TipoPersona tipoPersona, GrupoFamiliar grupoFamiliar, String nombreLdap, String clave, String codigo, String email, Boolean activoRetirado, String apellido1, String apellido2, String nombre1, String nombre2, String nivelAcademico, Date fechaNacimiento, String lugarNacimientoMunicipio, String lugarNacimientoDepartamento, String nacionalidad, String direccionResidencia, String telefono, String telefono2, String religion, String tipoDocumento, String noDocumento, String lugarExpedicionMunicipio, String lugarExpedicionDepartamento, String barrio, String municipio, String departamento, String saludPrepagada, String eps, String numeroContratoSalud, String clinicaEmergencia, String viveCon, String tipoSangre, String sexo, String codigoFamilia, Date fechaIngreso, String gradoIngreso, String cursoIngreso, Date fechaRetiro, String comentarioRetiro, String colegioAnterior, Boolean hijoDeExalumno, String nombrePadreExalumno, String promocion, String profesion, String empresa, String cargo, String celular, String direccionOficina, String telefonoOficina, String parentesco, String rutaM, String rutaT, Boolean tomaAlmuerzo, Boolean tomaMediasNueves, Boolean tomaSeguroAccidentes, String noPlaqueta, Boolean matriculado, Integer inscAlumCursoIdInscAlumCurso, String paisDomicilio, String codigoPostal, Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes, Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals, Set<com.aprendoz_desarrollo.data.InscAlumActividad> inscAlumActividads, Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels, Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars, Set<com.aprendoz_desarrollo.data.InscAlumArea> inscAlumAreas, Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases, Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> coordinacionDeGrupos, Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos, Set<com.aprendoz_desarrollo.data.Asistencia> asistencias, Set<com.aprendoz_desarrollo.data.InscCoordinadoresCurso> inscCoordinadoresCursos, Set<com.aprendoz_desarrollo.data.Logeventosaprendoz> logeventosaprendozs, Set<com.aprendoz_desarrollo.data.Novedades> novedadeses, Set<com.aprendoz_desarrollo.data.Promocion> promocions, Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs, Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> actualizacionDatosPersonas, Set<com.aprendoz_desarrollo.data.FichaMedica> fichaMedicas, Set<com.aprendoz_desarrollo.data.LogDocentes> logDocenteses, Set<com.aprendoz_desarrollo.data.PersonaCarne> personaCarnes, Set<com.aprendoz_desarrollo.data.Coordinadores> coordinadoreses, Set<com.aprendoz_desarrollo.data.Matricula> matriculas, Set<com.aprendoz_desarrollo.data.InscAlumAsig> inscAlumAsigs, Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos, Set<com.aprendoz_desarrollo.data.InscAlumTransporte> inscAlumTransportes, Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions) {
         this.idPersona = idPersona;
         this.pais = pais;
         this.tipoPersona = tipoPersona;
@@ -190,6 +210,7 @@ public class Persona {
         this.gradoIngreso = gradoIngreso;
         this.cursoIngreso = cursoIngreso;
         this.fechaRetiro = fechaRetiro;
+        this.comentarioRetiro = comentarioRetiro;
         this.colegioAnterior = colegioAnterior;
         this.hijoDeExalumno = hijoDeExalumno;
         this.nombrePadreExalumno = nombrePadreExalumno;
@@ -210,15 +231,32 @@ public class Persona {
         this.matriculado = matriculado;
         this.inscAlumCursoIdInscAlumCurso = inscAlumCursoIdInscAlumCurso;
         this.paisDomicilio = paisDomicilio;
+        this.codigoPostal = codigoPostal;
         this.inscAlumAprendizajes = inscAlumAprendizajes;
-        this.eventualidadPersonases = eventualidadPersonases;
-        this.inscAlumCursos = inscAlumCursos;
-        this.inscDocAsigs = inscDocAsigs;
-        this.inscCursoAsigs = inscCursoAsigs;
-        this.inscAlumActividads = inscAlumActividads;
-        this.inscAlumAsigs = inscAlumAsigs;
-        this.eventualidadeses = eventualidadeses;
         this.calificacionFinals = calificacionFinals;
+        this.inscAlumActividads = inscAlumActividads;
+        this.inscDirectorNivels = inscDirectorNivels;
+        this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
+        this.inscAlumAreas = inscAlumAreas;
+        this.eventualidadPersonases = eventualidadPersonases;
+        this.coordinacionDeGrupos = coordinacionDeGrupos;
+        this.inscAlumCursos = inscAlumCursos;
+        this.asistencias = asistencias;
+        this.inscCoordinadoresCursos = inscCoordinadoresCursos;
+        this.logeventosaprendozs = logeventosaprendozs;
+        this.novedadeses = novedadeses;
+        this.promocions = promocions;
+        this.inscCursoAsigs = inscCursoAsigs;
+        this.actualizacionDatosPersonas = actualizacionDatosPersonas;
+        this.fichaMedicas = fichaMedicas;
+        this.logDocenteses = logDocenteses;
+        this.personaCarnes = personaCarnes;
+        this.coordinadoreses = coordinadoreses;
+        this.matriculas = matriculas;
+        this.inscAlumAsigs = inscAlumAsigs;
+        this.inscAlumCostos = inscAlumCostos;
+        this.inscAlumTransportes = inscAlumTransportes;
+        this.coordinacions = coordinacions;
     }
 
     public Integer getIdPersona() {
@@ -549,6 +587,14 @@ public class Persona {
         this.fechaRetiro = fechaRetiro;
     }
 
+    public String getComentarioRetiro() {
+        return comentarioRetiro;
+    }
+
+    public void setComentarioRetiro(String comentarioRetiro) {
+        this.comentarioRetiro = comentarioRetiro;
+    }
+
     public String getColegioAnterior() {
         return colegioAnterior;
     }
@@ -709,6 +755,14 @@ public class Persona {
         this.paisDomicilio = paisDomicilio;
     }
 
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
     public Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> getInscAlumAprendizajes() {
         return inscAlumAprendizajes;
     }
@@ -717,36 +771,12 @@ public class Persona {
         this.inscAlumAprendizajes = inscAlumAprendizajes;
     }
 
-    public Set<com.aprendoz_desarrollo.data.EventualidadPersonas> getEventualidadPersonases() {
-        return eventualidadPersonases;
+    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
+        return calificacionFinals;
     }
 
-    public void setEventualidadPersonases(Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
-        this.eventualidadPersonases = eventualidadPersonases;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.InscAlumCurso> getInscAlumCursos() {
-        return inscAlumCursos;
-    }
-
-    public void setInscAlumCursos(Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos) {
-        this.inscAlumCursos = inscAlumCursos;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.InscDocAsig> getInscDocAsigs() {
-        return inscDocAsigs;
-    }
-
-    public void setInscDocAsigs(Set<com.aprendoz_desarrollo.data.InscDocAsig> inscDocAsigs) {
-        this.inscDocAsigs = inscDocAsigs;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.InscCursoAsig> getInscCursoAsigs() {
-        return inscCursoAsigs;
-    }
-
-    public void setInscCursoAsigs(Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs) {
-        this.inscCursoAsigs = inscCursoAsigs;
+    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
+        this.calificacionFinals = calificacionFinals;
     }
 
     public Set<com.aprendoz_desarrollo.data.InscAlumActividad> getInscAlumActividads() {
@@ -757,6 +787,150 @@ public class Persona {
         this.inscAlumActividads = inscAlumActividads;
     }
 
+    public Set<com.aprendoz_desarrollo.data.InscDirectorNivel> getInscDirectorNivels() {
+        return inscDirectorNivels;
+    }
+
+    public void setInscDirectorNivels(Set<com.aprendoz_desarrollo.data.InscDirectorNivel> inscDirectorNivels) {
+        this.inscDirectorNivels = inscDirectorNivels;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> getInscPersonaGrupoFamiliars() {
+        return inscPersonaGrupoFamiliars;
+    }
+
+    public void setInscPersonaGrupoFamiliars(Set<com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar> inscPersonaGrupoFamiliars) {
+        this.inscPersonaGrupoFamiliars = inscPersonaGrupoFamiliars;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscAlumArea> getInscAlumAreas() {
+        return inscAlumAreas;
+    }
+
+    public void setInscAlumAreas(Set<com.aprendoz_desarrollo.data.InscAlumArea> inscAlumAreas) {
+        this.inscAlumAreas = inscAlumAreas;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.EventualidadPersonas> getEventualidadPersonases() {
+        return eventualidadPersonases;
+    }
+
+    public void setEventualidadPersonases(Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
+        this.eventualidadPersonases = eventualidadPersonases;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> getCoordinacionDeGrupos() {
+        return coordinacionDeGrupos;
+    }
+
+    public void setCoordinacionDeGrupos(Set<com.aprendoz_desarrollo.data.CoordinacionDeGrupo> coordinacionDeGrupos) {
+        this.coordinacionDeGrupos = coordinacionDeGrupos;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscAlumCurso> getInscAlumCursos() {
+        return inscAlumCursos;
+    }
+
+    public void setInscAlumCursos(Set<com.aprendoz_desarrollo.data.InscAlumCurso> inscAlumCursos) {
+        this.inscAlumCursos = inscAlumCursos;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Asistencia> getAsistencias() {
+        return asistencias;
+    }
+
+    public void setAsistencias(Set<com.aprendoz_desarrollo.data.Asistencia> asistencias) {
+        this.asistencias = asistencias;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscCoordinadoresCurso> getInscCoordinadoresCursos() {
+        return inscCoordinadoresCursos;
+    }
+
+    public void setInscCoordinadoresCursos(Set<com.aprendoz_desarrollo.data.InscCoordinadoresCurso> inscCoordinadoresCursos) {
+        this.inscCoordinadoresCursos = inscCoordinadoresCursos;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Logeventosaprendoz> getLogeventosaprendozs() {
+        return logeventosaprendozs;
+    }
+
+    public void setLogeventosaprendozs(Set<com.aprendoz_desarrollo.data.Logeventosaprendoz> logeventosaprendozs) {
+        this.logeventosaprendozs = logeventosaprendozs;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Novedades> getNovedadeses() {
+        return novedadeses;
+    }
+
+    public void setNovedadeses(Set<com.aprendoz_desarrollo.data.Novedades> novedadeses) {
+        this.novedadeses = novedadeses;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Promocion> getPromocions() {
+        return promocions;
+    }
+
+    public void setPromocions(Set<com.aprendoz_desarrollo.data.Promocion> promocions) {
+        this.promocions = promocions;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.InscCursoAsig> getInscCursoAsigs() {
+        return inscCursoAsigs;
+    }
+
+    public void setInscCursoAsigs(Set<com.aprendoz_desarrollo.data.InscCursoAsig> inscCursoAsigs) {
+        this.inscCursoAsigs = inscCursoAsigs;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> getActualizacionDatosPersonas() {
+        return actualizacionDatosPersonas;
+    }
+
+    public void setActualizacionDatosPersonas(Set<com.aprendoz_desarrollo.data.ActualizacionDatosPersona> actualizacionDatosPersonas) {
+        this.actualizacionDatosPersonas = actualizacionDatosPersonas;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.FichaMedica> getFichaMedicas() {
+        return fichaMedicas;
+    }
+
+    public void setFichaMedicas(Set<com.aprendoz_desarrollo.data.FichaMedica> fichaMedicas) {
+        this.fichaMedicas = fichaMedicas;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.LogDocentes> getLogDocenteses() {
+        return logDocenteses;
+    }
+
+    public void setLogDocenteses(Set<com.aprendoz_desarrollo.data.LogDocentes> logDocenteses) {
+        this.logDocenteses = logDocenteses;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.PersonaCarne> getPersonaCarnes() {
+        return personaCarnes;
+    }
+
+    public void setPersonaCarnes(Set<com.aprendoz_desarrollo.data.PersonaCarne> personaCarnes) {
+        this.personaCarnes = personaCarnes;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Coordinadores> getCoordinadoreses() {
+        return coordinadoreses;
+    }
+
+    public void setCoordinadoreses(Set<com.aprendoz_desarrollo.data.Coordinadores> coordinadoreses) {
+        this.coordinadoreses = coordinadoreses;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    public void setMatriculas(Set<com.aprendoz_desarrollo.data.Matricula> matriculas) {
+        this.matriculas = matriculas;
+    }
+
     public Set<com.aprendoz_desarrollo.data.InscAlumAsig> getInscAlumAsigs() {
         return inscAlumAsigs;
     }
@@ -765,20 +939,28 @@ public class Persona {
         this.inscAlumAsigs = inscAlumAsigs;
     }
 
-    public Set<com.aprendoz_desarrollo.data.Eventualidades> getEventualidadeses() {
-        return eventualidadeses;
+    public Set<com.aprendoz_desarrollo.data.InscAlumCosto> getInscAlumCostos() {
+        return inscAlumCostos;
     }
 
-    public void setEventualidadeses(Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses) {
-        this.eventualidadeses = eventualidadeses;
+    public void setInscAlumCostos(Set<com.aprendoz_desarrollo.data.InscAlumCosto> inscAlumCostos) {
+        this.inscAlumCostos = inscAlumCostos;
     }
 
-    public Set<com.aprendoz_desarrollo.data.CalificacionFinal> getCalificacionFinals() {
-        return calificacionFinals;
+    public Set<com.aprendoz_desarrollo.data.InscAlumTransporte> getInscAlumTransportes() {
+        return inscAlumTransportes;
     }
 
-    public void setCalificacionFinals(Set<com.aprendoz_desarrollo.data.CalificacionFinal> calificacionFinals) {
-        this.calificacionFinals = calificacionFinals;
+    public void setInscAlumTransportes(Set<com.aprendoz_desarrollo.data.InscAlumTransporte> inscAlumTransportes) {
+        this.inscAlumTransportes = inscAlumTransportes;
+    }
+
+    public Set<com.aprendoz_desarrollo.data.Coordinacion> getCoordinacions() {
+        return coordinacions;
+    }
+
+    public void setCoordinacions(Set<com.aprendoz_desarrollo.data.Coordinacion> coordinacions) {
+        this.coordinacions = coordinacions;
     }
 
 }

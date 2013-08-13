@@ -2,13 +2,11 @@
 package com.aprendoz_desarrollo.data;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
  *  aprendoz_desarrollo.InscAlumCurso
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class InscAlumCurso {
@@ -20,7 +18,6 @@ public class InscAlumCurso {
     private Integer calificacion;
     private String califChar;
     private Date fechaMatricula;
-    private Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes = new HashSet<com.aprendoz_desarrollo.data.InscAlumAprendizaje>();
 
     public InscAlumCurso() {
     }
@@ -32,7 +29,7 @@ public class InscAlumCurso {
         this.fechaMatricula = fechaMatricula;
     }
 
-    public InscAlumCurso(Integer idInscAlumCurso, Curso curso, Sy sy, Persona persona, Integer calificacion, String califChar, Date fechaMatricula, Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes) {
+    public InscAlumCurso(Integer idInscAlumCurso, Curso curso, Sy sy, Persona persona, Integer calificacion, String califChar, Date fechaMatricula) {
         this.idInscAlumCurso = idInscAlumCurso;
         this.curso = curso;
         this.sy = sy;
@@ -40,7 +37,6 @@ public class InscAlumCurso {
         this.calificacion = calificacion;
         this.califChar = califChar;
         this.fechaMatricula = fechaMatricula;
-        this.inscAlumAprendizajes = inscAlumAprendizajes;
     }
 
     public Integer getIdInscAlumCurso() {
@@ -97,14 +93,6 @@ public class InscAlumCurso {
 
     public void setFechaMatricula(Date fechaMatricula) {
         this.fechaMatricula = fechaMatricula;
-    }
-
-    public Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> getInscAlumAprendizajes() {
-        return inscAlumAprendizajes;
-    }
-
-    public void setInscAlumAprendizajes(Set<com.aprendoz_desarrollo.data.InscAlumAprendizaje> inscAlumAprendizajes) {
-        this.inscAlumAprendizajes = inscAlumAprendizajes;
     }
 
 }

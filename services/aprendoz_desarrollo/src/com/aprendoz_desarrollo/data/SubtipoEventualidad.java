@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  aprendoz_desarrollo.SubtipoEventualidad
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class SubtipoEventualidad {
@@ -15,7 +15,7 @@ public class SubtipoEventualidad {
     private Integer idSubtipoEventualidad;
     private TipoEventualidad tipoEventualidad;
     private String subtipoEventualidad;
-    private Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses = new HashSet<com.aprendoz_desarrollo.data.Eventualidades>();
+    private Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases = new HashSet<com.aprendoz_desarrollo.data.EventualidadPersonas>();
 
     public SubtipoEventualidad() {
     }
@@ -25,11 +25,11 @@ public class SubtipoEventualidad {
         this.subtipoEventualidad = subtipoEventualidad;
     }
 
-    public SubtipoEventualidad(Integer idSubtipoEventualidad, TipoEventualidad tipoEventualidad, String subtipoEventualidad, Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses) {
+    public SubtipoEventualidad(Integer idSubtipoEventualidad, TipoEventualidad tipoEventualidad, String subtipoEventualidad, Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
         this.idSubtipoEventualidad = idSubtipoEventualidad;
         this.tipoEventualidad = tipoEventualidad;
         this.subtipoEventualidad = subtipoEventualidad;
-        this.eventualidadeses = eventualidadeses;
+        this.eventualidadPersonases = eventualidadPersonases;
     }
 
     public Integer getIdSubtipoEventualidad() {
@@ -56,12 +56,12 @@ public class SubtipoEventualidad {
         this.subtipoEventualidad = subtipoEventualidad;
     }
 
-    public Set<com.aprendoz_desarrollo.data.Eventualidades> getEventualidadeses() {
-        return eventualidadeses;
+    public Set<com.aprendoz_desarrollo.data.EventualidadPersonas> getEventualidadPersonases() {
+        return eventualidadPersonases;
     }
 
-    public void setEventualidadeses(Set<com.aprendoz_desarrollo.data.Eventualidades> eventualidadeses) {
-        this.eventualidadeses = eventualidadeses;
+    public void setEventualidadPersonases(Set<com.aprendoz_desarrollo.data.EventualidadPersonas> eventualidadPersonases) {
+        this.eventualidadPersonases = eventualidadPersonases;
     }
 
 }

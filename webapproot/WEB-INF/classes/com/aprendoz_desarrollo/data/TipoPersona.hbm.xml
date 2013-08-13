@@ -8,11 +8,23 @@
         <property name="tipoPersona" type="string">
             <column name="Tipo_Persona" length="45"/>
         </property>
+        <set name="inscPersonaGrupoFamiliars" inverse="true">
+            <key>
+                <column name="Tipo_Persona_Id_Tipo_Persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.InscPersonaGrupoFamiliar"/>
+        </set>
         <set name="personas" inverse="true">
             <key>
                 <column name="Tipo_Persona_Id_Tipo_Persona" not-null="true"/>
             </key>
             <one-to-many class="com.aprendoz_desarrollo.data.Persona"/>
+        </set>
+        <set name="reportesTipoPersonas" inverse="true">
+            <key>
+                <column name="tipo_persona_id_tipo_persona" not-null="true"/>
+            </key>
+            <one-to-many class="com.aprendoz_desarrollo.data.ReportesTipoPersona"/>
         </set>
     </class>
 </hibernate-mapping>

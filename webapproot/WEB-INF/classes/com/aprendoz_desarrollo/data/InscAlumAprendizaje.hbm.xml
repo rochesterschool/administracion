@@ -5,17 +5,14 @@
             <column name="Id_Insc_Alum_Aprendizaje"/>
             <generator class="identity"/>
         </id>
-        <property name="idSy" type="integer">
-            <column name="ID_SY"/>
-        </property>
         <property name="fechaLogro" type="date">
             <column name="Fecha_Logro" length="10"/>
         </property>
         <property name="calificacion" type="string">
-            <column name="Calificacion" length="30"/>
+            <column name="Calificacion" length="30" not-null="true"/>
         </property>
         <property name="calificacionNum" type="float">
-            <column name="Calificacion_Num" precision="12"/>
+            <column name="Calificacion_Num" precision="12" not-null="true"/>
         </property>
         <property name="comentario" type="string">
             <column name="Comentario" length="500"/>
@@ -23,29 +20,11 @@
         <property name="fechaIngreso" type="timestamp">
             <column name="Fecha_Ingreso" length="19"/>
         </property>
-        <property name="periodoIdPeriodo" type="integer">
-            <column name="Periodo_Id_Periodo" not-null="true"/>
-        </property>
         <many-to-one name="persona" class="com.aprendoz_desarrollo.data.Persona" cascade="none">
             <column name="Persona_Id_Persona" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="inscAlumCurso" class="com.aprendoz_desarrollo.data.InscAlumCurso" cascade="none">
-            <column name="Insc_Alum_Curso_Id_Insc_Alum_Curso" not-null="true"/>
         </many-to-one>
         <many-to-one name="aprendizaje" class="com.aprendoz_desarrollo.data.Aprendizaje" cascade="none">
             <column name="Aprendizaje_Id_Aprendizaje" not-null="true"/>
         </many-to-one>
-        <set name="calificacioneses" inverse="true">
-            <key>
-                <column name="Insc_Alum_Aprendizaje_Id_Insc_Alum_Aprendizaje" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.Calificaciones"/>
-        </set>
-        <set name="historialCalificacioneses" inverse="true">
-            <key>
-                <column name="ins_alumn_aprendizaje_id_historial_calificaciones" not-null="true"/>
-            </key>
-            <one-to-many class="com.aprendoz_desarrollo.data.HistorialCalificaciones"/>
-        </set>
     </class>
 </hibernate-mapping>

@@ -5,12 +5,13 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.EventualidadPersonas
- *  08/23/2011 14:29:37
+ *  08/12/2013 16:49:09
  * 
  */
 public class EventualidadPersonas {
 
     private Integer idEventualidadPersonas;
+    private SubtipoEventualidad subtipoEventualidad;
     private Eventualidades eventualidades;
     private Persona persona;
 
@@ -21,8 +22,9 @@ public class EventualidadPersonas {
         this.idEventualidadPersonas = idEventualidadPersonas;
     }
 
-    public EventualidadPersonas(Integer idEventualidadPersonas, Eventualidades eventualidades, Persona persona) {
+    public EventualidadPersonas(Integer idEventualidadPersonas, SubtipoEventualidad subtipoEventualidad, Eventualidades eventualidades, Persona persona) {
         this.idEventualidadPersonas = idEventualidadPersonas;
+        this.subtipoEventualidad = subtipoEventualidad;
         this.eventualidades = eventualidades;
         this.persona = persona;
     }
@@ -33,6 +35,14 @@ public class EventualidadPersonas {
 
     public void setIdEventualidadPersonas(Integer idEventualidadPersonas) {
         this.idEventualidadPersonas = idEventualidadPersonas;
+    }
+
+    public SubtipoEventualidad getSubtipoEventualidad() {
+        return subtipoEventualidad;
+    }
+
+    public void setSubtipoEventualidad(SubtipoEventualidad subtipoEventualidad) {
+        this.subtipoEventualidad = subtipoEventualidad;
     }
 
     public Eventualidades getEventualidades() {
