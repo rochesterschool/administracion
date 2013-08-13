@@ -4,6 +4,7 @@ package com.aprendoz_desarrollo;
 import java.util.List;
 import com.aprendoz_desarrollo.data.output.GetProcesoMatriculaRtnType;
 import com.aprendoz_desarrollo.data.output.HQLlsCursosRtnType;
+import com.aprendoz_desarrollo.data.output.SubjectsByGradeRtnType;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
 import com.wavemaker.runtime.data.DataServiceManagerAccess;
@@ -16,7 +17,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/12/2013 17:02:39
+ *  08/13/2013 08:24:23
  * 
  */
 @SuppressWarnings("unchecked")
@@ -26,6 +27,10 @@ public class Aprendoz_desarrollo
 
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
+
+    public List<SubjectsByGradeRtnType> subjectsByGrade(Integer _sy, Integer _grado) {
+        return ((List<SubjectsByGradeRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.subjectsByGradeQueryName), _sy, _grado));
+    }
 
     public List<HQLlsCursosRtnType> hQLlsCursos(Integer idg) {
         return ((List<HQLlsCursosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.HQLlsCursosQueryName), idg));

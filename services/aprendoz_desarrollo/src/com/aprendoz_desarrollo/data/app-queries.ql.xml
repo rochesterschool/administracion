@@ -22,4 +22,18 @@ WHERE _p.idPersona=:idp AND (_curso.idCurso &lt; 10101 OR _curso.idCurso &gt; 40
         select nombre1 AS nombre1, nombre2 AS nombre2 , apellido1 AS apellido1, apellido2 AS apellido2, idPersona AS idp, clave AS clave, nombreLdap as user
 from Persona _p where _p.nombreLdap=:usuario
     </query>
+    <query name="subjectsByGrade" comment="Query for Subjects">
+        <query-param name="_sy" type="java.lang.Integer"/>
+        <query-param name="_grado" type="java.lang.Integer"/>
+        SELECT  a.idAsignatura as id, a.asignatura as asignatura, g.idGrado as idgrado, sy.idSy
+FROM Asignatura a INNER JOIN a.grado g INNER JOIN a.sy sy
+WHERE sy.idSy=:_sy AND g.idGrado=:_grado
+    </query>
+    <query name="subjectDetails">
+        SELECT
+a.idAsignatura as id,
+a.asignatura as asignatura,
+a.subject as subject
+FROM Asignatura a
+    </query>
 </hibernate-mapping>
