@@ -2,8 +2,10 @@
 package com.aprendoz_desarrollo;
 
 import java.util.List;
+import com.aprendoz_desarrollo.data.Asignatura;
 import com.aprendoz_desarrollo.data.output.GetProcesoMatriculaRtnType;
 import com.aprendoz_desarrollo.data.output.HQLlsCursosRtnType;
+import com.aprendoz_desarrollo.data.output.SubjectDetailsRtnType;
 import com.aprendoz_desarrollo.data.output.SubjectsByGradeRtnType;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
@@ -17,7 +19,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/13/2013 08:24:23
+ *  08/13/2013 16:22:03
  * 
  */
 @SuppressWarnings("unchecked")
@@ -49,6 +51,10 @@ public class Aprendoz_desarrollo
         return ((List<GetProcesoMatriculaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getProcesoMatriculaQueryName), idp));
     }
 
+    public List<Asignatura> updateSubjects() {
+        return ((List<Asignatura> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updateSubjectsQueryName)));
+    }
+
     public com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType getNombreCompleto(String usuario) {
         List<com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType> rtn = ((List<com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getNombreCompletoQueryName), usuario));
         if (rtn.isEmpty()) {
@@ -56,6 +62,10 @@ public class Aprendoz_desarrollo
         } else {
             return rtn.get(0);
         }
+    }
+
+    public List<SubjectDetailsRtnType> subjectDetails(Integer idasignatura) {
+        return ((List<SubjectDetailsRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.subjectDetailsQueryName), idasignatura));
     }
 
     public Object insert(Object o) {
