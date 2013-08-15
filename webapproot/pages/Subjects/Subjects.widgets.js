@@ -20,7 +20,6 @@ Subjects.widgets = {
 			wire1: ["wm.Wire", {"targetProperty":"asignatura","source":"subject_asignatura.dataValue"}, {}],
 			wire2: ["wm.Wire", {"targetProperty":"descripAsigEspaniol","source":"subject_descripcion.dataValue"}, {}],
 			wire3: ["wm.Wire", {"targetProperty":"descripAsigIngles","source":"subject_description.dataValue"}, {}],
-			wire4: ["wm.Wire", {"targetProperty":"electiva","source":"subject_electiva.dataValue"}, {}],
 			wire5: ["wm.Wire", {"targetProperty":"esperadostotal","source":"subject_esperados.dataValue"}, {}],
 			wire6: ["wm.Wire", {"targetProperty":"idArea1","source":"subject_area1.dataValue"}, {}],
 			wire7: ["wm.Wire", {"targetProperty":"idArea2","source":"subject_area2.dataValue"}, {}],
@@ -36,9 +35,22 @@ Subjects.widgets = {
 			wire17: ["wm.Wire", {"targetProperty":"peso","source":"subject_peso.dataValue"}, {}],
 			wire18: ["wm.Wire", {"targetProperty":"salonIdSalon","source":"subject_salon.dataValue"}, {}],
 			wire19: ["wm.Wire", {"targetProperty":"subject","source":"subject_subject.dataValue"}, {}],
-			wire20: ["wm.Wire", {"targetProperty":"grado.idGrado","source":"subject_grado.dataValue"}, {}],
-			wire21: ["wm.Wire", {"targetProperty":"sy.idSy","source":"subject_sy.dataValue"}, {}],
 			wire22: ["wm.Wire", {"targetProperty":"tipoInscAsig.idTipoInscAsig","source":"subject_tipo.dataValue"}, {}]
+		}]
+	}],
+	getNewIdSubject: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"getMaxSubjectByGrade"}, {}, {
+		input: ["wm.ServiceInput", {"type":"getMaxSubjectByGradeInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"targetProperty":"idgrado","source":"grades.dataValue"}, {}],
+				wire1: ["wm.Wire", {"targetProperty":"idsy","source":"sy.dataValue"}, {}]
+			}]
+		}]
+	}],
+	deleteSubject: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"deleteSubject"}, {"onSuccess":"deleteSubjectSuccess"}, {
+		input: ["wm.ServiceInput", {"type":"deleteSubjectInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"targetProperty":"idasignatura","source":"id_subject.dataValue"}, {}]
+			}]
 		}]
 	}],
 	layoutBox1: ["wm.Layout", {"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
@@ -51,7 +63,7 @@ Subjects.widgets = {
 						}]
 					}]
 				}],
-				grades: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Grados"}, {"onchange":"ls_subjects"}, {
+				grades: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Grados"}, {"onchange":"gradesChange"}, {
 					editor: ["wm._SelectEditor", {"displayField":"grado","dataField":"idGrado"}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_grades","expression":undefined}, {}]
@@ -64,117 +76,124 @@ Subjects.widgets = {
 					}]
 				}]
 			}],
-			main_form: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"75%","padding":"10","verticalAlign":"middle"}, {}, {
-				panel3: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_BackgroundColor_VeryLightGray"]},"height":"48px","horizontalAlign":"left","width":"400px","layoutKind":"left-to-right","verticalAlign":"top"}, {}],
-				id_subject: ["wm.NumberEditor", {"width":"400px","caption":"ID","readonly":true}, {}, {
-					editor: ["wm._NumberEditor", {}, {}]
-				}],
-				subject_asignatura: ["wm.TextEditor", {"width":"400px","caption":"Asignatura","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_descripcion: ["wm.TextAreaEditor", {"height":"79px","width":"400px","caption":"Descripción","singleLine":false,"readonly":true}, {}, {
-					editor: ["wm._TextAreaEditor", {}, {}]
-				}],
-				subject_subject: ["wm.TextEditor", {"width":"400px","caption":"Subject","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_description: ["wm.TextEditor", {"width":"400px","caption":"Description","height":"79px","singleLine":false,"readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_electiva: ["wm.CheckBoxEditor", {"width":"400px","caption":"Electiva","readonly":true}, {}, {
-					editor: ["wm._CheckBoxEditor", {}, {}]
-				}],
-				subject_sy: ["wm.SelectEditor", {"width":"400px","caption":"Año escolar","height":"26px","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"schoolYear","dataField":"idSy"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_sy","expression":undefined}, {}]
+			main_form: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"75%","padding":"0,10,10,10","autoScroll":true,"verticalAlign":"top"}, {}, {
+				subject_header: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"48px","horizontalAlign":"left","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}],
+				subject_content_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
+					subject_content_left_col: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top"}, {}, {
+						id_subject: ["wm.NumberEditor", {"width":"100%","caption":"ID","readonly":true}, {}, {
+							editor: ["wm._NumberEditor", {}, {}]
+						}],
+						subject_asignatura: ["wm.TextEditor", {"width":"100%","caption":"Asignatura","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {"required":true}, {}]
+						}],
+						subject_descripcion: ["wm.TextAreaEditor", {"height":"120px","width":"100%","caption":"Descripción","singleLine":false,"readonly":true}, {}, {
+							editor: ["wm._TextAreaEditor", {"required":true}, {}]
+						}],
+						subject_sy: ["wm.SelectEditor", {"width":"100%","caption":"Año escolar","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"schoolYear","dataField":"idSy"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_sy","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_area1: ["wm.SelectEditor", {"width":"100%","caption":"Area No.1","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_area2: ["wm.SelectEditor", {"width":"100%","caption":"Area No.2","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_area3: ["wm.SelectEditor", {"width":"100%","caption":"Area No.3","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_iha1: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.1","display":"Text","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_iha2: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.2","display":"Text","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_iha3: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.3","display":"Text","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_ihtotal: ["wm.NumberEditor", {"width":"100%","caption":"* Intensidad Total","display":"Text","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}]
+					}],
+					subject_content_right_col: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top"}, {}, {
+						subject_electiva: ["wm.CheckBoxEditor", {"width":"100%","caption":"Electiva","readonly":true}, {}, {
+							editor: ["wm._CheckBoxEditor", {}, {}]
+						}],
+						subject_subject: ["wm.TextEditor", {"width":"100%","caption":"Subject","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {"required":true}, {}]
+						}],
+						subject_description: ["wm.TextEditor", {"width":"100%","caption":"Description","height":"120px","singleLine":false,"readonly":true}, {}, {
+							editor: ["wm._TextEditor", {"required":true}, {}]
+						}],
+						subject_salon: ["wm.TextEditor", {"width":"100%","caption":"Salon","readonly":true,"showing":false}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_tipo: ["wm.TextEditor", {"width":"100%","caption":"Tipo Asignatura","readonly":true,"showing":false}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_grado: ["wm.SelectEditor", {"width":"100%","caption":"Grado","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"grado","dataField":"idGrado"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_grades","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_sub1: ["wm.SelectEditor", {"width":"100%","caption":"Sub area No.1","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_sub2: ["wm.SelectEditor", {"width":"100%","caption":"Sub area No.2","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_sub3: ["wm.SelectEditor", {"width":"100%","caption":"Sub area No.3","readonly":true}, {}, {
+							editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
+								}]
+							}]
+						}],
+						subject_esperados: ["wm.NumberEditor", {"width":"100%","caption":"Esperados Año","readonly":true}, {}, {
+							editor: ["wm._NumberEditor", {}, {}]
+						}],
+						subject_meses: ["wm.NumberEditor", {"width":"100%","caption":"No. Meses","display":"Text","readonly":true}, {}, {
+							editor: ["wm._TextEditor", {}, {}]
+						}],
+						subject_peso: ["wm.NumberEditor", {"width":"100%","caption":"Peso asignatura","readonly":true}, {}, {
+							editor: ["wm._NumberEditor", {"places":"1"}, {}]
 						}]
 					}]
 				}],
-				subject_salon: ["wm.TextEditor", {"width":"400px","caption":"Salon","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_tipo: ["wm.TextEditor", {"width":"400px","caption":"Tipo Asignatura","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_grado: ["wm.SelectEditor", {"width":"400px","caption":"Grado","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"grado","dataField":"idGrado"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_grades","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_area1: ["wm.SelectEditor", {"width":"400px","caption":"Area No.1","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_area2: ["wm.SelectEditor", {"width":"400px","caption":"Area No.2","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area2","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_area3: ["wm.SelectEditor", {"width":"400px","caption":"Area No.3","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"area","dataField":"idArea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_area3","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_sub1: ["wm.SelectEditor", {"width":"400px","caption":"Sub area No.1","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_sub2: ["wm.SelectEditor", {"width":"400px","caption":"Sub area No.2","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_sub3: ["wm.SelectEditor", {"width":"400px","caption":"Sub area No.3","readonly":true}, {}, {
-					editor: ["wm._SelectEditor", {"displayField":"subarea","dataField":"idSubarea"}, {}, {
-						binding: ["wm.Binding", {}, {}, {
-							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_subareas","expression":undefined}, {}]
-						}]
-					}]
-				}],
-				subject_esperados: ["wm.NumberEditor", {"width":"400px","caption":"Esperados Total Año","readonly":true}, {}, {
-					editor: ["wm._NumberEditor", {}, {}]
-				}],
-				subject_iha1: ["wm.NumberEditor", {"width":"400px","caption":"Intensidad Area No.1","display":"Text","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_iha2: ["wm.NumberEditor", {"width":"400px","caption":"Intensidad Area No.2","display":"Text","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_iha3: ["wm.NumberEditor", {"width":"400px","caption":"Intensidad Area No.3","display":"Text","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_ihtotal: ["wm.NumberEditor", {"width":"400px","caption":"* Intensidad Total","readonly":true}, {}, {
-					editor: ["wm._NumberEditor", {}, {}]
-				}],
-				subject_meses: ["wm.NumberEditor", {"width":"400px","caption":"No. Meses","display":"Text","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				subject_peso: ["wm.NumberEditor", {"width":"400px","caption":"Peso asignatura","display":"Text","readonly":true}, {}, {
-					editor: ["wm._TextEditor", {}, {}]
-				}],
-				panel2: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray","wm_Border_BottomStyleCurved8px"]},"height":"44px","horizontalAlign":"right","width":"400px","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
-					subject_newRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Nuevo","borderColor":"#0044cc"}, {}],
+				subject_footer_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray","wm_Border_BottomStyleCurved8px"]},"height":"44px","horizontalAlign":"right","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
+					subject_newRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Nuevo","borderColor":"#0044cc"}, {"onclick":"subject_newRecordClick"}],
 					subject_updateRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Actualizar","borderColor":"#0044cc"}, {"onclick":"subject_updateRecordClick"}],
-					subject_saveNewRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Guardar","borderColor":"#0044cc","showing":false}, {"onclick":"subject_saveNewRecordClick"}],
-					subject_calcelOperation: ["wm.Button", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","width":"96px","caption":"Cancelar","showing":false}, {}],
-					subject_deleteRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Borrar","borderColor":"#bd362f"}, {}]
+					subject_saveNewRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Guardar","borderColor":"#cccccc","showing":false}, {"onclick":"subject_saveNewRecordClick"}],
+					subject_saveUpdateRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Guardar","borderColor":"#cccccc","showing":false}, {"onclick":"subject_saveUpdateRecordClick"}],
+					subject_cancelOperation: ["wm.Button", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","width":"96px","caption":"Cancelar","borderColor":"#cccccc","showing":false}, {"onclick":"subject_cancelOperationClick"}],
+					subject_deleteRecord: ["wm.Button", {"height":"100%","width":"96px","caption":"Borrar","borderColor":"#bd362f"}, {"onclick":"subject_deleteRecordClick"}]
 				}],
-				subjectDataForm: ["wm.LiveForm", {"height":"84px","verticalAlign":"top","horizontalAlign":"left","readonly":true,"width":"400px"}, {}]
+				subjectDataForm: ["wm.LiveForm", {"height":"84px","verticalAlign":"top","horizontalAlign":"left","readonly":true,"width":"400px","showing":false}, {"onInsertData":"subjectDataFormInsertData","onSuccess":"ls_subjects","onUpdateData":"subjectDataFormUpdateData","onDeleteData":"subjectDataFormDeleteData"}]
 			}]
 		}]
 	}]

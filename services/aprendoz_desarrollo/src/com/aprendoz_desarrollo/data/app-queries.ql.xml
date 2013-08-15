@@ -61,4 +61,15 @@ WHERE a.idAsignatura=:idasignatura
     <query name="updateSubjects">
         FROM Asignatura a
     </query>
+    <query name="getMaxSubjectByGrade">
+        <query-param name="idgrado" type="java.lang.Integer"/>
+        <query-param name="idsy" type="java.lang.Integer"/>
+        SELECT MAX(a.idAsignatura) as maxValue, (MAX(a.idAsignatura)+1) as newId
+FROM Asignatura a INNER JOIN a.sy sy INNER JOIN a.grado g
+WHERE g.idGrado=:idgrado AND sy.idSy=:idsy
+    </query>
+    <query name="deleteSubject">
+        <query-param name="idasignatura" type="java.lang.Integer"/>
+        DELETE FROM Asignatura a WHERE a.idAsignatura=:idasignatura
+    </query>
 </hibernate-mapping>

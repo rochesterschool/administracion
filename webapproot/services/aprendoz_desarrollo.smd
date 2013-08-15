@@ -1,11 +1,28 @@
 {
 	"methods": [{
+		"name": "deleteSubject",
+		"parameters": [{
+			"name": "idasignatura",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
 		"name": "getFormulario5aById",
 		"parameters": [{
 			"name": "id",
 			"type": "java.lang.Integer"
 		}],
 		"returnType": "com.aprendoz_desarrollo.data.Formulario5a"
+	}, {
+		"name": "getMaxSubjectByGrade",
+		"parameters": [{
+			"name": "idgrado",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "idsy",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetMaxSubjectByGradeRtnType]"
 	}, {
 		"name": "getNombreCompleto",
 		"parameters": [{

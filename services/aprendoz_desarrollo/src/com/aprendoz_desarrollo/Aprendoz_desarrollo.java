@@ -3,6 +3,7 @@ package com.aprendoz_desarrollo;
 
 import java.util.List;
 import com.aprendoz_desarrollo.data.Asignatura;
+import com.aprendoz_desarrollo.data.output.GetMaxSubjectByGradeRtnType;
 import com.aprendoz_desarrollo.data.output.GetProcesoMatriculaRtnType;
 import com.aprendoz_desarrollo.data.output.HQLlsCursosRtnType;
 import com.aprendoz_desarrollo.data.output.SubjectDetailsRtnType;
@@ -19,7 +20,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/13/2013 16:22:03
+ *  08/14/2013 17:04:33
  * 
  */
 @SuppressWarnings("unchecked")
@@ -36,6 +37,15 @@ public class Aprendoz_desarrollo
 
     public List<HQLlsCursosRtnType> hQLlsCursos(Integer idg) {
         return ((List<HQLlsCursosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.HQLlsCursosQueryName), idg));
+    }
+
+    public Integer deleteSubject(Integer idasignatura) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.deleteSubjectQueryName), idasignatura));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
     }
 
     public com.aprendoz_desarrollo.data.Formulario5a getFormulario5aById(Integer id) {
@@ -62,6 +72,10 @@ public class Aprendoz_desarrollo
         } else {
             return rtn.get(0);
         }
+    }
+
+    public List<GetMaxSubjectByGradeRtnType> getMaxSubjectByGrade(Integer idgrado, Integer idsy) {
+        return ((List<GetMaxSubjectByGradeRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getMaxSubjectByGradeQueryName), idgrado, idsy));
     }
 
     public List<SubjectDetailsRtnType> subjectDetails(Integer idasignatura) {

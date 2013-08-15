@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "subjectsByGrade" on 08/13/2013 16:05:51
+ * Generated for query "subjectsByGrade" on 08/14/2013 16:55:53
  * 
  */
 public class SubjectsByGradeRtnType {

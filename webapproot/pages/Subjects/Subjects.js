@@ -14,17 +14,10 @@ dojo.declare("Subjects", wm.Page, {
     var _sa2= data.sa2;
     var _sa3= data.sa3;
     this.subjectById.input.setValue("idasignatura", id);
-   /* this.ls_area.filter.setValue("idArea", _a1);
-    this.ls_area2.filter.setValue("idArea", _a2);
-    this.ls_area3.filter.setValue("idArea", _a3);*/
     this.subjectById.update();
-    /*this.ls_area.update(); 
-    this.ls_area2.update(); 
-    this.ls_area3.update(); */
   },
  
   subjectByIdSuccess: function(inSender, inDeprecated) {
-    try {
      var json= this.subjectById.getItem(0);
      var _id= json.data.id;
      var _asignatura= json.data.asignatura;
@@ -50,13 +43,18 @@ dojo.declare("Subjects", wm.Page, {
      var _ihtotal= json.data.ihtotal;
      var _meses= json.data.meses;
      var _peso= json.data.peso;
+     
+     if(_electiva == true){
+       this.subject_electiva.setChecked(_electiva);
+     }else{
+       this.subject_electiva.setChecked(_electiva);
+     }
 
      this.id_subject.setDataValue(_id);
      this.subject_asignatura.setDataValue(_asignatura);
      this.subject_descripcion.setDataValue(_descripEspanol);
      this.subject_subject.setDataValue(_subject);
      this.subject_description.setDataValue(_descripcion_ingles);
-     //this.electiva.setCheckedValue(_electiva);
      this.subject_sy.setDataValue(_sy);
      this.subject_salon.setDataValue(_salon);
      this.subject_tipo.setDataValue(_tipo);
@@ -76,37 +74,126 @@ dojo.declare("Subjects", wm.Page, {
      this.subject_ihtotal.setDataValue(_ihtotal);
      this.subject_meses.setDataValue(_meses);
      this.subject_peso.setDataValue(_peso);
-     
-    } catch(e) {
-      console.error('ERROR IN subjectByIdSuccess: ' + e); 
-    } 
   },
+
+  gradesChange: function(inSender, inDisplayValue, inDataValue) {
+     this.ls_subjects.update();
+     this.getNewIdSubject.update(); 
+  },
+  
   subject_saveNewRecordClick: function(inSender, inEvent) {
-    try {
+     var _electivaValue= this.subject_electiva.getChecked();     
+     var _sy= this.subject_sy.getDataValue();
+     var _grado= this.subject_grado.getDataValue();
+     this.updateSubjects.setValue("electiva", _electivaValue);
+     this.updateSubjects.setValue("grado.idGrado", _grado);
+     this.updateSubjects.setValue("sy.idSy", _sy);
      this.subjectDataForm.setDataSet(this.updateSubjects);          
-     this.subjectDataForm.updateData();         
-      
-    } catch(e) {
-      console.error('ERROR IN subject_saveNewRecordClick: ' + e); 
-    } 
+     this.subjectDataForm.insertData();         
   },
+  
+  subject_saveUpdateRecordClick: function(inSender, inEvent) {
+     var _electivaValue= this.subject_electiva.getChecked();
+     var _sy= this.subject_sy.getDataValue();
+     var _grado= this.subject_grado.getDataValue();
+     this.updateSubjects.setValue("electiva", _electivaValue);
+     this.updateSubjects.setValue("grado.idGrado", _grado);
+     this.updateSubjects.setValue("sy.idSy", _sy);
+     this.subjectDataForm.setDataSet(this.updateSubjects);          
+     this.subjectDataForm.updateData(); 
+  },
+  
+  subject_deleteRecordClick: function(inSender, inEvent) {
+     var _id= this.id_subject.getDataValue();
+     if(_id >0){
+       this.deleteSubject.input.setValue("idasignatura",_id);
+       this.deleteSubject.update();
+     }else{
+       alert("Acción no permitida. Asegurese de seleccionar una asignatura.");
+     }
+  },
+  
   subject_updateRecordClick: function(inSender, inEvent) {
-    try {
      this.subject_newRecord.hide();
      this.subject_updateRecord.hide();
      this.subject_deleteRecord.hide();
-     this.subject_saveNewRecord.show();
-     this.subject_calcelOperation.show();
+     this.subject_saveNewRecord.hide();
+     this.subject_saveUpdateRecord.show();
+     this.subject_cancelOperation.show();
     
-     this.id_subject.setReadonly(false);
      this.subject_asignatura.setReadonly(false);
      this.subject_descripcion.setReadonly(false);
      this.subject_subject.setReadonly(false);
      this.subject_description.setReadonly(false);
-     //this.electiva.setCheckedValue(_electiva);
-     this.subject_sy.setReadonly(false);
+     this.subject_electiva.setReadonly(false);
      this.subject_salon.setReadonly(false);
      this.subject_tipo.setReadonly(false);
+     
+     this.subject_area1.setReadonly(false);
+     this.subject_area2.setReadonly(false);
+     this.subject_area3.setReadonly(false);
+     this.subject_sub1.setReadonly(false);
+     this.subject_sub2.setReadonly(false);
+     this.subject_sub3.setReadonly(false);
+     
+     this.subject_iha1.setReadonly(false);
+     this.subject_iha2.setReadonly(false);
+     this.subject_iha3.setReadonly(false);
+     this.subject_meses.setReadonly(false);
+  },
+  
+  subject_newRecordClick: function(inSender, inEvent) {
+     var json = this.getNewIdSubject.getItem(0);
+     var newId= json.data.newId;
+     
+     this.subject_newRecord.hide();
+     this.subject_updateRecord.hide();
+     this.subject_deleteRecord.hide();
+     this.subject_saveUpdateRecord.hide();
+     this.subject_saveNewRecord.show();
+     this.subject_cancelOperation.show();
+     
+     //clearing all inputs
+     this.id_subject.clear();
+     this.subject_asignatura.clear();
+     this.subject_descripcion.clear();
+     this.subject_subject.clear();
+     this.subject_description.clear();
+     this.subject_electiva.setChecked(0);
+     this.subject_sy.clear();
+     this.subject_salon.clear();
+     this.subject_tipo.clear();
+     this.subject_grado.clear();
+     
+     this.subject_area1.clear();
+     this.subject_area2.clear();
+     this.subject_area3.clear();
+     this.subject_sub1.clear();
+     this.subject_sub2.clear();
+     this.subject_sub3.clear();
+     
+     this.subject_esperados.clear();
+     this.subject_iha1.clear();
+     this.subject_iha2.clear();
+     this.subject_iha3.clear();
+     this.subject_ihtotal.clear();
+     this.subject_meses.clear();
+     this.subject_peso.clear(); 
+     //end clearing
+     
+     this.id_subject.setDataValue(newId);
+     this.subject_asignatura.setReadonly(false);
+     this.subject_descripcion.setReadonly(false);
+     this.subject_subject.setReadonly(false);
+     this.subject_description.setReadonly(false);
+     this.subject_electiva.setReadonly(false);
+     this.subject_sy.setReadonly(false);
+     this.subject_salon.setDataValue("1");
+     this.subject_salon.hide();
+     //this.subject_salon.setReadonly(false);
+     //this.subject_tipo.setReadonly(false);
+     this.subject_tipo.setDataValue("1");
+     this.subject_tipo.hide();
      this.subject_grado.setReadonly(false);
      
      this.subject_area1.setReadonly(false);
@@ -120,12 +207,114 @@ dojo.declare("Subjects", wm.Page, {
      this.subject_iha1.setReadonly(false);
      this.subject_iha2.setReadonly(false);
      this.subject_iha3.setReadonly(false);
-     this.subject_ihtotal.setReadonly(false);
      this.subject_meses.setReadonly(false);
-     this.subject_peso.setReadonly(false);
-           
+     this.subject_peso.setReadonly(false); 
+  },
+  
+  subject_cancelOperationClick: function(inSender, inEvent) {
+     this.subject_saveNewRecord.hide();
+     this.subject_saveUpdateRecord.hide();
+     this.subject_cancelOperation.hide();
+     this.subject_newRecord.show();
+     this.subject_updateRecord.show();
+     this.subject_deleteRecord.show();
+    
+     this.subject_asignatura.setReadonly(true);
+     this.subject_descripcion.setReadonly(true);
+     this.subject_subject.setReadonly(true);
+     this.subject_description.setReadonly(true);
+     this.subject_electiva.setReadonly(true);
+     this.subject_sy.setReadonly(true);
+     this.subject_salon.setReadonly(true);
+     this.subject_tipo.setReadonly(true);
+     this.subject_grado.setReadonly(true);
+     
+     this.subject_esperados.setReadonly(true);
+     this.subject_area1.setReadonly(true);
+     this.subject_area2.setReadonly(true);
+     this.subject_area3.setReadonly(true);
+     this.subject_sub1.setReadonly(true);
+     this.subject_sub2.setReadonly(true);
+     this.subject_sub3.setReadonly(true);
+     
+     this.subject_iha1.setReadonly(true);
+     this.subject_iha2.setReadonly(true);
+     this.subject_iha3.setReadonly(true);
+     this.subject_meses.setReadonly(true);
+     this.subject_peso.setReadonly(true); 
+  },
+
+  subjectDataFormInsertData: function(inSender) {
+     this.subject_cancelOperationClick();
+  },
+  
+  subjectDataFormUpdateData: function(inSender) {
+     this.subject_cancelOperationClick(); 
+  },
+  
+  subjectDataFormDeleteData: function(inSender) {
+    try {
+     this.id_subject.clear();
+     this.subject_asignatura.clear();
+     this.subject_descripcion.clear();
+     this.subject_subject.clear();
+     this.subject_description.clear();
+     this.subject_electiva.setChecked(0);
+     this.subject_sy.setDisplayValue("");
+     this.subject_salon.clear();
+     this.subject_tipo.clear();
+     this.subject_grado.setDisplayValue("");
+     
+     this.subject_area1.setDisplayValue("");
+     this.subject_area2.setDisplayValue("");
+     this.subject_area3.setDisplayValue("");
+     this.subject_sub1.setDisplayValue("");
+     this.subject_sub2.setDisplayValue("");
+     this.subject_sub3.setDisplayValue("");
+     
+     this.subject_esperados.clear();
+     this.subject_iha1.clear();
+     this.subject_iha2.clear();
+     this.subject_iha3.clear();
+     this.subject_ihtotal.clear();
+     this.subject_meses.clear();
+     this.subject_peso.clear();  
+      
     } catch(e) {
-      console.error('ERROR IN subject_updateRecordClick: ' + e); 
+      console.error('ERROR IN subjectDataFormDeleteData: ' + e); 
+    } 
+  },
+  deleteSubjectSuccess: function(inSender, inDeprecated) {
+    try {
+     this.ls_subjects.update();
+     this.id_subject.clear();
+     this.subject_asignatura.clear();
+     this.subject_descripcion.clear();
+     this.subject_subject.clear();
+     this.subject_description.clear();
+     this.subject_electiva.setChecked(0);
+     this.subject_sy.setDisplayValue("");
+     this.subject_salon.clear();
+     this.subject_tipo.clear();
+     this.subject_grado.setDisplayValue("");
+     
+     this.subject_area1.setDisplayValue("");
+     this.subject_area2.setDisplayValue("");
+     this.subject_area3.setDisplayValue("");
+     this.subject_sub1.setDisplayValue("");
+     this.subject_sub2.setDisplayValue("");
+     this.subject_sub3.setDisplayValue("");
+     
+     this.subject_esperados.clear();
+     this.subject_iha1.clear();
+     this.subject_iha2.clear();
+     this.subject_iha3.clear();
+     this.subject_ihtotal.clear();
+     this.subject_meses.clear();
+     this.subject_peso.clear();   
+      
+    } catch(e) {
+      console.error('ERROR IN deleteSubjectSuccess: ' + e); 
     } 
   },
   _end: 0

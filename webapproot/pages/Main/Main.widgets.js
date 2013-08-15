@@ -1332,7 +1332,7 @@ Main.widgets = {
 													c_year: ["wm.TextEditor", {"width":"150%","caption":"Año escolar","captionSize":"80%","readonly":true,"borderColor":"#000000","showing":false}, {}, {
 														editor: ["wm._TextEditor", {}, {}]
 													}],
-													fecha_reporte: ["wm.DateEditor", {"caption":"Fecha de reporte","displayValue":"13/08/2013","captionSize":"120%","width":"150%","showing":false}, {}, {
+													fecha_reporte: ["wm.DateEditor", {"caption":"Fecha de reporte","displayValue":"14/08/2013","captionSize":"120%","width":"150%","showing":false}, {}, {
 														binding: ["wm.Binding", {}, {}, {
 															wire: ["wm.Wire", {"targetProperty":"dataValue","expression":"new Date().getTime()"}, {}]
 														}],
@@ -1341,7 +1341,7 @@ Main.widgets = {
 													selectEditor5: ["wm.SelectEditor", {"width":"100%","caption":"Año escolar","height":"33px","captionSize":"60%","showing":false}, {}, {
 														editor: ["wm._SelectEditor", {}, {}]
 													}],
-													selectorReport: ["wm.SelectEditor", {"width":"100%","height":"33px","disabled":true,"captionAlign":"left","captionSize":"80%"}, {"onchange":"selectorReportChange"}, {
+													selectorReport: ["wm.SelectEditor", {"width":"100%","disabled":true,"captionAlign":"left","height":"33px","captionSize":"80%"}, {"onchange":"selectorReportChange"}, {
 														editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true}, {}, {
 															binding: ["wm.Binding", {}, {}, {
 																wire: ["wm.Wire", {"targetProperty":"dataSet","source":"lsReportes","expression":undefined}, {}]
@@ -1674,7 +1674,7 @@ Main.widgets = {
 													libro_final_enunciado: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"caption":"Para generar el <u>Libro Final</u>, a continuación seleccione el <u>Año Escolar</u> y seguido de esto el <u>Nivel</u>,<br/> luego haga click en <u>Generar Libro Final</u>","height":"48px","width":"100%","border":"0","singleLine":false,"align":"center"}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
 													}],
-													libro_final_sel_sy: ["wm.SelectEditor", {"width":"250px","caption":"Año escolar","height":"30px","margin":"0"}, {}, {
+													libro_final_sel_sy: ["wm.SelectEditor", {"width":"250px","caption":"Año escolar","margin":"0","height":"30px"}, {}, {
 														editor: ["wm._SelectEditor", {"displayField":"schoolYear","dataField":"idSy"}, {}, {
 															binding: ["wm.Binding", {}, {}, {
 																wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_sy","expression":undefined}, {}]
@@ -1895,7 +1895,7 @@ Main.widgets = {
 					nombreCompleto: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_24px"]},"height":"40px","width":"100%","border":"0","align":"center"}, {}, {
 						format: ["wm.DataFormatter", {}, {}]
 					}],
-					userNameGetter: ["wm.TextEditor", {"width":"540px","displayValue":"m","height":"42px","autoScroll":true,"showing":false}, {}, {
+					userNameGetter: ["wm.TextEditor", {"width":"540px","height":"42px","autoScroll":true,"showing":false}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUserName.dataValue"}, {}]
 						}],
