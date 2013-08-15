@@ -117,14 +117,14 @@ Subjects.widgets = {
 								}]
 							}]
 						}],
-						subject_iha1: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.1","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha1: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.1","display":"Text","readonly":true}, {"onchange":"subject_iha1Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
-						subject_iha2: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.2","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha2: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.2","display":"Text","readonly":true}, {"onchange":"subject_iha2Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
-						subject_iha3: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.3","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha3: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.3","display":"Text","readonly":true}, {"onchange":"subject_iha3Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
 						subject_ihtotal: ["wm.NumberEditor", {"width":"100%","caption":"* Intensidad Total","display":"Text","readonly":true}, {}, {
 							editor: ["wm._TextEditor", {}, {}]
