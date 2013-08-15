@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getNombreCompleto" on 08/12/2013 16:49:23
+ * Generated for query "getNombreCompleto" on 08/14/2013 16:55:53
  * 
  */
 public class GetNombreCompletoRtnType {

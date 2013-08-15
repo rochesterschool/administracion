@@ -22,4 +22,54 @@ WHERE _p.idPersona=:idp AND (_curso.idCurso &lt; 10101 OR _curso.idCurso &gt; 40
         select nombre1 AS nombre1, nombre2 AS nombre2 , apellido1 AS apellido1, apellido2 AS apellido2, idPersona AS idp, clave AS clave, nombreLdap as user
 from Persona _p where _p.nombreLdap=:usuario
     </query>
+    <query name="subjectsByGrade" comment="Query for Subjects">
+        <query-param name="_sy" type="java.lang.Integer"/>
+        <query-param name="_grado" type="java.lang.Integer"/>
+        SELECT  a.idAsignatura as id, a.asignatura as asignatura, g.idGrado as idgrado, sy.idSy, a.idArea1 as a1, a.idArea2 as a2, a.idArea3 as a3, a.idSubarea1 as sa1, a.idSubarea2 as sa2, a.idSubarea3 as sa3
+FROM Asignatura a INNER JOIN a.grado g INNER JOIN a.sy sy
+WHERE sy.idSy=:_sy AND g.idGrado=:_grado
+    </query>
+    <query name="subjectDetails" comment="This hql shows the subject by Id">
+        <query-param name="idasignatura" type="java.lang.Integer"/>
+        SELECT
+a.idAsignatura as id,
+a.asignatura as asignatura,
+a.subject as subject,
+a.electiva as electiva,
+a.idArea1 as a1,
+a.idArea2 as a2,
+a.idArea3 as a3,
+a.idSubarea1 as sa1,
+a.idSubarea2 as sa2,
+a.idSubarea3 as sa3,
+g.idGrado as idgrado,
+sy.idSy as sy,
+tia.idTipoInscAsig as idTipoInscAsig,
+a.salonIdSalon as salon,
+a.descripAsigEspaniol as descripcion_espanol,
+a.descripAsigIngles as descripcion_ingles,
+a.meses as meses,
+a.ihA1 as iha1,
+a.ihA2 as iha2,
+a.ihA3 as iha3,
+a.intensidadHoraria as ihtotal,
+a.esperadostotal as esperadosTotal,
+a.peso as peso
+FROM Asignatura a INNER JOIN a.grado g INNER JOIN a.sy sy INNER JOIN a.tipoInscAsig tia
+WHERE a.idAsignatura=:idasignatura
+    </query>
+    <query name="updateSubjects">
+        FROM Asignatura a
+    </query>
+    <query name="getMaxSubjectByGrade">
+        <query-param name="idgrado" type="java.lang.Integer"/>
+        <query-param name="idsy" type="java.lang.Integer"/>
+        SELECT MAX(a.idAsignatura) as maxValue, (MAX(a.idAsignatura)+1) as newId
+FROM Asignatura a INNER JOIN a.sy sy INNER JOIN a.grado g
+WHERE g.idGrado=:idgrado AND sy.idSy=:idsy
+    </query>
+    <query name="deleteSubject">
+        <query-param name="idasignatura" type="java.lang.Integer"/>
+        DELETE FROM Asignatura a WHERE a.idAsignatura=:idasignatura
+    </query>
 </hibernate-mapping>
