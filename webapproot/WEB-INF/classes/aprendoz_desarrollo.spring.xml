@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 08/12/2013 16:49:02
+<!-- Generated 08/16/2013 09:24:22
 
 Configuration for 'aprendoz_desarrollo' database service
 
@@ -219,6 +219,7 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/DocentesAsistenciaAsistencias.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/TipoSemana.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Anuncio.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/Personal.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/GrupoFamiliar.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/DocentesVistaAsignaturaGrado.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/AdministracionVistaAsignaturasCurso.hbm.xml</value>
@@ -239,8 +240,8 @@ Configuration for 'aprendoz_desarrollo' database service
 <value>com/aprendoz_desarrollo/data/TipoEventualidad.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CafeteriaSopas.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/InscAlumAsigCurso.hbm.xml</value>
-<value>com/aprendoz_desarrollo/data/AdministracionVistaInscAlumAsig.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Unidad.hbm.xml</value>
+<value>com/aprendoz_desarrollo/data/AdministracionVistaInscAlumAsig.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/CalifEst.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/VistaMatriculasGraficasTotalDia.hbm.xml</value>
 <value>com/aprendoz_desarrollo/data/Rutas.hbm.xml</value>

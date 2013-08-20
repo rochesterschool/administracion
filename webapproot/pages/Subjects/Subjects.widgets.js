@@ -55,15 +55,18 @@ Subjects.widgets = {
 	}],
 	layoutBox1: ["wm.Layout", {"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 		panel1: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
-			left_menu: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","horizontalAlign":"left","width":"35%","padding":"10","verticalAlign":"top"}, {}, {
-				sy: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Año escolar"}, {}, {
+			left_menu: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","horizontalAlign":"left","width":"35%","verticalAlign":"top","padding":"10"}, {}, {
+				subject_top_message: ["wm.Label", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"caption":"Instrucciones sobre este modulo: <br><br>En este modulo usted podrá realizar acciones sobre las asignaturas: Crear - Actualizar - Eliminar (Dependiendo de su perfil de seguridad). <br><br>1). Para empezar seleccione el Año escolar y Grado para visualizar las asignaturas relacionadas.  <br><br>2). A continuación seleccione la asignatura a modificar.","height":"158px","width":"100%","border":"0","padding":"8","singleLine":false}, {}, {
+					format: ["wm.DataFormatter", {}, {}]
+				}],
+				sy: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Año escolar","height":"26px"}, {}, {
 					editor: ["wm._SelectEditor", {"displayField":"schoolYear","dataField":"idSy"}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_sy","expression":undefined}, {}]
 						}]
 					}]
 				}],
-				grades: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Grados"}, {"onchange":"gradesChange"}, {
+				grades: ["wm.SelectEditor", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"width":"100%","caption":"Grados","height":"26px"}, {"onchange":"gradesChange"}, {
 					editor: ["wm._SelectEditor", {"displayField":"grado","dataField":"idGrado"}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_grades","expression":undefined}, {}]
@@ -76,7 +79,7 @@ Subjects.widgets = {
 					}]
 				}]
 			}],
-			main_form: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"75%","padding":"0,10,10,10","autoScroll":true,"verticalAlign":"top"}, {}, {
+			main_form: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"75%","verticalAlign":"top","padding":"0,10,10,10","autoScroll":true}, {}, {
 				subject_header: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"48px","horizontalAlign":"left","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}],
 				subject_content_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","layoutKind":"left-to-right","verticalAlign":"top"}, {}, {
 					subject_content_left_col: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top"}, {}, {
@@ -117,14 +120,14 @@ Subjects.widgets = {
 								}]
 							}]
 						}],
-						subject_iha1: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.1","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha1: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.1","display":"Text","readonly":true}, {"onchange":"subject_iha1Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
-						subject_iha2: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.2","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha2: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.2","display":"Text","readonly":true}, {"onchange":"subject_iha2Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
-						subject_iha3: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.3","display":"Text","readonly":true}, {}, {
-							editor: ["wm._TextEditor", {}, {}]
+						subject_iha3: ["wm.NumberEditor", {"width":"100%","caption":"Inten Area No.3","display":"Text","readonly":true}, {"onchange":"subject_iha3Change"}, {
+							editor: ["wm._TextEditor", {"changeOnKey":true,"changeOnEnter":true}, {}]
 						}],
 						subject_ihtotal: ["wm.NumberEditor", {"width":"100%","caption":"* Intensidad Total","display":"Text","readonly":true}, {}, {
 							editor: ["wm._TextEditor", {}, {}]
@@ -180,8 +183,11 @@ Subjects.widgets = {
 						subject_meses: ["wm.NumberEditor", {"width":"100%","caption":"No. Meses","display":"Text","readonly":true}, {}, {
 							editor: ["wm._TextEditor", {}, {}]
 						}],
-						subject_peso: ["wm.NumberEditor", {"width":"100%","caption":"Peso asignatura","readonly":true}, {}, {
-							editor: ["wm._NumberEditor", {"places":"1"}, {}]
+						subject_peso: ["wm.NumberEditor", {"width":"100%","caption":"Peso asignatura","display":"Text","readonly":true}, {}, {
+							binding: ["wm.Binding", {}, {}, {
+								wire: ["wm.Wire", {"targetProperty":"dataValue","source":"subject_ihtotal.dataValue"}, {}]
+							}],
+							editor: ["wm._TextEditor", {}, {}]
 						}]
 					}]
 				}],

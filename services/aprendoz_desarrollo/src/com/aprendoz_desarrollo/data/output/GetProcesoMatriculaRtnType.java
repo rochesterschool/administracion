@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getProcesoMatricula" on 08/14/2013 16:55:53
+ * Generated for query "getProcesoMatricula" on 08/16/2013 09:24:38
  * 
  */
 public class GetProcesoMatriculaRtnType {

@@ -2,6 +2,15 @@ dojo.declare("Subjects", wm.Page, {
   start: function() {
     
   },
+  
+  intensidadHorariaTotal: function(){
+    var ih1= parseFloat(this.subject_iha1.getDataValue());
+    var ih2= parseFloat(this.subject_iha2.getDataValue());
+    var ih3= parseFloat(this.subject_iha3.getDataValue());
+    totalIntensidad= ih1+ih2+ih3;
+    return totalIntensidad;
+  },
+  
   asignaturasSelect: function(inSender, inItem) {
     var index = this.asignaturas.getSelectedIndex();
     var data = this.asignaturas.getItemData(index);
@@ -130,6 +139,7 @@ dojo.declare("Subjects", wm.Page, {
      this.subject_tipo.setReadonly(false);
      
      this.subject_area1.setReadonly(false);
+     this.subject_peso.setReadonly(false);
      this.subject_area2.setReadonly(false);
      this.subject_area3.setReadonly(false);
      this.subject_sub1.setReadonly(false);
@@ -143,72 +153,80 @@ dojo.declare("Subjects", wm.Page, {
   },
   
   subject_newRecordClick: function(inSender, inEvent) {
-     var json = this.getNewIdSubject.getItem(0);
-     var newId= json.data.newId;
+     var gradeValue= this.grades.getDataValue();
+     var syValue   = this.sy.getDataValue();
      
-     this.subject_newRecord.hide();
-     this.subject_updateRecord.hide();
-     this.subject_deleteRecord.hide();
-     this.subject_saveUpdateRecord.hide();
-     this.subject_saveNewRecord.show();
-     this.subject_cancelOperation.show();
-     
-     //clearing all inputs
-     this.id_subject.clear();
-     this.subject_asignatura.clear();
-     this.subject_descripcion.clear();
-     this.subject_subject.clear();
-     this.subject_description.clear();
-     this.subject_electiva.setChecked(0);
-     this.subject_sy.clear();
-     this.subject_salon.clear();
-     this.subject_tipo.clear();
-     this.subject_grado.clear();
-     
-     this.subject_area1.clear();
-     this.subject_area2.clear();
-     this.subject_area3.clear();
-     this.subject_sub1.clear();
-     this.subject_sub2.clear();
-     this.subject_sub3.clear();
-     
-     this.subject_esperados.clear();
-     this.subject_iha1.clear();
-     this.subject_iha2.clear();
-     this.subject_iha3.clear();
-     this.subject_ihtotal.clear();
-     this.subject_meses.clear();
-     this.subject_peso.clear(); 
-     //end clearing
-     
-     this.id_subject.setDataValue(newId);
-     this.subject_asignatura.setReadonly(false);
-     this.subject_descripcion.setReadonly(false);
-     this.subject_subject.setReadonly(false);
-     this.subject_description.setReadonly(false);
-     this.subject_electiva.setReadonly(false);
-     this.subject_sy.setReadonly(false);
-     this.subject_salon.setDataValue("1");
-     this.subject_salon.hide();
-     //this.subject_salon.setReadonly(false);
-     //this.subject_tipo.setReadonly(false);
-     this.subject_tipo.setDataValue("1");
-     this.subject_tipo.hide();
-     this.subject_grado.setReadonly(false);
-     
-     this.subject_area1.setReadonly(false);
-     this.subject_area2.setReadonly(false);
-     this.subject_area3.setReadonly(false);
-     this.subject_sub1.setReadonly(false);
-     this.subject_sub2.setReadonly(false);
-     this.subject_sub3.setReadonly(false);
-     
-     this.subject_esperados.setReadonly(false);
-     this.subject_iha1.setReadonly(false);
-     this.subject_iha2.setReadonly(false);
-     this.subject_iha3.setReadonly(false);
-     this.subject_meses.setReadonly(false);
-     this.subject_peso.setReadonly(false); 
+     if(gradeValue > 0 && syValue > -3){
+       var json = this.getNewIdSubject.getItem(0);
+       var newId= json.data.newId;
+         
+       this.subject_newRecord.hide();
+       this.subject_updateRecord.hide();
+       this.subject_deleteRecord.hide();
+       this.subject_saveUpdateRecord.hide();
+       this.subject_saveNewRecord.show();
+       this.subject_cancelOperation.show();
+       
+       //clearing all inputs
+       this.id_subject.clear();
+       this.subject_asignatura.clear();
+       this.subject_descripcion.clear();
+       this.subject_subject.clear();
+       this.subject_description.clear();
+       this.subject_electiva.setChecked(0);
+       this.subject_sy.clear();
+       this.subject_salon.clear();
+       this.subject_tipo.clear();
+       this.subject_grado.clear();
+       
+       this.subject_area1.clear();
+       this.subject_area2.clear();
+       this.subject_area3.clear();
+       this.subject_sub1.clear();
+       this.subject_sub2.clear();
+       this.subject_sub3.clear();
+       
+       this.subject_esperados.clear();
+       this.subject_iha1.clear();
+       this.subject_iha2.clear();
+       this.subject_iha3.clear();
+       this.subject_ihtotal.clear();
+       this.subject_meses.clear();
+       this.subject_peso.clear(); 
+       //end clearing
+       
+       this.id_subject.setDataValue(newId);
+       this.subject_asignatura.setReadonly(false);
+       this.subject_descripcion.setReadonly(false);
+       this.subject_subject.setReadonly(false);
+       this.subject_description.setReadonly(false);
+       this.subject_electiva.setReadonly(false);
+       this.subject_sy.setReadonly(false);
+       this.subject_salon.setDataValue("1");
+       this.subject_salon.hide();
+       this.subject_tipo.setDataValue("1");
+       this.subject_tipo.hide();
+       this.subject_grado.setReadonly(false);
+       
+       this.subject_area1.setReadonly(false);
+       this.subject_area2.setReadonly(false);
+       this.subject_area3.setReadonly(false);
+       this.subject_sub1.setReadonly(false);
+       this.subject_sub2.setReadonly(false);
+       this.subject_sub3.setReadonly(false);
+       
+       this.subject_esperados.setReadonly(false);
+       this.subject_iha1.setDataValue("0");
+       this.subject_iha1.setReadonly(false);
+       this.subject_iha2.setDataValue("0");
+       this.subject_iha2.setReadonly(false);
+       this.subject_iha3.setDataValue("0");
+       this.subject_iha3.setReadonly(false);  
+       this.subject_meses.setReadonly(false);
+       this.subject_peso.setReadonly(false);
+     }else{
+       alert("Operación no permitida. Seleccione un Año escolar y Grado para continuar con la creación de una asignatura.");
+     }  
   },
   
   subject_cancelOperationClick: function(inSender, inEvent) {
@@ -253,7 +271,6 @@ dojo.declare("Subjects", wm.Page, {
   },
   
   subjectDataFormDeleteData: function(inSender) {
-    try {
      this.id_subject.clear();
      this.subject_asignatura.clear();
      this.subject_descripcion.clear();
@@ -279,11 +296,8 @@ dojo.declare("Subjects", wm.Page, {
      this.subject_ihtotal.clear();
      this.subject_meses.clear();
      this.subject_peso.clear();  
-      
-    } catch(e) {
-      console.error('ERROR IN subjectDataFormDeleteData: ' + e); 
-    } 
   },
+  
   deleteSubjectSuccess: function(inSender, inDeprecated) {
     try {
      this.ls_subjects.update();
@@ -317,5 +331,21 @@ dojo.declare("Subjects", wm.Page, {
       console.error('ERROR IN deleteSubjectSuccess: ' + e); 
     } 
   },
+  
+  subject_iha1Change: function(inSender, inDisplayValue, inDataValue) {
+     var ihtotal= this.intensidadHorariaTotal();
+     this.subject_ihtotal.setDataValue(ihtotal);      
+  },
+
+  subject_iha2Change: function(inSender, inDisplayValue, inDataValue) {
+     var ihtotal= this.intensidadHorariaTotal();
+     this.subject_ihtotal.setDataValue(ihtotal);  
+  },
+  
+  subject_iha3Change: function(inSender, inDisplayValue, inDataValue) {
+     var ihtotal= this.intensidadHorariaTotal();
+     this.subject_ihtotal.setDataValue(ihtotal);          
+  },
+  
   _end: 0
 });
