@@ -28,6 +28,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_alumnos.hide();
         this.panel_extras.hide();
         this.panel_docentes.hide();
+        this.panel_asignaturas.hide();
         this.panel_secretaria.hide();
         this.panel_horarios.hide();
         this.panel_bienvenida.hide();
@@ -36,6 +37,7 @@ dojo.declare("Main", wm.Page, {
         }else{
         this.panel_alumnos.hide();
         this.panel_extras.hide();
+        this.panel_asignaturas.hide();
         this.panel_docentes.hide();
         this.panel_secretaria.hide();
         this.panel_horarios.hide();
@@ -57,6 +59,7 @@ dojo.declare("Main", wm.Page, {
   bDocentesClick: function(inSender, inEvent) {
     try {
         this.panel_personas.hide();
+        this.panel_asignaturas.hide();
         this.panel_alumnos.hide();
         this.panel_extras.hide();
         this.panel_secretaria.hide();
@@ -75,6 +78,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_alumnos.hide();
         this.panel_personas.hide();
         this.panel_docentes.hide();
+        this.panel_asignaturas.hide();
         this.panel_secretaria.hide();
         this.panel_horarios.hide();
         this.panel_bienvenida.hide();
@@ -85,6 +89,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_alumnos.hide();
         this.panel_personas.hide();
         this.panel_docentes.hide();
+        this.panel_asignaturas.hide();
         this.panel_secretaria.hide();
         this.panel_horarios.hide();
         this.panel_bienvenida.hide();
@@ -100,6 +105,7 @@ dojo.declare("Main", wm.Page, {
          this.panel_personas.hide();
          this.panel_docentes.hide();
          this.panel_extras.hide();
+         this.panel_asignaturas.hide();
          this.panel_horarios.hide();
          this.panel_secretaria.hide();
          this.panel_bienvenida.hide();
@@ -115,6 +121,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_personas.hide();
         this.panel_docentes.hide();
         this.panel_extras.hide();
+        this.panel_asignaturas.hide();
         this.panel_horarios.hide();
         this.panel_bienvenida.hide();
         this.panel_secretaria.show();
@@ -128,6 +135,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_personas.hide();
         this.panel_alumnos.hide();
         this.panel_extras.hide();
+        this.panel_asignaturas.hide();
         this.panel_secretaria.hide();
         this.panel_docentes.hide();
         this.panel_bienvenida.hide();
@@ -142,6 +150,7 @@ dojo.declare("Main", wm.Page, {
         this.panel_alumnos.hide();
         this.panel_personas.hide();
         this.panel_docentes.hide();
+        this.panel_asignaturas.hide();
         this.panel_extras.hide();
         this.panel_horarios.hide();  
         this.panel_secretaria.hide();
@@ -149,6 +158,21 @@ dojo.declare("Main", wm.Page, {
       
     } catch(e) {
       console.error('ERROR IN bInicioClick: ' + e); 
+    } 
+  },
+  bAsignaturasClick: function(inSender, inEvent) {
+    try {
+     this.panel_personas.hide();
+     this.panel_alumnos.hide();
+     this.panel_extras.hide();
+     this.panel_secretaria.hide();
+     this.panel_docentes.hide();
+     this.panel_bienvenida.hide();
+     this.panel_horarios.hide();   
+     this.panel_asignaturas.show();
+      
+    } catch(e) {
+      console.error('ERROR IN bAsignaturasClick: ' + e); 
     } 
   },
    home_imgClick: function(inSender) {
@@ -935,5 +959,6 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN picture6Click: ' + e); 
     } 
   },
+  
   _end: 0
 });

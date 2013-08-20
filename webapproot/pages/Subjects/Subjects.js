@@ -4,9 +4,9 @@ dojo.declare("Subjects", wm.Page, {
   },
   
   intensidadHorariaTotal: function(){
-    var ih1= parseInt(this.subject_iha1.getDataValue());
-    var ih2= parseInt(this.subject_iha2.getDataValue());
-    var ih3= parseInt(this.subject_iha3.getDataValue());
+    var ih1= parseFloat(this.subject_iha1.getDataValue());
+    var ih2= parseFloat(this.subject_iha2.getDataValue());
+    var ih3= parseFloat(this.subject_iha3.getDataValue());
     totalIntensidad= ih1+ih2+ih3;
     return totalIntensidad;
   },
@@ -139,6 +139,7 @@ dojo.declare("Subjects", wm.Page, {
      this.subject_tipo.setReadonly(false);
      
      this.subject_area1.setReadonly(false);
+     this.subject_peso.setReadonly(false);
      this.subject_area2.setReadonly(false);
      this.subject_area3.setReadonly(false);
      this.subject_sub1.setReadonly(false);

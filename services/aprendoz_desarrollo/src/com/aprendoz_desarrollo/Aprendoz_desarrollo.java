@@ -20,7 +20,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  08/14/2013 17:04:33
+ *  08/16/2013 09:25:59
  * 
  */
 @SuppressWarnings("unchecked")
@@ -57,12 +57,12 @@ public class Aprendoz_desarrollo
         }
     }
 
-    public List<GetProcesoMatriculaRtnType> getProcesoMatricula(Integer idp) {
-        return ((List<GetProcesoMatriculaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getProcesoMatriculaQueryName), idp));
-    }
-
     public List<Asignatura> updateSubjects() {
         return ((List<Asignatura> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.updateSubjectsQueryName)));
+    }
+
+    public List<GetProcesoMatriculaRtnType> getProcesoMatricula(Integer idp) {
+        return ((List<GetProcesoMatriculaRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getProcesoMatriculaQueryName), idp));
     }
 
     public com.aprendoz_desarrollo.data.output.GetNombreCompletoRtnType getNombreCompleto(String usuario) {
