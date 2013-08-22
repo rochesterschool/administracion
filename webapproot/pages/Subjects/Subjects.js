@@ -7,7 +7,7 @@ dojo.declare("Subjects", wm.Page, {
     var ih1= parseFloat(this.subject_iha1.getDataValue());
     var ih2= parseFloat(this.subject_iha2.getDataValue());
     var ih3= parseFloat(this.subject_iha3.getDataValue());
-    totalIntensidad= ih1+ih2+ih3;
+    totalIntensidad= ih1+ih2+ih3; 
     return totalIntensidad;
   },
   
