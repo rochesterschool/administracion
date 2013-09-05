@@ -25,6 +25,7 @@ dojo.declare("Main", wm.Page, {
       if(this.l_personas_lista_grupos_familiares.dataSetCount == undefined  || this.l_personas_lista_paises.dataSetCount == undefined){
         this.l_personas_lista_grupos_familiares.update();
         this.l_personas_lista_paises.update();
+        this.a_curso_actual.update();
         this.panel_alumnos.hide();
         this.panel_extras.hide();
         this.panel_docentes.hide();
@@ -313,7 +314,7 @@ dojo.declare("Main", wm.Page, {
     try {   
      var idalumno = this.personaDataGrid1.selectedItem.getData().idPersona;
      this.img_tiny1.setSource("http://aprendoz.rochester.edu.co/stds/"+this.personaDataGrid1.selectedItem.getData().codigo+".Jpeg");
-     this.textEditor2.setDataValue(this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona);         
+     this.foto_tipo_persona.setDataValue(this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona);         
      this.a_getCursoProcesoSV.input.setValue("idp", idalumno);
      this.a_getCursoProcesoSV.update();
      
@@ -323,19 +324,23 @@ dojo.declare("Main", wm.Page, {
      }else{
      /*nothing happens here!*/
      }
-     
+
+     var rol= this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona;
      /*Acciones sobre los paneles*/   
-        if(this.tipoPersonaLookup1.displayValue =="Estudiante"){
+        if(rol =="Estudiante"){       
               this.panel_otros.hide();
               this.panel_estudiantes.show();
               this.panel_salud.show();
-              this.panel_servicios.show();                 
+              this.panel_servicios.show();   
+              this.inscAlumCursoIdInscAlumCursoEditor1.show();              
         }
            else{
+              this.inscAlumCursoIdInscAlumCursoEditor1.hide();
               this.panel_estudiantes.hide();
               this.panel_servicios.hide();
               this.panel_salud.show();
               this.panel_otros.show();
+              this.alumno_proceso_matricula.setCaption(rol.toUpperCase());             
         }
      /*fin acciones sobre paneles*/        
      this.boton_detalles.enable(); 
@@ -791,10 +796,8 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN personas_panel_personas_box_tipo_personaChange: ' + e); 
     } 
   },
-  /*
+  /**
   *Fin Acciones al presionar enter
-  *
-  *
   **/
 
   box_apellido_1Change: function(inSender, inDisplayValue, inDataValue) {
@@ -858,11 +861,16 @@ dojo.declare("Main", wm.Page, {
     try {
      var cursoProceso = main.a_getCursoProcesoSV.getItem(0);
      var z = cursoProceso.data.curse;
+     var y = cursoProceso.data.idcurso;     
+     var parseText = y.toString();
+     var sub= (parseText.substring(1,6));
+     var id= parseInt(sub);     
      if(z == null){
-       this.alumno_proceso_matricula.setCaption("EN EL PROCESO DE MATRICULA: ");
+       this.alumno_proceso_matricula.setCaption("Admisión/Matrícula: ");
      }
      if(z != null){
-       this.alumno_proceso_matricula.setCaption("EN EL PROCESO DE MATRICULA: "+z);
+       this.alumno_proceso_matricula.setCaption("Admisión/Matrícula: "+z);
+       this.inscAlumCursoIdInscAlumCursoEditor1.setDataValue(id);
      }
 
     } catch(e) {

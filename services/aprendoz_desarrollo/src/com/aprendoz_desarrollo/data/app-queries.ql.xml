@@ -17,12 +17,16 @@ WHERE sy.idSy=:_sy AND g.idGrado=:_grado
     </query>
     <query name="getProcesoMatricula" comment="se obtiene el curso para el proceso de matricula o admision en el colegio">
         <query-param name="idp" type="java.lang.Integer"/>
-        SELECT _p.idPersona as code, _p.nombre1 as n1, _p.nombre2 as n2, _p.apellido1 as a1, _p.apellido2 as a2,  _curso.idCurso as idcurso, _curso.curso as curse, MAX(_sy.idSy) as maximo_sy
+        SELECT _p.idPersona as code, _p.nombre1 as n1, _p.nombre2 as n2, _p.apellido1 as a1, _p.apellido2 as a2,  MAX(_curso.idCurso) as idcurso, MAX(_curso.curso) as curse, MAX(_sy.idSy) as maximo_sy
 FROM InscAlumCurso _ia
 INNER JOIN _ia.persona as _p
 INNER JOIN _ia.sy as _sy
 INNER JOIN _ia.curso as _curso
 WHERE _p.idPersona=:idp AND (_curso.idCurso &lt; 10101 OR _curso.idCurso &gt; 40403)
+GROUP BY
+_p.idPersona
+ORDER BY
+_curso.idCurso desc
     </query>
     <query name="HQLlsCursos" comment="listado de cursos sin adminisiones ni matriculas">
         <query-param name="idg" type="java.lang.Integer"/>
