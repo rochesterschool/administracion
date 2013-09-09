@@ -313,7 +313,7 @@ dojo.declare("Main", wm.Page, {
   personaDataGrid1Selected: function(inSender, inIndex) {
     try {   
      var idalumno = this.personaDataGrid1.selectedItem.getData().idPersona;
-     this.img_tiny1.setSource("http://aprendoz.rochester.edu.co/stds/"+this.personaDataGrid1.selectedItem.getData().codigo+".Jpeg");
+     var tipoFoto= this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona;
      this.foto_tipo_persona.setDataValue(this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona);         
      this.a_getCursoProcesoSV.input.setValue("idp", idalumno);
      this.a_getCursoProcesoSV.update();
@@ -342,6 +342,11 @@ dojo.declare("Main", wm.Page, {
               this.panel_otros.show();
               this.alumno_proceso_matricula.setCaption(rol.toUpperCase());             
         }
+        if(tipoFoto =="Estudiante"){
+           this.img_tiny1.setSource("http://www.rochester.edu.co/fotosestudiantes/"+this.personaDataGrid1.selectedItem.getData().codigo+".Jpeg");
+         }else{
+           this.img_tiny1.setSource("http://www.rochester.edu.co/fotosempleados/"+this.personaDataGrid1.selectedItem.getData().codigo+".Jpeg");
+         }
      /*fin acciones sobre paneles*/        
      this.boton_detalles.enable(); 
 
@@ -968,5 +973,27 @@ dojo.declare("Main", wm.Page, {
     } 
   },
   
+  button_peopleClick: function(inSender, inEvent) {
+    this.ficha_salud_panel.hide();
+    this.persona_panel.show();    
+  },
+  
+  button_healthClick: function(inSender, inEvent) {
+    this.persona_panel.hide();
+    this.ficha_salud_panel.show();
+    
+    var rol= this.personaDataGrid1.selectedItem.getData().tipoPersona.tipoPersona;
+    if(rol =="Estudiante"){       
+      var id= this.personaDataGrid1.selectedItem.getData().idPersona;
+      this.fichamedicaLiveVariable1.filter.setValue("persona.idPersona",id );
+      this.fichamedicaLiveVariable1.update();      
+               
+    }else{
+     alert("La persona seleccionada no es Estudiante, por lo tanto no existen registros relacionados.\n\nRealice la selección de un Estudiante y continue con la Ficha de Salud.")            
+    }       
+  },
+  fichamedicaLiveVariable1Success: function(inSender, inDeprecated) {
+    this.fichamedicaDataGrid1.select(0);  
+  },
   _end: 0
 });

@@ -245,9 +245,10 @@ Main.widgets = {
 	}],
 	ls_tipo_identificacion: ["wm.Variable", {"type":"EntryData","json":"[\n{name: \"Numero Unico Identificación Personal\", dataValue: \"N.U.I.P\"},\n{name: \"Tarjeta Identidad\", dataValue: \"T.I\"},\n{name: \"Cédula Ciudadanía\", dataValue: \"C.C\"},\n{name: \"Cédula Extranjería\", dataValue: \"C.E\"},\n{name: \"Pasaporte\", dataValue: \"P.S\"}\n]"}, {}],
 	ls_eps: ["wm.LiveVariable", {"liveSource":"com.aprendoz_desarrollo.data.TipoEps"}, {}],
+	fichamedicaLiveVariable1: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"liveSource":"app.fichamedicaLiveView1","maxResults":5,"designMaxResults":5}, {"onSuccess":"fichamedicaLiveVariable1Success"}],
 	layoutBox1: ["wm.Layout", {"height":"1200px","width":"1033px","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 		TwoColumns: ["wm.Template", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
-			panel1: ["wm.Panel", {"height":"40px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right","lock":true}, {}, {
+			panel1: ["wm.Panel", {"height":"40px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","lock":true,"layoutKind":"left-to-right"}, {}, {
 				bInicio: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"28px","width":"28px","caption":"","border":"0","borderColor":"#F5F5F5"}, {"onclick":"bInicioClick"}],
 				mostrarMenu: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"100%","width":"70px","caption":"Mostrar»","border":"0","showing":false}, {"onclick":"mostrarMenuClick"}],
 				ocultarMenu: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"100%","width":"70px","caption":"«Ocultar","border":"0","showing":false}, {"onclick":"ocultarMenuClick"}],
@@ -255,14 +256,14 @@ Main.widgets = {
 				button1: ["wm.Button", {"height":"28px","width":"26px","caption":"","border":"0","borderColor":"#F5F5F5"}, {"onclick":"Salir2"}],
 				menu: ["wm.DojoMenu", {"height":"29px","width":"116px","border":"0","structure":"{\"items\":[{\"label\":\"Usuario\",\"children\":[{\"label\":\"Perfil\"},{\"label\":\"Opciones\"}]}]}","menu":"Usuario> Perfil, Opciones\n","eventList":[{"label":"Usuario","children":[{"label":"New"},{"label":"Open"},{"label":"Save"},{"label":"Close"}],"onClick":undefined},{"label":"Perfil"},{"label":"Opciones"}],"showing":false}, {}]
 			}],
-			panel26: ["wm.Panel", {"height":"30px","horizontalAlign":"left","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
+			panel26: ["wm.Panel", {"height":"30px","horizontalAlign":"left","width":"100%","verticalAlign":"middle","lock":true,"layoutKind":"left-to-right","showing":false}, {}, {
 				home_img: ["wm.Picture", {"height":"18px","border":"0","width":"20px"}, {"onclick":"home_imgClick"}],
 				picture6: ["wm.Picture", {"height":"100%","border":"0","width":"41px"}, {"onclick":"picture6Click"}],
 				spacer1: ["wm.Spacer", {"height":"19px","width":"100%"}, {}],
 				logout_img: ["wm.Picture", {"height":"19px","border":"0","width":"20px"}, {"onclick":"logout"}]
 			}],
-			panel2: ["wm.Panel", {"height":"100%","width":"100%","layoutKind":"left-to-right","roles":["5","6","7","8","9","10","11","4"]}, {}, {
-				panel_menuPrincipal: ["wm.Panel", {"height":"100%","width":"154px","padding":"8"}, {}, {
+			panel2: ["wm.Panel", {"height":"100%","width":"100%","layoutKind":"left-to-right","roles":["5","6","7","8","9","10","11","4","16","17","19","18","20","22","21"]}, {}, {
+				panel_menuPrincipal: ["wm.Panel", {"height":"100%","width":"154px","padding":"8","lock":true}, {}, {
 					bPersonas: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_FontSizePx_16px"]},"height":"48px","width":"100%","caption":"Personas","borderColor":"#000","iconWidth":"50px","iconHeight":"50px","roles":["10","11","20","21","22","23","24","25","7","9","13","14","15","16","17"]}, {"onclick":"bPersonasClick"}],
 					bSecretaria: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"height":"48px","width":"96px","caption":"Secretaría","borderColor":"#4D90FE","roles":["11","20","21","22","23","24","25","10"]}, {"onclick":"bSecretariaClick"}],
 					bAlumnos: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_FontSizePx_16px"]},"height":"48px","width":"96px","caption":"Alumnos","borderColor":"#3C9300","iconHeight":"50px","roles":["10","20","21","22","24","11","23"]}, {"onclick":"bAlumnosClick"}],
@@ -271,13 +272,13 @@ Main.widgets = {
 					bHorarios: ["wm.Button", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar","wm_FontSizePx_16px"]},"height":"48px","width":"96px","caption":"Horarios","borderColor":"#ae170a","iconHeight":"50px","roles":["5","6","10","20","21","22","24","23","4"]}, {"onclick":"bHorariosClick"}],
 					bExtras: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_FontSizePx_16px"]},"height":"48px","width":"96px","caption":"Extras","borderColor":"#413c3c","iconWidth":"50px","iconHeight":"50px","roles":["7","10","20","21","22","24","11","23"]}, {"onclick":"bExtrasClick"}],
 					spacer2: ["wm.Spacer", {"height":"100%","width":"96px"}, {}],
-					p1: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"38px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
+					p1: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"38px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","lock":true,"layoutKind":"left-to-right","showing":false}, {}, {
 						label3: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"caption":"Ocultar Filtros","height":"44px","width":"115px","border":"0"}, {}, {
 							format: ["wm.DataFormatter", {}, {}]
 						}],
 						picture2: ["wm.Picture", {"height":"34px","border":"0","width":"50px","source":"resources/images/download.png","aspect":"h"}, {"onclick":"picture2Click"}]
 					}],
-					panel12: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"167px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","lock":true,"borderColor":"#000000","showing":false}, {}, {
+					panel12: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"167px","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"layoutKind":"left-to-right","borderColor":"#000000","showing":false}, {}, {
 						layers7: ["wm.Layers", {}, {}, {
 							layer7: ["wm.Layer", {"caption":"layer7","horizontalAlign":"right","verticalAlign":"top"}, {}, {
 								aux98: ["wm.TextEditor", {"width":"150%","caption":"ID Asignatura","showing":false}, {"onchange":"insccursoasigLiveVariable1"}, {
@@ -316,20 +317,19 @@ Main.widgets = {
 							}]
 						}]
 					}],
-					p2: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"38px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right","lock":true,"roles":["10","20","21","22"]}, {}, {
+					p2: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"38px","horizontalAlign":"right","width":"100%","verticalAlign":"middle","lock":true,"layoutKind":"left-to-right","roles":["10","20","21","22"]}, {}, {
 						label2: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"caption":"Ver Filtros","height":"44px","width":"79px","border":"0"}, {}, {
 							format: ["wm.DataFormatter", {}, {}]
 						}],
 						picture1: ["wm.Picture", {"height":"34px","border":"0","width":"50px","source":"resources/images/up.png","aspect":"h"}, {"onclick":"picture1Click"}]
 					}]
 				}],
-				separador_vertical: ["wm.Splitter", {"height":"100%","width":"4px","border":"0"}, {}],
-				panel_asignaturas: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
+				panel_asignaturas: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"layoutKind":"left-to-right","showing":false}, {}, {
 					page_subjects: ["wm.PageContainer", {"border":"0","pageName":"Subjects"}, {}]
 				}],
-				panel_personas: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_MainInsetPanel"]},"height":"100%","width":"100%","lock":true,"showing":false}, {}, {
-					panel7: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"153px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","lock":true}, {}, {
-						layers1: ["wm.Layers", {"width":"290px"}, {}, {
+				panel_personas: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"showing":false}, {}, {
+					head_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"153px","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"layoutKind":"left-to-right"}, {}, {
+						header_left_panel: ["wm.Layers", {"width":"290px"}, {}, {
 							layer1: ["wm.Layer", {"caption":"layer1","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 								personas_panel_personas_sel_grupo_familiar: ["wm.SelectEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"Grupo Familiar","captionSize":"70%"}, {"onchange":"personas_panel_personas_sel_grupo_familiarChange"}, {
 									editor: ["wm._SelectEditor", {"displayField":"grupoFamiliar","dataField":"idGrupoFamiliar","required":true,"pageSize":40}, {}, {
@@ -350,12 +350,16 @@ Main.widgets = {
 								}],
 								personas_panel_personas_box_nombre2: ["wm.TextEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"2do Nombre"}, {"onchange":"personas_panel_personas_box_nombre2Change"}, {
 									editor: ["wm._TextEditor", {"required":true,"changeOnKey":true,"changeOnEnter":true}, {}]
+								}],
+								header_type_section: ["wm.Panel", {"height":"52px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+									button_people: ["wm.Button", {"height":"100%","width":"96px","caption":"Detalles<br/>y busquedas","borderColor":"#059618","margin":"8,2,0,2","iconUrl":"resources/images/buttons/peoplecard.png","iconWidth":"20px","iconHeight":"20px","iconMargin":"0 0 0 0"}, {"onclick":"button_peopleClick"}],
+									button_health: ["wm.Button", {"_classes":{"domNode":["wm_FontColor_White"]},"height":"100%","width":"96px","caption":"Ficha <br>de Salud","borderColor":"#AD1A10","margin":"8,2,0,2","iconUrl":"resources/images/buttons/health.png","iconWidth":"20px","iconHeight":"20px","iconMargin":"0 0px 0 0"}, {"onclick":"button_healthClick"}]
 								}]
 							}]
 						}],
-						layers2: ["wm.Layers", {"width":"290px"}, {}, {
+						header_right_panel: ["wm.Layers", {"width":"290px"}, {}, {
 							layer2: ["wm.Layer", {"caption":"layer2","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-								personas_panel_personas_box_documento: ["wm.TextEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"No. Documento","display":"Number","captionSize":"70%"}, {"onchange":"personas_panel_personas_box_documentoChange"}, {
+								personas_panel_personas_box_documento: ["wm.TextEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"No. Documento","captionSize":"70%","display":"Number"}, {"onchange":"personas_panel_personas_box_documentoChange"}, {
 									editor: ["wm._NumberEditor", {"required":true,"changeOnKey":true,"changeOnEnter":true}, {}]
 								}],
 								personas_panel_personas_box_codigo: ["wm.TextEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"Codigo"}, {"onchange":"personas_panel_personas_box_codigoChange"}, {
@@ -367,7 +371,7 @@ Main.widgets = {
 								personas_panel_personas_box_apellido2: ["wm.TextEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"width":"150%","caption":"2do Apellido"}, {"onchange":"personas_panel_personas_box_apellido2Change"}, {
 									editor: ["wm._TextEditor", {"required":true,"changeOnKey":true,"changeOnEnter":true}, {}]
 								}],
-								panel8: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
+								panel8: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"bottom","layoutKind":"left-to-right"}, {}, {
 									boton_detalles: ["wm.Button", {"height":"48px","width":"96px","caption":"Detalles","disabled":true,"showing":false}, {"onclick":"boton_detallesClick"}],
 									personas_panel_personas_butt_buscar: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"height":"43px","width":"96px","caption":"Buscar","borderColor":"#3853A1"}, {"onclick":"personas_panel_personas_butt_buscarClick"}],
 									personas_panel_personas_butt_limpiar: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"height":"43px","width":"96px","caption":"Limpiar","borderColor":"#E0E0E0"}, {"onclick":"personas_panel_personas_butt_limpiarClick"}]
@@ -385,31 +389,29 @@ Main.widgets = {
 							}]
 						}]
 					}],
-					panel4: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
-						personaGridPanel: ["wm.FancyPanel", {"_classes":{"domNode":["wm_BackgroundGradient_Blue","wm_Border_BottomStyleCurved4px","wm_Border_TopStyleCurved4px"]},"horizontalAlign":"left","verticalAlign":"top","title":"","captionClasses":"wm_BackgroundGradient_Blue wm_Border_BottomStyleCurved4px wm_Border_TopStyleCurved4px wm_FontColor_White wm_TextDecoration_Bold wm_FontSizePx_14px","margin":"1","borderColor":"#F0F0F0","width":"120%"}, {}, {
-							personaDataGrid1: ["wm.DataGrid", {"_classes":{"domNode":["omgDataGrid","wm_FontSizePx_10px"]},"border":"0"}, {"onSelected":"personaDataGrid1Selected"}, {
-								binding: ["wm.Binding", {}, {}, {
-									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"l_personas_personaLiveVariable1","expression":undefined}, {}]
-								}],
-								codigo1: ["wm.DataGridColumn", {"caption":"Codigo","field":"codigo","columnWidth":"68px","index":1}, {}, {
-									format: ["wm.DataFormatter", {}, {}]
-								}],
-								apellido1: ["wm.DataGridColumn", {"caption":"Apellidos","field":"apellido1","columnWidth":"100%","index":2,"dataExpression":"${apellido1}+ \" \"+${apellido2}"}, {}, {
-									format: ["wm.DataFormatter", {}, {}]
-								}],
-								nombre1: ["wm.DataGridColumn", {"caption":"Nombres","field":"nombre1","columnWidth":"100%","index":3,"dataExpression":"${nombre1}+ \" \"+${nombre2}"}, {}, {
-									format: ["wm.DataFormatter", {}, {}]
-								}],
-								column1: ["wm.DataGridColumn", {"caption":"Perfil","field":"tipoPersona.tipoPersona","columnWidth":"80px","index":4}, {}, {
-									format: ["wm.DataFormatter", {}, {}]
-								}],
-								column2: ["wm.DataGridColumn", {"caption":"Grupo Familiar","field":"grupoFamiliar.grupoFamiliar"}, {}, {
-									format: ["wm.DataFormatter", {}, {}]
-								}]
+					persona_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"border":"2","layoutKind":"left-to-right","borderColor":"#059618"}, {}, {
+						personaDataGrid1: ["wm.DataGrid", {"_classes":{"domNode":["omgDataGrid","wm_FontSizePx_10px"]},"border":"0"}, {"onSelected":"personaDataGrid1Selected"}, {
+							binding: ["wm.Binding", {}, {}, {
+								wire: ["wm.Wire", {"targetProperty":"dataSet","source":"l_personas_personaLiveVariable1","expression":undefined}, {}]
+							}],
+							codigo1: ["wm.DataGridColumn", {"caption":"Codigo","field":"codigo","columnWidth":"68px","index":1}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							apellido1: ["wm.DataGridColumn", {"caption":"Apellidos","field":"apellido1","columnWidth":"100%","index":2,"dataExpression":"${apellido1}+ \" \"+${apellido2}"}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							nombre1: ["wm.DataGridColumn", {"caption":"Nombres","field":"nombre1","columnWidth":"100%","index":3,"dataExpression":"${nombre1}+ \" \"+${nombre2}"}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							column1: ["wm.DataGridColumn", {"caption":"Perfil","field":"tipoPersona.tipoPersona","columnWidth":"80px","index":4}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							column2: ["wm.DataGridColumn", {"caption":"Grupo Familiar","field":"grupoFamiliar.grupoFamiliar"}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
 							}]
 						}],
-						personaDetailsPanel: ["wm.FancyPanel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved4px","wm_Border_TopStyleCurved4px"]},"horizontalAlign":"left","verticalAlign":"top","title":"","captionClasses":"wm_Border_BottomStyleCurved4px wm_Border_TopStyleCurved4px wm_FontSizePx_16px wm_FontColor_White wm_TextDecoration_Bold","margin":"1","borderColor":"#F0F0F0"}, {}, {
-							personaLiveForm1: ["wm.LiveForm", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"1962px","verticalAlign":"top","horizontalAlign":"left","readonly":true,"padding":"8","fitToContentHeight":true}, {"onSuccess":"l_personas_personaLiveVariable1","onBeginUpdate":"personaLiveForm1BeginUpdate"}, {
+						personaDetailsPanel: ["wm.FancyPanel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved4px","wm_Border_TopStyleCurved4px"]},"horizontalAlign":"left","verticalAlign":"top","title":"","captionClasses":"wm_Border_BottomStyleCurved4px wm_Border_TopStyleCurved4px wm_FontSizePx_16px wm_FontColor_White wm_TextDecoration_Bold","margin":"1","borderColor":"#F0F0F0","lock":true}, {}, {
+							personaLiveForm1: ["wm.LiveForm", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"1880px","verticalAlign":"top","horizontalAlign":"left","readonly":true,"padding":"8","fitToContentHeight":true}, {"onSuccess":"l_personas_personaLiveVariable1","onBeginUpdate":"personaLiveForm1BeginUpdate"}, {
 								binding: ["wm.Binding", {}, {}, {
 									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"personaDataGrid1.selectedItem","expression":undefined}, {}],
 									wire1: ["wm.Wire", {"targetProperty":"dataOutput.grupoFamiliar","source":"grupoFamiliarRelatedEditor1.dataOutput","expression":undefined}, {}],
@@ -439,7 +441,7 @@ Main.widgets = {
 										}]
 									}]
 								}],
-								alumno_proceso_matricula: ["wm.Label", {"_classes":{"domNode":["wm_FontFamily_Verdana","wm_TextDecoration_Bold"]},"caption":"Admisión / Matrícula:","height":"32px","width":"100%","border":"0","borderColor":"#3853A1"}, {}, {
+								alumno_proceso_matricula: ["wm.Label", {"_classes":{"domNode":["wm_FontFamily_Verdana","wm_TextDecoration_Bold"]},"caption":"Admisión / Matrícula:","height":"32px","width":"100%","border":"0","borderColor":"#3853A1","showing":false}, {}, {
 									format: ["wm.DataFormatter", {}, {}]
 								}],
 								inscAlumCursoIdInscAlumCursoEditor1: ["wm.Editor", {"_classes":{"captionNode":["wm_FontColor_White","wm_FontFamily_Verdana","wm_TextDecoration_Bold"],"domNode":["wm_TextDecoration_Bold"]},"caption":"Curso Actual:","width":"100%","height":"32px","display":"Select","readonly":true,"formField":"inscAlumCursoIdInscAlumCurso","padding":"0","disabled":true,"roles":["20","21","22","10","7","6","5"]}, {}, {
@@ -526,7 +528,7 @@ Main.widgets = {
 												claveEditor1: ["wm.Editor", {"caption":"Clave","width":"100%","height":"26px","readonly":true,"formField":"clave","captionSize":"59%","roles":["10","20","21","22","7","8","6","23","24"]}, {}, {
 													editor: ["wm._TextEditor", {"promptMessage":"Contraseña necesaria","password":true}, {}]
 												}],
-												picture4: ["wm.Picture", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","border":"0","width":"10%","source":"resources/images/comment_yellow.gif","padding":"5,0,0,0"}, {"onclick":"picture4Click"}]
+												picture4: ["wm.Picture", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","border":"0","width":"10%","padding":"5,0,0,0","source":"resources/images/comment_yellow.gif"}, {"onclick":"picture4Click"}]
 											}],
 											sexoEditor1: ["wm.Editor", {"caption":"Género","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"sexo"}, {}, {
 												editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","options":"Masculino, Femenino"}, {}, {
@@ -558,20 +560,6 @@ Main.widgets = {
 											barrioEditor1: ["wm.Editor", {"caption":"Barrio","width":"100%","height":"26px","readonly":true,"formField":"barrio","roles":["10","20","21","22"]}, {}, {
 												editor: ["wm._TextEditor", {}, {}]
 											}],
-											viveConEditor1: ["wm.Editor", {"caption":"Vive con","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"viveCon"}, {}, {
-												editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","options":"MADRE, PADRE, ACUDIENTE, AMBOS PADRES, NO APLICA"}, {}, {
-													optionsVar: ["wm.Variable", {"type":"EntryData"}, {}]
-												}]
-											}]
-										}]
-									}]
-								}],
-								panel_estudiantes: ["wm.Panel", {"height":"400px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
-									layers18: ["wm.Layers", {}, {}, {
-										layer18: ["wm.Layer", {"caption":"layer18","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-											label16: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"caption":"DATOS DE NACIMIENTO","height":"32px","width":"100%","border":"0"}, {}, {
-												format: ["wm.DataFormatter", {}, {}]
-											}],
 											paisRelatedEditor1: ["wm.RelatedEditor", {"formField":"pais","lock":true}, {}, {
 												binding: ["wm.Binding", {}, {}, {
 													wire1: ["wm.Wire", {"targetProperty":"dataSet","source":"personaDataGrid1.selectedItem.pais","expression":undefined}, {}],
@@ -584,6 +572,20 @@ Main.widgets = {
 														}]
 													}]
 												}]
+											}],
+											viveConEditor1: ["wm.Editor", {"caption":"Vive con","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"viveCon"}, {}, {
+												editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","options":"MADRE, PADRE, ACUDIENTE, AMBOS PADRES, NO APLICA"}, {}, {
+													optionsVar: ["wm.Variable", {"type":"EntryData"}, {}]
+												}]
+											}]
+										}]
+									}]
+								}],
+								panel_estudiantes: ["wm.Panel", {"height":"350px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+									layers18: ["wm.Layers", {}, {}, {
+										layer18: ["wm.Layer", {"caption":"layer18","horizontalAlign":"left","verticalAlign":"top"}, {}, {
+											label16: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"caption":"DATOS DE NACIMIENTO","height":"32px","width":"100%","border":"0"}, {}, {
+												format: ["wm.DataFormatter", {}, {}]
 											}],
 											lugarNacimientoDepartamentoEditor1: ["wm.Editor", {"caption":"Departamento nacimiento","width":"100%","height":"26px","readonly":true,"formField":"lugarNacimientoDepartamento"}, {}, {
 												editor: ["wm._TextEditor", {}, {}]
@@ -730,6 +732,94 @@ Main.widgets = {
 								}]
 							}]
 						}]
+					}],
+					ficha_salud_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"border":"2","layoutKind":"left-to-right","borderColor":"#AD1A10","showing":false}, {}, {
+						fichamedicaLiveForm1: ["wm.LiveForm", {"height":"100%","verticalAlign":"top","horizontalAlign":"left","readonly":true,"width":"50%"}, {"onSuccess":"fichamedicaLiveVariable1"}, {
+							binding: ["wm.Binding", {}, {}, {
+								wire: ["wm.Wire", {"targetProperty":"dataSet","source":"fichamedicaDataGrid1.selectedItem","expression":undefined}, {}],
+								wire1: ["wm.Wire", {"targetProperty":"dataOutput.persona","source":"personaRelatedEditor4.dataOutput","expression":undefined}, {}]
+							}],
+							health_header: ["wm.Panel", {"height":"32px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+								label1: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_FontColor_White"]},"caption":"FICHA DE SALUD","height":"100%","width":"100%","border":"0"}, {}, {
+									format: ["wm.DataFormatter", {}, {}]
+								}]
+							}],
+							idfichaMedicaEditor1: ["wm.Editor", {"caption":"Id Unico","width":"100%","height":"26px","display":"Number","readonly":true,"formField":"idfichaMedica"}, {}, {
+								editor: ["wm._NumberEditor", {"required":true}, {}]
+							}],
+							personaRelatedEditor4: ["wm.RelatedEditor", {"formField":"persona","lock":true}, {}, {
+								binding: ["wm.Binding", {}, {}, {
+									wire1: ["wm.Wire", {"targetProperty":"dataSet","source":"fichamedicaDataGrid1.selectedItem.persona","expression":undefined}, {}]
+								}],
+								personaLookup2: ["wm.Editor", {"caption":"Id Persona","width":"100%","height":"26px","display":"Number","readonly":true,"formField":"idPersona"}, {}, {
+									editor: ["wm._NumberEditor", {"required":true}, {}]
+								}]
+							}],
+							fechaCreacionEditor1: ["wm.Editor", {"caption":"Fecha de creación","width":"100%","height":"26px","display":"Date","readonly":true,"formField":"fechaCreacion"}, {}, {
+								editor: ["wm._DateEditor", {}, {}]
+							}],
+							medicoTratanteEditor1: ["wm.Editor", {"caption":"Medico Tratante","width":"100%","height":"26px","readonly":true,"formField":"medicoTratante"}, {}, {
+								editor: ["wm._TextEditor", {}, {}]
+							}],
+							alergiasEditor1: ["wm.Editor", {"caption":"Alergias","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"alergias","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							enfermedadesRecientesEditor1: ["wm.Editor", {"caption":"Enfermedades recientes","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"enfermedadesRecientes","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							antecedentesQuirurgicosEditor1: ["wm.Editor", {"caption":"Antecedentes quirúrgicos","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"antecedentesQuirurgicos","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							medicamentosActualidadEditor1: ["wm.Editor", {"caption":"Medicamentos actualidad","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"medicamentosActualidad","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							medicamentosAlertaEditor1: ["wm.Editor", {"caption":"Medicamentos <u>que no debe</u> recibir","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"medicamentosAlerta","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							recomendacionesEspecialesEditor1: ["wm.Editor", {"caption":"Recomendaciones especiales","width":"100%","height":"100%","display":"TextArea","readonly":true,"formField":"recomendacionesEspeciales","singleLine":false}, {}, {
+								editor: ["wm._TextAreaEditor", {}, {}]
+							}],
+							editPanel8: ["wm.EditPanel", {"liveForm":"fichamedicaLiveForm1","savePanel":"savePanel8","operationPanel":"operationPanel8"}, {}, {
+								savePanel8: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
+									saveButton8: ["wm.RoundedButton", {"caption":"Guardar","width":"100px","height":"100%","disabled":true}, {"onclick":"editPanel8.saveData"}, {
+										binding: ["wm.Binding", {}, {}, {
+											wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel8.formInvalid","expression":undefined}, {}]
+										}]
+									}],
+									cancelButton8: ["wm.RoundedButton", {"caption":"Cancelar","width":"100px","height":"100%"}, {"onclick":"editPanel8.cancelEdit"}]
+								}],
+								operationPanel8: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+									newButton8: ["wm.RoundedButton", {"caption":"New","width":"100px","height":"100%","showing":false}, {"onclick":"editPanel8.beginDataInsert"}],
+									updateButton8: ["wm.RoundedButton", {"caption":"Actualizar","width":"100px","height":"100%","disabled":true}, {"onclick":"editPanel8.beginDataUpdate"}, {
+										binding: ["wm.Binding", {}, {}, {
+											wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel8.formUneditable","expression":undefined}, {}]
+										}]
+									}],
+									deleteButton8: ["wm.RoundedButton", {"caption":"Eliminar","width":"100px","height":"100%","disabled":true}, {"onclick":"editPanel8.deleteData"}, {
+										binding: ["wm.Binding", {}, {}, {
+											wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel8.formUneditable","expression":undefined}, {}]
+										}]
+									}]
+								}]
+							}]
+						}],
+						fichamedicaDataGrid1: ["wm.DataGrid", {"_classes":{"domNode":["omgDataGrid"]},"border":"0","showing":false}, {}, {
+							binding: ["wm.Binding", {}, {}, {
+								wire: ["wm.Wire", {"targetProperty":"dataSet","source":"fichamedicaLiveVariable1","expression":undefined}, {}]
+							}],
+							idfichaMedica1: ["wm.DataGridColumn", {"caption":"+","field":"idfichaMedica","columnWidth":"27px","display":"Number","autoSize":undefined}, {}, {
+								format: ["wm.NumberFormatter", {}, {}]
+							}],
+							medicoTratante1: ["wm.DataGridColumn", {"caption":"MedicoTratante","field":"medicoTratante","columnWidth":"100%","index":3}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							column1: ["wm.DataGridColumn", {"caption":"Codigo","field":"persona.codigo","columnWidth":"20%","index":1}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}],
+							column2: ["wm.DataGridColumn", {"caption":"Nombre Alumno","field":"persona.nombre1","columnWidth":"100%","index":2,"dataExpression":"${persona.apellido1}+\" \"+${persona.apellido1}+\" \"+${persona.nombre1}+\" \"+${persona.nombre2}"}, {}, {
+								format: ["wm.DataFormatter", {}, {}]
+							}]
+						}]
 					}]
 				}],
 				panel_extras: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"showing":false}, {}, {
@@ -855,7 +945,7 @@ Main.widgets = {
 						}]
 					}]
 				}],
-				panel_docentes: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","border":"1","lock":true,"borderColor":"#000000","showing":false}, {}, {
+				panel_docentes: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"border":"1","borderColor":"#000000","showing":false}, {}, {
 					panel45: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 						panel17: ["wm.Panel", {"height":"255%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 							layers5: ["wm.Layers", {"width":"120%"}, {}, {
@@ -1198,7 +1288,7 @@ Main.widgets = {
 						}],
 						layers9: ["wm.Layers", {}, {}, {
 							layer9: ["wm.Layer", {"caption":"layer9","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-								inscalumcursoDetailsPanel: ["wm.FancyPanel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved4px","wm_Border_TopStyleCurved4px","wm_BackgroundGradient_Blue"]},"horizontalAlign":"left","verticalAlign":"top","title":"","captionClasses":"wm_Border_BottomStyleCurved4px wm_Border_TopStyleCurved4px wm_BackgroundGradient_Blue wm_FontSizePx_16px wm_FontColor_White wm_TextDecoration_Bold wm_SilverBlueTheme_LightBlueInsetPanel","margin":"0","border":"3,3,3,3","borderColor":"#4D90FE","height":"206px"}, {}, {
+								inscalumcursoDetailsPanel: ["wm.FancyPanel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved4px","wm_Border_TopStyleCurved4px","wm_BackgroundGradient_Blue"]},"horizontalAlign":"left","verticalAlign":"top","title":"","captionClasses":"wm_Border_BottomStyleCurved4px wm_Border_TopStyleCurved4px wm_BackgroundGradient_Blue wm_FontSizePx_16px wm_FontColor_White wm_TextDecoration_Bold wm_SilverBlueTheme_LightBlueInsetPanel","margin":"0","borderColor":"#4D90FE","border":"3,3,3,3","height":"206px"}, {}, {
 									inscalumcursoLiveForm1: ["wm.LiveForm", {"_classes":{"domNode":["wm_FontSizePx_12px","wm_SilverBlueTheme_LightBlueInsetPanel"]},"height":"100%","verticalAlign":"top","horizontalAlign":"left","readonly":true}, {"onSuccess":"inscalumcursoLiveVariable1","onBeginInsert":"inscalumcursoLiveForm1BeginInsert"}, {
 										binding: ["wm.Binding", {}, {}, {
 											wire: ["wm.Wire", {"targetProperty":"dataSet","source":"inscalumcursoDataGrid1.selectedItem","expression":undefined}, {}],
@@ -1301,7 +1391,7 @@ Main.widgets = {
 								tabLayers1: ["wm.TabLayers", {}, {}, {
 									Certificados: ["wm.Layer", {"caption":"Certificados","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 										secreatria_panel_menu: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"32px","horizontalAlign":"left","width":"100%","verticalAlign":"middle","padding":"2","layoutKind":"left-to-right","borderColor":"#4D90FE"}, {}, {
-											bMostrar: ["wm.Button", {"height":"17px","width":"19px","caption":"","border":"0","margin":"0","borderColor":"#4D90FE","iconWidth":"29px","iconHeight":"29px"}, {"onclick":"bMostrarClick"}],
+											bMostrar: ["wm.Button", {"height":"17px","width":"19px","caption":"","border":"0","borderColor":"#4D90FE","margin":"0","iconWidth":"29px","iconHeight":"29px"}, {"onclick":"bMostrarClick"}],
 											bOcultar: ["wm.Button", {"_classes":{"domNode":["wm_SilverBlueTheme_ToolBar"]},"height":"29px","width":"31px","caption":"","border":"0","margin":"2","hint":"Ocultar opcion de Reportes","iconUrl":"resources/images/up.png","iconWidth":"29px","iconHeight":"29px","showing":false}, {"onclick":"bOcultarClick"}],
 											label20: ["wm.Label", {"caption":"Importante: Para crear un reporte (PDF) asegurese de seleccionar primero un estudiante.","height":"100%","width":"350%","border":"0"}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
@@ -1326,13 +1416,13 @@ Main.widgets = {
 											}],
 											layers15: ["wm.Layers", {"width":"150px"}, {}, {
 												layer15: ["wm.Layer", {"caption":"layer15","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-													c_persona: ["wm.TextEditor", {"width":"150%","caption":"Persona","showing":false,"captionSize":"80%","readonly":true,"borderColor":"#000000"}, {}, {
+													c_persona: ["wm.TextEditor", {"width":"150%","caption":"Persona","captionSize":"80%","readonly":true,"borderColor":"#000000","showing":false}, {}, {
 														editor: ["wm._TextEditor", {}, {}]
 													}],
-													c_year: ["wm.TextEditor", {"width":"150%","caption":"Año escolar","showing":false,"captionSize":"80%","readonly":true,"borderColor":"#000000"}, {}, {
+													c_year: ["wm.TextEditor", {"width":"150%","caption":"Año escolar","captionSize":"80%","readonly":true,"borderColor":"#000000","showing":false}, {}, {
 														editor: ["wm._TextEditor", {}, {}]
 													}],
-													fecha_reporte: ["wm.DateEditor", {"displayValue":"05/09/2013","width":"150%","captionSize":"120%","caption":"Fecha de reporte","showing":false}, {}, {
+													fecha_reporte: ["wm.DateEditor", {"caption":"Fecha de reporte","displayValue":"06/09/2013","captionSize":"120%","width":"150%","showing":false}, {}, {
 														binding: ["wm.Binding", {}, {}, {
 															wire: ["wm.Wire", {"targetProperty":"dataValue","expression":"new Date().getTime()"}, {}]
 														}],
@@ -1341,7 +1431,7 @@ Main.widgets = {
 													selectEditor5: ["wm.SelectEditor", {"width":"100%","caption":"Año escolar","height":"33px","captionSize":"60%","showing":false}, {}, {
 														editor: ["wm._SelectEditor", {}, {}]
 													}],
-													selectorReport: ["wm.SelectEditor", {"width":"100%","height":"33px","disabled":true,"captionAlign":"left","captionSize":"80%"}, {"onchange":"selectorReportChange"}, {
+													selectorReport: ["wm.SelectEditor", {"width":"100%","disabled":true,"captionAlign":"left","height":"33px","captionSize":"80%"}, {"onchange":"selectorReportChange"}, {
 														editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true}, {}, {
 															binding: ["wm.Binding", {}, {}, {
 																wire: ["wm.Wire", {"targetProperty":"dataSet","source":"lsReportes","expression":undefined}, {}]
@@ -1351,20 +1441,20 @@ Main.widgets = {
 												}]
 											}],
 											buttons_panel: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"164px","verticalAlign":"top"}, {}, {
-												b_libroOficial: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear certificado","margin":"1","borderColor":"#E0E0E0"}, {"onclick":"b_libroOficialClick"}],
-												b_retirados: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear","margin":"1","borderColor":"#E0E0E0"}, {"onclick":"b_retiradosClick"}],
-												b_matriculados: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear listado","margin":"1","borderColor":"#E0E0E0"}, {"onclick":"b_matriculadosClick"}],
-												b_lista_grupo_familiar: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Listado Grupo Familiar","margin":"1","borderColor":"#E0E0E0"}, {"onclick":"b_lista_grupo_familiarClick"}]
+												b_libroOficial: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear certificado","borderColor":"#E0E0E0","margin":"1"}, {"onclick":"b_libroOficialClick"}],
+												b_retirados: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear","borderColor":"#E0E0E0","margin":"1"}, {"onclick":"b_retiradosClick"}],
+												b_matriculados: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Crear listado","borderColor":"#E0E0E0","margin":"1"}, {"onclick":"b_matriculadosClick"}],
+												b_lista_grupo_familiar: ["wm.Button", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"34px","width":"100%","caption":"Listado Grupo Familiar","borderColor":"#E0E0E0","margin":"1"}, {"onclick":"b_lista_grupo_familiarClick"}]
 											}],
 											panel_certificado_parcial: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","lock":true,"showing":false}, {}, {
-												suscritoBox: ["wm.TextEditor", {"width":"100%","caption":"SUSCRITO ACADEMICO","display":"Select","captionAlign":"left","captionSize":"80%"}, {"onchange":"suscritoBoxChange"}, {
+												suscritoBox: ["wm.TextEditor", {"width":"100%","caption":"SUSCRITO ACADEMICO","captionAlign":"left","captionSize":"80%","display":"Select"}, {"onchange":"suscritoBoxChange"}, {
 													editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true,"startUpdate":true}, {}, {
 														binding: ["wm.Binding", {}, {}, {
 															wire: ["wm.Wire", {"targetProperty":"dataSet","source":"listaSuscritos","expression":undefined}, {}]
 														}]
 													}]
 												}],
-												headBox: ["wm.TextEditor", {"width":"100%","caption":"Encabezado","showing":false,"disabled":true,"captionAlign":"left"}, {}, {
+												headBox: ["wm.TextEditor", {"width":"100%","caption":"Encabezado","disabled":true,"captionAlign":"left","showing":false}, {}, {
 													editor: ["wm._TextEditor", {}, {}]
 												}],
 												panel37: ["wm.Panel", {"height":"48px","horizontalAlign":"right","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
@@ -1671,10 +1761,10 @@ Main.widgets = {
 										libro_final_gui: ["wm.Panel", {"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 											gui: ["wm.Layers", {}, {}, {
 												layer29: ["wm.Layer", {"caption":"layer29","horizontalAlign":"center","verticalAlign":"top"}, {}, {
-													libro_final_enunciado: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"caption":"Para generar el <u>Libro Final</u>, a continuación seleccione el <u>Año Escolar</u> y seguido de esto el <u>Nivel</u>,<br/> luego haga click en <u>Generar Libro Final</u>","height":"48px","width":"100%","border":"0","align":"center","singleLine":false}, {}, {
+													libro_final_enunciado: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"caption":"Para generar el <u>Libro Final</u>, a continuación seleccione el <u>Año Escolar</u> y seguido de esto el <u>Nivel</u>,<br/> luego haga click en <u>Generar Libro Final</u>","height":"48px","width":"100%","border":"0","singleLine":false,"align":"center"}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
 													}],
-													libro_final_sel_sy: ["wm.SelectEditor", {"width":"250px","caption":"Año escolar","height":"30px","margin":"0"}, {}, {
+													libro_final_sel_sy: ["wm.SelectEditor", {"width":"250px","caption":"Año escolar","margin":"0","height":"30px"}, {}, {
 														editor: ["wm._SelectEditor", {"displayField":"schoolYear","dataField":"idSy"}, {}, {
 															binding: ["wm.Binding", {}, {}, {
 																wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_sy","expression":undefined}, {}]
@@ -1766,7 +1856,7 @@ Main.widgets = {
 								}],
 								panel44: ["wm.Panel", {"height":"31px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 									spacer13: ["wm.Spacer", {"height":"24px","width":"70%"}, {}],
-									relatedEditor1: ["wm.RelatedEditor", {"formField":"curso","height":"28px","fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+									relatedEditor1: ["wm.RelatedEditor", {"formField":"curso","fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 										binding: ["wm.Binding", {}, {}, {
 											wire: ["wm.Wire", {"targetProperty":"dataSet","source":"horarioDataGrid1.selectedItem.curso","expression":undefined}, {}],
 											wire1: ["wm.Wire", {"targetProperty":"dataOutput","source":"cursoLookup5.selectedItem","expression":undefined}, {}]
@@ -1775,7 +1865,7 @@ Main.widgets = {
 											editor: ["wm._NumberEditor", {}, {}]
 										}]
 									}],
-									relatedEditor2: ["wm.RelatedEditor", {"formField":"asignatura","height":"28px","fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+									relatedEditor2: ["wm.RelatedEditor", {"formField":"asignatura","fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 										binding: ["wm.Binding", {}, {}, {
 											wire: ["wm.Wire", {"targetProperty":"dataSet","source":"horarioDataGrid1.selectedItem.asignatura","expression":undefined}, {}],
 											wire1: ["wm.Wire", {"targetProperty":"dataOutput","source":"asignaturaLookup4.selectedItem","expression":undefined}, {}]
@@ -1785,7 +1875,7 @@ Main.widgets = {
 										}]
 									}]
 								}],
-								numberEditor1: ["wm.NumberEditor", {"caption":"ID Horario","readonly":true,"formField":"idHorario","width":"150%"}, {}, {
+								numberEditor1: ["wm.NumberEditor", {"caption":"ID Horario","width":"150%","readonly":true,"formField":"idHorario"}, {}, {
 									editor: ["wm._NumberEditor", {"required":true}, {}]
 								}],
 								numeroSesionEditor1: ["wm.Editor", {"caption":"Numero Sesion","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"numeroSesion"}, {}, {
@@ -1801,7 +1891,7 @@ Main.widgets = {
 										}]
 									}]
 								}],
-								relatedEditor4: ["wm.RelatedEditor", {"formField":"tipoSemana","height":"28px","lock":true,"fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+								relatedEditor4: ["wm.RelatedEditor", {"formField":"tipoSemana","lock":true,"fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 									binding: ["wm.Binding", {}, {}, {
 										wire: ["wm.Wire", {"targetProperty":"dataSet","source":"horarioDataGrid1.selectedItem.tipoSemana","expression":undefined}, {}],
 										wire1: ["wm.Wire", {"targetProperty":"dataOutput","source":"tipoSemanaLookup1.selectedItem","expression":undefined}, {}]
@@ -1810,7 +1900,7 @@ Main.widgets = {
 										editor: ["wm._LookupEditor", {"displayField":"tipoSemana","allowNone":true}, {}]
 									}]
 								}],
-								relatedEditor3: ["wm.RelatedEditor", {"formField":"sy","height":"28px","lock":true,"fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+								relatedEditor3: ["wm.RelatedEditor", {"formField":"sy","lock":true,"fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 									binding: ["wm.Binding", {}, {}, {
 										wire: ["wm.Wire", {"targetProperty":"dataSet","source":"horarioDataGrid1.selectedItem.sy","expression":undefined}, {}],
 										wire1: ["wm.Wire", {"targetProperty":"dataOutput","source":"syLookup2.selectedItem","expression":undefined}, {}]
@@ -1828,7 +1918,7 @@ Main.widgets = {
 										}],
 										cancelButton6: ["wm.RoundedButton", {"caption":"Cancelar","width":"100px","height":"100%"}, {"onclick":"editPanel6.cancelEdit"}]
 									}],
-									operationPanel6: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","lock":true}, {}, {
+									operationPanel6: ["wm.Panel", {"height":"100%","horizontalAlign":"right","width":"100%","verticalAlign":"top","lock":true,"layoutKind":"left-to-right"}, {}, {
 										newButton6: ["wm.RoundedButton", {"caption":"Nuevo","width":"100px","height":"100%"}, {"onclick":"editPanel6.beginDataInsert"}],
 										updateButton6: ["wm.RoundedButton", {"caption":"Actualizar","width":"122px","height":"100%","disabled":true}, {"onclick":"editPanel6.beginDataUpdate"}, {
 											binding: ["wm.Binding", {}, {}, {
@@ -1895,7 +1985,7 @@ Main.widgets = {
 					nombreCompleto: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_24px"]},"height":"40px","width":"100%","border":"0","align":"center"}, {}, {
 						format: ["wm.DataFormatter", {}, {}]
 					}],
-					userNameGetter: ["wm.TextEditor", {"width":"540px","showing":false,"height":"42px","autoScroll":true}, {}, {
+					userNameGetter: ["wm.TextEditor", {"width":"540px","height":"42px","autoScroll":true,"showing":false}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUserName.dataValue"}, {}]
 						}],
@@ -1906,24 +1996,24 @@ Main.widgets = {
 		}],
 		picture3: ["wm.Picture", {"height":"192px","border":"0","width":"410px","source":"resources/acceso_denegado.jpg","aspect":"h","showing":false,"roles":["1","2","3","8","12","13","15","14","17","18","19","25","11"]}, {}],
 		panel22: ["wm.Panel", {"height":"50px","horizontalAlign":"left","width":"60%","verticalAlign":"top","layoutKind":"left-to-right","roles":["1","2","3","8","12","13","14","15","17","18","19","25"]}, {}, {
-			label4: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"caption":"<b>LO SENTIMOS, USTED NO ESTA AUTORIZADO PARA INGRESAR  A ESTA ZONA </b></br> Sin embargo usted puede enviar un mensaje a: <u>soporte@rochester.edu.co","height":"48px","width":"100%","border":"0","align":"center","singleLine":false}, {}, {
+			label4: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"caption":"<b>LO SENTIMOS, USTED NO ESTA AUTORIZADO PARA INGRESAR  A ESTA ZONA </b></br> Sin embargo usted puede enviar un mensaje a: <u>soporte@rochester.edu.co","height":"48px","width":"100%","border":"0","singleLine":false,"align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}]
 		}],
-		panel23: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_LightBlueInsetPanel"]},"height":"36px","horizontalAlign":"center","width":"60%","verticalAlign":"top","layoutKind":"left-to-right","lock":true,"roles":["1","2","3","8","12","13","14","15","17","18","19","25"]}, {}, {
+		panel23: ["wm.Panel", {"_classes":{"domNode":["wm_SilverBlueTheme_LightBlueInsetPanel"]},"height":"36px","horizontalAlign":"center","width":"60%","verticalAlign":"top","lock":true,"layoutKind":"left-to-right","roles":["1","2","3","8","12","13","14","15","17","18","19","25"]}, {}, {
 			label9: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"Aprendoz © • Colegio Rochester","height":"25px","width":"280px","border":"0","align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}],
 			label10: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"|","height":"25px","width":"15px","border":"0","align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}],
-			label11: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"Visitanos","height":"25px","width":"80px","border":"0","align":"center","link":"http://www.rochester.edu.co"}, {}, {
+			label11: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"Visitanos","height":"25px","width":"80px","border":"0","link":"http://www.rochester.edu.co","align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}],
 			label8: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"|","height":"25px","width":"15px","border":"0","align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}],
-			label7: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"Enviar correo","height":"25px","width":"109px","border":"0","align":"center","link":"mailto: sistemas@rochester.edu.co"}, {}, {
+			label7: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"Enviar correo","height":"25px","width":"109px","border":"0","link":"mailto: sistemas@rochester.edu.co","align":"center"}, {}, {
 				format: ["wm.DataFormatter", {}, {}]
 			}],
 			label6: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"caption":"|","height":"25px","width":"15px","border":"0","align":"center"}, {}, {

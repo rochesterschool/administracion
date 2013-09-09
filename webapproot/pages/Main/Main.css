@@ -852,3 +852,25 @@ margin-top: 12px;
 box-shadow: inset 0 4px 35px rgba(0,0,0,0.3);
 }
 
+.Main .Main-button_health {
+	background: #AD1A10 !important;
+	background: #059618;
+margin-top: 12px;
+cursor: pointer;
+}
+
+.Main .Main-button_people {
+	  color: #ffffff;
+	  background: #059618;
+margin-top: 12px;
+cursor: pointer;
+
+}
+
+.Main .Main-health_header {
+	background: #AD1A10 !important;
+	background: #059618;
+margin-top: 12px;
+cursor: pointer;
+}
+
