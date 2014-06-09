@@ -232,7 +232,7 @@ dojo.declare("Main", wm.Page, {
         this.asignaturaLookup1.setValue("dataValue", this.asignaturaDG.selectedItem.getData().id.idAsignatura);
         this.cursoLookup1.setValue("dataValue", this.cursoDG.selectedItem.getData().idCurso);
         this.personaLookup1.setValue("dataValue", this.docentesDG.selectedItem.getData().id.idPersona);
-        this.periodoLookup1.setDisplayValue("2012-2013");
+        this.periodoLookup1.setDisplayValue("2013-2014");
             
     } catch(e) {
       console.error('ERROR IN insccursoasigLiveForm1BeginInsert: ' + e); 
@@ -332,15 +332,24 @@ dojo.declare("Main", wm.Page, {
               this.panel_estudiantes.show();
               this.panel_salud.show();
               this.panel_servicios.show();   
-              this.inscAlumCursoIdInscAlumCursoEditor1.show();              
+              this.inscAlumCursoIdInscAlumCursoEditor1.show();
+              this.activoRetiradoEditor1.show();
+              this.matriculadoEditor1.show();
+              this.fechaRetiroEditor1.show();
+              this.comentarioEditor2.show();              
         }
            else{
               this.inscAlumCursoIdInscAlumCursoEditor1.hide();
+              this.activoRetiradoEditor1.enable();
               this.panel_estudiantes.hide();
               this.panel_servicios.hide();
               this.panel_salud.show();
               this.panel_otros.show();
               this.alumno_proceso_matricula.setCaption(rol.toUpperCase());             
+              this.matriculadoEditor1.hide();
+              this.fechaRetiroEditor1.hide();
+              this.comentarioEditor2.hide();  
+              this.activoRetiradoEditor1.show();          
         }
         if(tipoFoto =="Estudiante"){
            this.img_tiny1.setSource("http://www.rochester.edu.co/fotosestudiantes/"+this.personaDataGrid1.selectedItem.getData().codigo+".Jpeg");
@@ -387,9 +396,7 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN pOcultarClick: ' + e); 
     } 
   },
-  b_libroOficialClick: function(inSender, inEvent) {
-    
-    try {
+  b_libroOficialClick: function(inSender, inEvent) { 
      //certificado final en español
      if(this.selectorReport.dataValue=="f"){
        main.a_getCompleteName.update();
@@ -398,7 +405,6 @@ dojo.declare("Main", wm.Page, {
        var idpersona= this.c_persona.getDataValue();
        var idsy= this.c_year.getDataValue();
        var formatType= "PDF";
-
        $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
         failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
         httpMethod: "POST",
@@ -415,41 +421,57 @@ dojo.declare("Main", wm.Page, {
 
        }
      //certificado final en ingles
-     if(this.selectorReport.dataValue=="fe"){
-      url= "services/cfinalen.download?method=getReport&idp="+this.c_persona.getDataValue()+"&idy="+this.c_year.getDataValue();
-      window.open(url,"_BLANK");     
-       }
+     if(this.selectorReport.dataValue=="fi"){
+       main.a_getCompleteName.update();
+       var id= main.a_getCompleteName.getData().idp;
+       var clave= main.a_getCompleteName.getData().clave;
+       var idpersona= this.c_persona.getDataValue();
+       var idsy= this.c_year.getDataValue();
+       var formatType= "PDF";
+       $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
+        failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+        httpMethod: "POST",
+        data:{ idp: id, 
+               pass: clave,
+               uri: "/aprendozreports/SEC004",
+               format: formatType,
+               params: { idpersona: idpersona,
+                         sy: idsy
+                       }
+         }
+       });
+       inEvent.preventDefault();
+     }
 
      if(this.selectorReport.dataValue=="p"){       
-           main.a_getCompleteName.update();
-           var id= main.a_getCompleteName.getData().idp;
-           var clave= main.a_getCompleteName.getData().clave;
-           var idpersona= this.c_persona.getDataValue();
-           var suscrito=  this.suscritoBox.getDataValue();
-           var idsy= this.c_year.getDataValue();
-           var pureDate1= this.fecha1Box.getDataValue();
-              var fecha1 = new Date(pureDate1);   
-              var year1 = fecha1.getFullYear();
-              var month1= fecha1.getMonth()+1;
-              var day1= fecha1.getDate();
-           if(month1 <10  ){ var date1= year1+"-0"+month1+"-"+day1;}
-           if(month1 <10 && day1<10 ){ var date1= year1+"-0"+month1+"-0"+day1;}    
-           if(day1<10 ){ var date1= year1+"-"+month1+"-0"+day1;}   
-           if(day1>10 && month1>10 ){ var date1= year1+"-"+month1+"-"+day1;} 
-           
-           var pureDate2= this.fecha2Box.getDataValue();
-              var fecha2 = new Date(pureDate2);   
-              var year2 = fecha2.getFullYear();
-              var month2= fecha2.getMonth()+1;
-              var day2= fecha2.getDate();
-           if(month2 <10  ){ var date2= year2+"-0"+month2+"-"+day2;}
-           if(month2 <10 && day2<10 ){ var date2= year2+"-0"+month2+"-0"+day2;}    
-           if(day2<10 ){ var date2= year2+"-"+month2+"-0"+day2;}   
-           if(day2>10 && month2>10 ){ var date2= year2+"-"+month2+"-"+day2;}        
-           var formatType= "PDF";
+       main.a_getCompleteName.update();
+       var id= main.a_getCompleteName.getData().idp;
+       var clave= main.a_getCompleteName.getData().clave;
+       var idpersona= this.c_persona.getDataValue();
+       var suscrito=  this.suscritoBox.getDataValue();
+       var idsy= this.c_year.getDataValue();
+       var pureDate1= this.fecha1Box.getDataValue();
+          var fecha1 = new Date(pureDate1);   
+          var year1 = fecha1.getFullYear();
+          var month1= fecha1.getMonth()+1;
+          var day1= fecha1.getDate();
+       if(month1 <10  ){ var date1= year1+"-0"+month1+"-"+day1;}
+       if(month1 <10 && day1<10 ){ var date1= year1+"-0"+month1+"-0"+day1;}    
+       if(day1<10 ){ var date1= year1+"-"+month1+"-0"+day1;}   
+       if(day1>10 && month1>10 ){ var date1= year1+"-"+month1+"-"+day1;} 
+       
+       var pureDate2= this.fecha2Box.getDataValue();
+          var fecha2 = new Date(pureDate2);   
+          var year2 = fecha2.getFullYear();
+          var month2= fecha2.getMonth()+1;
+          var day2= fecha2.getDate();
+       if(month2 <10  ){ var date2= year2+"-0"+month2+"-"+day2;}
+       if(month2 <10 && day2<10 ){ var date2= year2+"-0"+month2+"-0"+day2;}    
+       if(day2<10 ){ var date2= year2+"-"+month2+"-0"+day2;}   
+       if(day2>10 && month2>10 ){ var date2= year2+"-"+month2+"-"+day2;}        
+       var formatType= "PDF";
            
       $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
-        preparingMessageHtml: "Aprendoz esta preparando tu reporte, por favor espera...",
         failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
         httpMethod: "POST",
         data:{ idp: id, 
@@ -463,84 +485,89 @@ dojo.declare("Main", wm.Page, {
                          fechafinal: date2   }
          }
        });
-       inEvent.preventDefault();
+       inEvent.preventDefault();           
+     }
+     
+     if(this.selectorReport.dataValue=="pi"){       
+       main.a_getCompleteName.update();
+       var id= main.a_getCompleteName.getData().idp;
+       var clave= main.a_getCompleteName.getData().clave;
+       var idpersona= this.c_persona.getDataValue();
+       var suscrito=  this.suscritoBox.getDataValue();
+       var idsy= this.c_year.getDataValue();
+       var pureDate1= this.fecha1Box.getDataValue();
+          var fecha1 = new Date(pureDate1);   
+          var year1 = fecha1.getFullYear();
+          var month1= fecha1.getMonth()+1;
+          var day1= fecha1.getDate();
+       if(month1 <10  ){ var date1= year1+"-0"+month1+"-"+day1;}
+       if(month1 <10 && day1<10 ){ var date1= year1+"-0"+month1+"-0"+day1;}    
+       if(day1<10 ){ var date1= year1+"-"+month1+"-0"+day1;}   
+       if(day1>10 && month1>10 ){ var date1= year1+"-"+month1+"-"+day1;} 
+       
+       var pureDate2= this.fecha2Box.getDataValue();
+          var fecha2 = new Date(pureDate2);   
+          var year2 = fecha2.getFullYear();
+          var month2= fecha2.getMonth()+1;
+          var day2= fecha2.getDate();
+       if(month2 <10  ){ var date2= year2+"-0"+month2+"-"+day2;}
+       if(month2 <10 && day2<10 ){ var date2= year2+"-0"+month2+"-0"+day2;}    
+       if(day2<10 ){ var date2= year2+"-"+month2+"-0"+day2;}   
+       if(day2>10 && month2>10 ){ var date2= year2+"-"+month2+"-"+day2;}        
+       var formatType= "PDF";
            
-          }
-          if(this.selectorReport.dataValue=="b"){
-            url= "services/librofinal2.download?method=getReport&idp="+this.c_persona.getDataValue()+"&idy="+this.c_year.getDataValue();
-            window.open(url,"_BLANK");      
-           }
-    
-    } catch(e) {
-      console.error('ERROR IN b_libroOficialClick: ' + e); 
-    } 
+      $.fileDownload("http://aprendoz.rochester.edu.co/wsreport/runreport?callback=?", {
+        failMessageHtml: "Hubo un problema generando tu reporte, por favor intenta de nuevo.",
+        httpMethod: "POST",
+        data:{ idp: id, 
+               pass: clave,
+               uri: "/aprendozreports/SEC005",
+               format: formatType,
+               params: { sy: idsy, 
+                         idpersona: idpersona,
+                         tipo_persona: suscrito,
+                         fechainicial: date1,
+                         fechafinal: date2   }
+         }
+       });
+       inEvent.preventDefault();           
+     }
   },
  
   a_t_PersonasxCursoSelected: function(inSender, inIndex) {
-    try {
          this.c_persona.setValue("dataValue", this.a_t_PersonasxCurso.selectedItem.getData().id.idPersona);
          this.c_year.setDataValue(this.s_Anio_escolar.getDataValue());
          this.l_secretaria_insc_alum_asig.update();
          this.selectorReport.enable();
-
-    } catch(e) {
-      console.error('ERROR IN a_t_PersonasxCursoSelected: ' + e); 
-    } 
   },
   
   b_retiradosClick: function(inSender, inEvent) {
-    try {
      url= "services/s311.download?method=getReport";
             window.open(url,"_BLANK");    
-      
-    } catch(e) {
-      console.error('ERROR IN b_libroOficial1Click: ' + e); 
-    } 
   },
   b_matriculadosClick: function(inSender, inEvent) {
-    try {
     url= "services/s312.download?method=getReport";
-            window.open(url,"_BLANK"); 
-      
-    } catch(e) {
-      console.error('ERROR IN b_retirados1Click: ' + e); 
-    } 
+            window.open(url,"_BLANK");
   },
   b_lista_grupo_familiarClick: function(inSender, inEvent) {
-    try {
       url= "services/s313.download?method=getReport";
             window.open(url,"_BLANK");    
-      
-      
-    } catch(e) {
-      console.error('ERROR IN b_matriculados1Click: ' + e); 
-    } 
   },
   selectorReportChange: function(inSender, inDisplayValue, inDataValue) {
-    try {
-       if(this.selectorReport.dataValue=="p"){
+        if(this.selectorReport.dataValue=="p"){
            this.panel_certificado_parcial.show();
         }
-         if(this.selectorReport.dataValue=="pi"){
-            /* this.fecha_reporte.show();
-               this.panel_certificado_parcial.hide(); */
+        if(this.selectorReport.dataValue=="pi"){
+           this.panel_certificado_parcial.show();
         }
-         if(this.selectorReport.dataValue=="f"){
-            this.fecha_reporte.hide();
-            this.panel_certificado_parcial.hide();
+        if(this.selectorReport.dataValue=="f"){
+           this.fecha_reporte.hide();
+           this.panel_certificado_parcial.hide();
         }
-         if(this.selectorReport.dataValue=="fe"){
-            this.fecha_reporte.hide();
-            this.panel_certificado_parcial.hide();
+        if(this.selectorReport.dataValue=="fi"){
+           this.fecha_reporte.hide();
+           this.panel_certificado_parcial.hide();
         }
-         if(this.selectorReport.dataValue=="b"){
-            this.fecha_reporte.hide();
-            this.panel_certificado_parcial.hide();
-        }
- 
-    } catch(e) {
-      console.error('ERROR IN selectorReportChange: ' + e); 
-    } 
   },
   
   horarioLiveForm1BeginInsert: function(inSender) {
@@ -855,32 +882,25 @@ dojo.declare("Main", wm.Page, {
     } 
   },
   personaLiveForm1BeginUpdate: function(inSender) {
-    try {
+      var id= this.tipoTipoUsuario.getItem(0).data.tipo;
+      if(id==11){
+        this.activoRetiradoEditor1.setReadonly(false);
+        this.matriculadoEditor1.setReadonly(false);
+        this.fechaRetiroEditor1.setReadonly(false);
+        this.comentarioEditor2.setReadonly(false);
+      }else{
+        this.activoRetiradoEditor1.setReadonly(false);
+        this.matriculadoEditor1.setReadonly(true);
+        this.fechaRetiroEditor1.setReadonly(true);
+        this.comentarioEditor2.setReadonly(true);
+      }
       this.inscAlumCursoIdInscAlumCursoEditor1.setReadonly(true);
-      
-    } catch(e) {
-      console.error('ERROR IN personaLiveForm1BeginUpdate: ' + e); 
-    } 
   },
   a_getCursoProcesoSVSuccess: function(inSender, inDeprecated) {
-    try {
      var cursoProceso = main.a_getCursoProcesoSV.getItem(0);
      var z = cursoProceso.data.curse;
-     var y = cursoProceso.data.idcurso;     
-     var parseText = y.toString();
-     var sub= (parseText.substring(1,6));
-     var id= parseInt(sub);     
-     if(z == null){
-       this.alumno_proceso_matricula.setCaption("Admisión/Matrícula: ");
-     }
-     if(z != null){
-       this.alumno_proceso_matricula.setCaption("Admisión/Matrícula: "+z);
-       this.inscAlumCursoIdInscAlumCursoEditor1.setDataValue(id);
-     }
-
-    } catch(e) {
-      console.error('ERROR IN a_getCursoProcesoSVSuccess: ' + e); 
-    } 
+     var y = cursoProceso.data.idcurso;   
+     this.inscAlumCursoIdInscAlumCursoEditor1.setDataValue(y);
   },
   nombre1Editor1Change: function(inSender, inDisplayValue, inDataValue) {
     try {
@@ -938,7 +958,8 @@ dojo.declare("Main", wm.Page, {
                uri: "/aprendozreports/SEC001",
                format: formatType,
                params: { sy: idsy, nivel: idnivel }
-         }
+        
+        }
        });
        inEvent.preventDefault();
 
@@ -965,12 +986,7 @@ dojo.declare("Main", wm.Page, {
   },
  
   picture6Click: function(inSender) {
-    try {
      alert("works!"); 
-      
-    } catch(e) {
-      console.error('ERROR IN picture6Click: ' + e); 
-    } 
   },
   
   button_peopleClick: function(inSender, inEvent) {
@@ -994,6 +1010,12 @@ dojo.declare("Main", wm.Page, {
   },
   fichamedicaLiveVariable1Success: function(inSender, inDeprecated) {
     this.fichamedicaDataGrid1.select(0);  
+  },
+  
+  a_getUserNameSuccess: function(inSender, inDeprecated) {
+      var username=  this.a_getUserName.data.dataValue;
+      this.tipoTipoUsuario.input.setValue("user", username);
+      this.tipoTipoUsuario.update();
   },
   _end: 0
 });

@@ -16547,15 +16547,6 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
-				"curse": {
-					"exclude": [],
-					"fieldOrder": 6,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "java.lang.String"
-				},
 				"idcurso": {
 					"exclude": [],
 					"fieldOrder": 5,
@@ -16567,7 +16558,7 @@ wm.types = {
 				},
 				"maximo_sy": {
 					"exclude": [],
-					"fieldOrder": 7,
+					"fieldOrder": 6,
 					"include": [],
 					"isList": false,
 					"noChange": [],
@@ -16591,6 +16582,31 @@ wm.types = {
 					"noChange": [],
 					"required": true,
 					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "aprendoz_desarrollo"
+		},
+		"com.aprendoz_desarrollo.data.output.GetTipoByUsernameRtnType": {
+			"fields": {
+				"id": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"tipo": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
 				}
 			},
 			"internal": false,

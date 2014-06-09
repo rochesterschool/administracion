@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "getProcesoMatricula" on 09/05/2013 10:46:30
+ * Generated for query "getProcesoMatricula" on 03/12/2014 08:49:00
  * 
  */
 public class GetProcesoMatriculaRtnType {
@@ -15,20 +15,18 @@ public class GetProcesoMatriculaRtnType {
     private String a1;
     private String a2;
     private Integer idcurso;
-    private String curse;
     private Integer maximo_sy;
 
     public GetProcesoMatriculaRtnType() {
     }
 
-    public GetProcesoMatriculaRtnType(Integer code, String n1, String n2, String a1, String a2, Integer idcurso, String curse, Integer maximo_sy) {
+    public GetProcesoMatriculaRtnType(Integer code, String n1, String n2, String a1, String a2, Integer idcurso, Integer maximo_sy) {
         this.code = code;
         this.n1 = n1;
         this.n2 = n2;
         this.a1 = a1;
         this.a2 = a2;
         this.idcurso = idcurso;
-        this.curse = curse;
         this.maximo_sy = maximo_sy;
     }
 
@@ -78,14 +76,6 @@ public class GetProcesoMatriculaRtnType {
 
     public void setIdcurso(Integer idcurso) {
         this.idcurso = idcurso;
-    }
-
-    public String getCurse() {
-        return curse;
-    }
-
-    public void setCurse(String curse) {
-        this.curse = curse;
     }
 
     public Integer getMaximo_sy() {
